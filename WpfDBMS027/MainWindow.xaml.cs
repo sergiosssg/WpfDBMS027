@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Data.SqlClient;
@@ -22,11 +23,21 @@ namespace WpfDBMS027
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        public DbContextOptions<DbAppContext> OptionsOfDbContext { get; }
+
+        public DbAppContext DbAppContextProperty { get; }
+
         public MainWindow()
         {
+            OptionsOfDbContext = new DbContextOptionsBuilder<DbAppContext>().UseSqlServer(GetConnectionString()).Options;
+
+            DbAppContextProperty = new DbAppContext( OptionsOfDbContext);
+
+            ReadRecordsFromDBTableUsing_EF();
+
             InitializeComponent();
             //ReadRecordsFromDBTable();
-            ReadRecordsFromDBTableUsing_EF();
         }
 
         private static string GetConnectionString()
@@ -92,8 +103,16 @@ namespace WpfDBMS027
 
         private static void ReadRecordsFromDBTableUsing_EF()
         {
-            using (var dbContent = new DbAppContext())
+
+            DbContextOptions<DbAppContext> _options = new DbContextOptionsBuilder<DbAppContext>().UseSqlServer(GetConnectionString()).Options;
+
+
+  
+
+            using (var dbContent = new DbAppContext(_options))
             {
+                ;
+
                 var simpleVidConnects = dbContent.pO_TEL_VID_CONNECTs;
 
                 foreach (var oneTEL_VID_CONNECT in simpleVidConnects)
@@ -101,6 +120,8 @@ namespace WpfDBMS027
                     Console.WriteLine(" Id = {0}  Kod связи {1}  Название вида связи {2}", oneTEL_VID_CONNECT.Id, oneTEL_VID_CONNECT.KodOfConnect, oneTEL_VID_CONNECT.Name);
 
                 }
+
+
 
             }
 
