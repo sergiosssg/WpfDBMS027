@@ -1,6 +1,7 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
-using System.Data.Entity;
+
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,24 +15,31 @@ namespace WpfDBMS027
 
 
 
+
+
+        public DbAppContext() // base(@"Data Source=localhost\\SQLExpress;Initial Catalog=sampd_cexs;Integrated Security=True") //base(@"initial catalog=C:\SSG\PROJECTs\TELET\DB4TELEFONE\sampd_cexs.fdb;data source=localhost;user id=sysdba;password=masterkey;pooling=True")
+        {
+        }
+
+
+
+        public DbAppContext(DbContextOptions<DbAppContext> options)  : base( options)
+        {
+        }
+
+
+
+        protected override void OnConfiguring(DbContextOptionsBuilder options)
+        {
+
+        }
+
 /*
-
-        public DbAppContext() : base() //base(@"initial catalog=C:\SSG\PROJECTs\TELET\DB4TELEFONE\sampd_cexs.fdb;data source=localhost;user id=sysdba;password=masterkey;pooling=True")
-        {
-        }
-
-        public DbAppContext(string stringConnectionToSqlServer) : base()
-        {
-        }
-*/
-
-
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //modelBuilder.Entity<PO_TEL_VID_CONNECT>().HasMany(c => (ICollection<PO_TEL_VID_CONNECT>)c.pO_TEL_OPERATORs);
             ;
-        }
+        }*/
 
 
     }

@@ -25,8 +25,8 @@ namespace WpfDBMS027
         public MainWindow()
         {
             InitializeComponent();
-            ReadRecordsFromDBTable();
-            ;
+            //ReadRecordsFromDBTable();
+            ReadRecordsFromDBTableUsing_EF();
         }
 
         private static string GetConnectionString()
@@ -89,5 +89,22 @@ namespace WpfDBMS027
             }
 
         }
+
+        private static void ReadRecordsFromDBTableUsing_EF()
+        {
+            using (var dbContent = new DbAppContext())
+            {
+                var simpleVidConnects = dbContent.pO_TEL_VID_CONNECTs;
+
+                foreach (var oneTEL_VID_CONNECT in simpleVidConnects)
+                {
+                    Console.WriteLine(" Id = {0}  Kod связи {1}  Название вида связи {2}", oneTEL_VID_CONNECT.Id, oneTEL_VID_CONNECT.KodOfConnect, oneTEL_VID_CONNECT.Name);
+
+                }
+
+            }
+
+        }
+
     }
 }
