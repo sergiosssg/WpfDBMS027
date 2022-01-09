@@ -24,7 +24,7 @@ namespace WpfDBMS027
 
 
 
-        public DbAppContext(DbContextOptions<DbAppContext> options)  : base( options)
+        public DbAppContext(DbContextOptions<DbAppContext> options) : base(options)
         {
         }
 
@@ -32,12 +32,11 @@ namespace WpfDBMS027
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer(@"Data Source=localhost\\SQLExpress;Initial Catalog=sampd_cexs;Integrated Security=True");
-            }
+            optionsBuilder.UseSqlServer(@"Data Source=localhost\\SQLExpress;Initial Catalog=sampd_cexs;Integrated Security=True");
 
-            ;
+            optionsBuilder.UseLazyLoadingProxies();
+
+            base.OnConfiguring(optionsBuilder);
         }
 
 

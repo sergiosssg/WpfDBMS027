@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfDBMS027"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="120*"/>
             <ColumnDefinition Width="360*"/>
@@ -15,11 +15,13 @@
             <RowDefinition Height="34*"/>
             <RowDefinition Height="220*"/>
         </Grid.RowDefinitions>
-        <Button x:Name="btnLoad" Content="Загрузить..." HorizontalAlignment="Stretch" Margin="4,3,3,3" VerticalAlignment="Stretch"/>
-        <DataGrid x:Name="dgrid__VID_CONNECT" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="3,3,3,3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Button x:Name="btnLoad" Content="Загрузить..." HorizontalAlignment="Stretch" Margin="4,3,3,3" VerticalAlignment="Stretch" Click="btnLoad_Click"/>
+        <DataGrid x:Name="dgrid__VID_CONNECT"  Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="3,3,3,3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsSynchronizedWithCurrentItem="True">
+            <!--
             <DataGrid.DataContext>
                 <local:DbAppContext/>
             </DataGrid.DataContext>
+            -->
         </DataGrid>
     </Grid>
 </Window>

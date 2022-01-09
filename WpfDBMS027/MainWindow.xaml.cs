@@ -24,6 +24,8 @@ namespace WpfDBMS027
     public partial class MainWindow : Window
     {
 
+        private CollectionViewSource tel_vid_connectionViewSource;
+
         public DbContextOptions<DbAppContext> OptionsOfDbContext { get; }
 
         public DbAppContext DbAppContextProperty { get; }
@@ -34,7 +36,9 @@ namespace WpfDBMS027
 
             DbAppContextProperty = new DbAppContext( OptionsOfDbContext);
 
-            ReadRecordsFromDBTableUsing_EF();
+            ;
+
+            //ReadRecordsFromDBTableUsing_EF();
 
             InitializeComponent();
             //ReadRecordsFromDBTable();
@@ -127,5 +131,22 @@ namespace WpfDBMS027
 
         }
 
+        private void btnLoad_Click(object sender, RoutedEventArgs e)
+        {
+
+
+            dgrid__VID_CONNECT.DataContext = DbAppContextProperty;
+
+/*
+            if ( DbAppContextProperty.pO_TEL_VID_CONNECTs.Count() > 0)
+            {
+                ;
+                var TEL_VID_CONNECTs = DbAppContextProperty.pO_TEL_VID_CONNECTs;
+                dgrid__VID_CONNECT.DataContext = DbAppContextProperty;
+                TEL_VID_CONNECTs.Load();
+                ;
+            }*/
+
+        }
     }
 }
