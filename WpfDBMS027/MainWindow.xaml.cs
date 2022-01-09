@@ -32,16 +32,43 @@ namespace WpfDBMS027
 
         public MainWindow()
         {
+            ReadRecordsFromDBTable();
+
+
+            ReadRecordsFromDBTableUsing_EF();
+
             OptionsOfDbContext = new DbContextOptionsBuilder<DbAppContext>().UseSqlServer(GetConnectionString()).Options;
 
-            DbAppContextProperty = new DbAppContext( OptionsOfDbContext);
+            DbAppContextProperty = new DbAppContext(OptionsOfDbContext);
 
-            ;
+            try
+            {
+                ;
+                DbAppContextProperty.pO_TEL_VID_CONNECTs.Load();
+                ;
 
-            //ReadRecordsFromDBTableUsing_EF();
+                foreach (var eee in DbAppContextProperty.pO_TEL_VID_CONNECTs)
+                {
+                    var iii = eee.Id;
+                    var kkk = eee.KodOfConnect;
+                    var nnn = eee.Name;
+                }
+
+
+            }
+            catch (Exception exe)
+            {
+                var _et = exe.GetType().Name;
+                var _eM = exe.Message;
+                var _eTr = exe.StackTrace;
+            }
+
+            //var lL = DbAppContextProperty.pO_TEL_VID_CONNECTs.ToList<PO_TEL_VID_CONNECT>();
+
+            //var cC = lL.Count;
+
 
             InitializeComponent();
-            //ReadRecordsFromDBTable();
         }
 
         private static string GetConnectionString()
@@ -71,11 +98,11 @@ namespace WpfDBMS027
                     command.CommandText = "SELECT * FROM TEL_VID_CONNECT";
                     command.Connection = connection;
 
-                    if( connection.State == System.Data.ConnectionState.Open)
+                    if (connection.State == System.Data.ConnectionState.Open)
                     {
                         Console.WriteLine("Соединение установлено!");
                     }
-                    else if(connection.State == System.Data.ConnectionState.Connecting)
+                    else if (connection.State == System.Data.ConnectionState.Connecting)
                     {
                         Console.WriteLine("Соединение в процессе установки ...");
                     }
@@ -88,11 +115,11 @@ namespace WpfDBMS027
 
                     while (dataReader.HasRows)
                     {
-                        Console.WriteLine("\t{0}\t{1}\t{2}", dataReader.GetName(0),  dataReader.GetName(1), dataReader.GetName(2));
+                        Console.WriteLine("\t{0}\t{1}\t{2}", dataReader.GetName(0), dataReader.GetName(1), dataReader.GetName(2));
 
                         while (dataReader.Read())
                         {
-                            Console.WriteLine("\t{0}\t{1}", dataReader.GetInt32(0),   dataReader.GetString(1), dataReader.GetString(2));
+                            Console.WriteLine("\t{0}\t{1}", dataReader.GetInt32(0), dataReader.GetString(1), dataReader.GetString(2));
                         }
                         dataReader.NextResult();
                     }
@@ -111,13 +138,16 @@ namespace WpfDBMS027
             DbContextOptions<DbAppContext> _options = new DbContextOptionsBuilder<DbAppContext>().UseSqlServer(GetConnectionString()).Options;
 
 
-  
 
-            using (var dbContent = new DbAppContext(_options))
+
+            using (var dbContent = new DbAppContext( _options))
             {
-                ;
+                //dbContent.pO_TEL_VID_CONNECTs.Load();
 
                 var simpleVidConnects = dbContent.pO_TEL_VID_CONNECTs;
+
+
+
 
                 foreach (var oneTEL_VID_CONNECT in simpleVidConnects)
                 {
@@ -134,18 +164,27 @@ namespace WpfDBMS027
         private void btnLoad_Click(object sender, RoutedEventArgs e)
         {
 
+            //DbAppContextProperty.pO_TEL_VID_CONNECTs.Load();
 
-            dgrid__VID_CONNECT.DataContext = DbAppContextProperty;
+            var query = DbAppContextProperty.pO_TEL_VID_CONNECTs.Local.ToList();
 
-/*
-            if ( DbAppContextProperty.pO_TEL_VID_CONNECTs.Count() > 0)
-            {
-                ;
-                var TEL_VID_CONNECTs = DbAppContextProperty.pO_TEL_VID_CONNECTs;
-                dgrid__VID_CONNECT.DataContext = DbAppContextProperty;
-                TEL_VID_CONNECTs.Load();
-                ;
-            }*/
+            var qQ = from el in DbAppContextProperty.pO_TEL_VID_CONNECTs where el.Id > 0 select el;
+
+            var ttt = qQ.GetType().Name;
+
+            var ccc = qQ.FirstOrDefault();
+
+            dgrid__VID_CONNECT.ItemsSource = query;
+
+            /*
+                        if ( DbAppContextProperty.pO_TEL_VID_CONNECTs.Count() > 0)
+                        {
+                            ;
+                            var TEL_VID_CONNECTs = DbAppContextProperty.pO_TEL_VID_CONNECTs;
+                            dgrid__VID_CONNECT.DataContext = DbAppContextProperty;
+                            TEL_VID_CONNECTs.Load();
+                            ;
+                        }*/
 
         }
     }

@@ -32,11 +32,11 @@ namespace WpfDBMS027
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source=localhost\\SQLExpress;Initial Catalog=sampd_cexs;Integrated Security=True");
+            //optionsBuilder.UseSqlServer(@"Data Source=localhost\\SQLExpress;Initial Catalog=sampd_cexs;Integrated Security=True");
 
-            optionsBuilder.UseLazyLoadingProxies();
+            //optionsBuilder.UseLazyLoadingProxies();
 
-            base.OnConfiguring(optionsBuilder);
+            //base.OnConfiguring(optionsBuilder);
         }
 
 
