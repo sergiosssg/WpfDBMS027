@@ -9,20 +9,47 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="120*"/>
-            <ColumnDefinition Width="360*"/>
+            <ColumnDefinition Width="54*"/>
+            <ColumnDefinition Width="54*"/>
+            <ColumnDefinition Width="54*"/>
+            <ColumnDefinition Width="54*"/>
+            <ColumnDefinition Width="54*"/>
+            <ColumnDefinition Width="54*"/>
+            <ColumnDefinition Width="54*"/>
+            <ColumnDefinition Width="54*"/>
+            <ColumnDefinition Width="54*"/>
+            <ColumnDefinition Width="54*"/>
+            <ColumnDefinition Width="54*"/>
+            <ColumnDefinition Width="54*"/>
+            <ColumnDefinition Width="54*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="34*"/>
-            <RowDefinition Height="220*"/>
+            <RowDefinition Height="34*"/>
+            <RowDefinition Height="34*"/>
+            <RowDefinition Height="34*"/>
+            <RowDefinition Height="34*"/>
+            <RowDefinition Height="34*"/>
+            <RowDefinition Height="34*"/>
+            <RowDefinition Height="34*"/>
+            <RowDefinition Height="34*"/>
+            <RowDefinition Height="34*"/>
+            <RowDefinition Height="34*"/>
+            <RowDefinition Height="34*"/>
         </Grid.RowDefinitions>
-        <Button x:Name="btnLoad" Content="Загрузить..." HorizontalAlignment="Stretch" Margin="4,3,3,3" VerticalAlignment="Stretch" Click="btnLoad_Click"/>
-        <DataGrid x:Name="dgrid__VID_CONNECT"  Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="3,3,3,3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsSynchronizedWithCurrentItem="True">
-            <!--
-            <DataGrid.DataContext>
-                <local:DbAppContext/>
-            </DataGrid.DataContext>
-            -->
+        <Button x:Name="btnLoad" Content="Загрузить..." Grid.Column="0" Grid.Row="0"  HorizontalAlignment="Stretch" Margin="4,3,3,3" VerticalAlignment="Stretch" Click="btnLoad_Click"/>
+        <Button x:Name="btnDelete" Content="Удалить" Grid.Column="0" Grid.Row="1"  HorizontalAlignment="Stretch" Margin="4,3,3,3" VerticalAlignment="Stretch" IsEnabled="False"/>
+        <DataGrid x:Name="dgrid__VID_CONNECT"  Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="12" Grid.RowSpan="11" Margin="3,3,3,3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsSynchronizedWithCurrentItem="True">
         </DataGrid>
+        <TextBox x:Name="txtFld1" Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Stretch" Margin="3,3,5,3" Text="" TextWrapping="Wrap" VerticalAlignment="Stretch" IsEnabled="False" TextChanged="txtFld1_TextChanged"/>
+        <TextBox x:Name="txtFld2" Grid.ColumnSpan="2" Grid.Column="4" HorizontalAlignment="Stretch" Margin="5,3,5,3" Text="" TextWrapping="Wrap" VerticalAlignment="Stretch" IsEnabled="False" TextChanged="txtFld2_TextChanged"/>
+        <TextBox x:Name="txtFld3" Grid.ColumnSpan="4" Grid.Column="7" HorizontalAlignment="Stretch" Margin="5,3,5,3" Text="" TextWrapping="Wrap" VerticalAlignment="Stretch" IsEnabled="False" TextChanged="txtFld3_TextChanged"/>
+        <Label Content=": ID" Grid.Column="3" HorizontalAlignment="Stretch" Margin="3,3,3,3" VerticalAlignment="Stretch"/>
+        <Label Content=": Код" Grid.Column="6" HorizontalAlignment="Stretch" Margin="3,3,3,3" VerticalAlignment="Stretch"/>
+        <Label Content=": Название" Grid.Column="11" HorizontalAlignment="Stretch" Margin="3,3,3,3" VerticalAlignment="Stretch"/>
+        <Button x:Name="btnAdd" Content="Добавить" Grid.Column="12" Grid.Row="0"  HorizontalAlignment="Stretch" Margin="3,3,4,3" VerticalAlignment="Stretch" IsEnabled="False" Click="btnAdd_Click"/>
+        <TextBlock HorizontalAlignment="Stretch" Grid.Row="2" Grid.Column="0" Text=" ###" TextWrapping="Wrap" Margin="3,3,3,3"  VerticalAlignment="Stretch" IsEnabled="False"/>
+        <Button x:Name="btnEdit" Content="Редактировать" Grid.Column="0" Grid.Row="3"  HorizontalAlignment="Stretch" Margin="3,3,4,3" VerticalAlignment="Stretch" IsEnabled="False"/>
+        <Button x:Name="btnSave" Content="Сохранить" Grid.Column="0" Grid.Row="4"  HorizontalAlignment="Stretch" Margin="3,3,4,3" VerticalAlignment="Stretch" IsEnabled="False" Click="btnSave_Click"/>
     </Grid>
 </Window>

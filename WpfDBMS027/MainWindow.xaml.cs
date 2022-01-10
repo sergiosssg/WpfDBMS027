@@ -32,15 +32,16 @@ namespace WpfDBMS027
 
         public MainWindow()
         {
-            ReadRecordsFromDBTable();
+            //ReadRecordsFromDBTable();
 
 
-            ReadRecordsFromDBTableUsing_EF();
+            //ReadRecordsFromDBTableUsing_EF();
 
             OptionsOfDbContext = new DbContextOptionsBuilder<DbAppContext>().UseSqlServer(GetConnectionString()).Options;
 
             DbAppContextProperty = new DbAppContext(OptionsOfDbContext);
 
+/*
             try
             {
                 ;
@@ -62,10 +63,7 @@ namespace WpfDBMS027
                 var _eM = exe.Message;
                 var _eTr = exe.StackTrace;
             }
-
-            //var lL = DbAppContextProperty.pO_TEL_VID_CONNECTs.ToList<PO_TEL_VID_CONNECT>();
-
-            //var cC = lL.Count;
+*/
 
 
             InitializeComponent();
@@ -75,7 +73,7 @@ namespace WpfDBMS027
         {
             DbConnectionStringBuilder builder = new SqlConnectionStringBuilder();
 
-            builder["Data Source"] = @"localhost\SQLExpress";
+            builder["Data Source"] = "localhost";////@"localhost\SQLExpress";
 
             builder["Database"] = "sampd_cexs";
 
@@ -154,38 +152,73 @@ namespace WpfDBMS027
                     Console.WriteLine(" Id = {0}  Kod связи {1}  Название вида связи {2}", oneTEL_VID_CONNECT.Id, oneTEL_VID_CONNECT.KodOfConnect, oneTEL_VID_CONNECT.Name);
 
                 }
-
-
-
             }
-
         }
 
         private void btnLoad_Click(object sender, RoutedEventArgs e)
         {
 
-            //DbAppContextProperty.pO_TEL_VID_CONNECTs.Load();
+            DbAppContextProperty.pO_TEL_VID_CONNECTs.Load();
 
-            var query = DbAppContextProperty.pO_TEL_VID_CONNECTs.Local.ToList();
+            dgrid__VID_CONNECT.ItemsSource = DbAppContextProperty.pO_TEL_VID_CONNECTs.Local.ToList();
 
-            var qQ = from el in DbAppContextProperty.pO_TEL_VID_CONNECTs where el.Id > 0 select el;
 
-            var ttt = qQ.GetType().Name;
+            txtFld1.IsEnabled = true;
+            txtFld2.IsEnabled = true;
+            txtFld3.IsEnabled = true;
+        }
 
-            var ccc = qQ.FirstOrDefault();
+        private void txtFld1_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if((txtFld1.Text != null && txtFld1.Text.Length > 0 ) && (txtFld2.Text != null && txtFld2.Text.Length == 1) && (txtFld3.Text != null && txtFld3.Text.Length > 0))
+            {
+                btnAdd.IsEnabled = true;
+            }
+        }
 
-            dgrid__VID_CONNECT.ItemsSource = query;
+        private void txtFld2_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if ((txtFld1.Text != null && txtFld1.Text.Length > 0) && (txtFld2.Text != null && txtFld2.Text.Length == 1) && (txtFld3.Text != null && txtFld3.Text.Length > 0))
+            {
+                btnAdd.IsEnabled = true;
+            }
+        }
 
-            /*
-                        if ( DbAppContextProperty.pO_TEL_VID_CONNECTs.Count() > 0)
-                        {
-                            ;
-                            var TEL_VID_CONNECTs = DbAppContextProperty.pO_TEL_VID_CONNECTs;
-                            dgrid__VID_CONNECT.DataContext = DbAppContextProperty;
-                            TEL_VID_CONNECTs.Load();
-                            ;
-                        }*/
+        private void txtFld3_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if ((txtFld1.Text != null && txtFld1.Text.Length > 0) && (txtFld2.Text != null && txtFld2.Text.Length == 1) && (txtFld3.Text != null && txtFld3.Text.Length > 0))
+            {
+                btnAdd.IsEnabled = true;
+            }
+        }
 
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            //  сформировать новую   PO_TEL_VID_CONNECT
+            //  и добавить в модель  ..
+
+            PO_TEL_VID_CONNECT new_TEL_VID_CONNECT = new PO_TEL_VID_CONNECT();
+            new_TEL_VID_CONNECT.Id = Int32.Parse(txtFld1.Text);
+            new_TEL_VID_CONNECT.KodOfConnect = txtFld2.Text;
+            new_TEL_VID_CONNECT.Name = txtFld3.Text;
+
+            txtFld1.Text = "";
+            txtFld2.Text = "";
+            txtFld3.Text = "";
+
+            btnAdd.IsEnabled = false;
+
+            DbAppContextProperty.pO_TEL_VID_CONNECTs.Add(new_TEL_VID_CONNECT);
+
+            btnSave.IsEnabled = true;
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            //  сохранить модель в БД ..
+            //
+            DbAppContextProperty.SaveChanges();
+            btnSave.IsEnabled = false;
         }
     }
 }
