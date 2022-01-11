@@ -163,6 +163,9 @@ namespace WpfDBMS027
             dgrid__VID_CONNECT.ItemsSource = DbAppContextProperty.pO_TEL_VID_CONNECTs.Local.ToList();
 
 
+
+
+
             txtFld1.IsEnabled = true;
             txtFld2.IsEnabled = true;
             txtFld3.IsEnabled = true;

@@ -40,6 +40,23 @@
         <Button x:Name="btnLoad" Content="Загрузить..." Grid.Column="0" Grid.Row="0"  HorizontalAlignment="Stretch" Margin="4,3,3,3" VerticalAlignment="Stretch" Click="btnLoad_Click"/>
         <Button x:Name="btnDelete" Content="Удалить" Grid.Column="0" Grid.Row="1"  HorizontalAlignment="Stretch" Margin="4,3,3,3" VerticalAlignment="Stretch" IsEnabled="False"/>
         <DataGrid x:Name="dgrid__VID_CONNECT"  Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="12" Grid.RowSpan="11" Margin="3,3,3,3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsSynchronizedWithCurrentItem="True">
+            
+            <!--
+            
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Width="8" SortDirection="Ascending">
+                    
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Код" Width="8" SortDirection="Ascending">
+                    
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Название">
+                    
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+            
+            -->
+            
         </DataGrid>
         <TextBox x:Name="txtFld1" Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Stretch" Margin="3,3,5,3" Text="" TextWrapping="Wrap" VerticalAlignment="Stretch" IsEnabled="False" TextChanged="txtFld1_TextChanged"/>
         <TextBox x:Name="txtFld2" Grid.ColumnSpan="2" Grid.Column="4" HorizontalAlignment="Stretch" Margin="5,3,5,3" Text="" TextWrapping="Wrap" VerticalAlignment="Stretch" IsEnabled="False" TextChanged="txtFld2_TextChanged"/>
