@@ -6,7 +6,25 @@
         xmlns:local="clr-namespace:WpfDBMS027"
         x:Class="WpfDBMS027.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    
+    
+    <!--
+    
+    
+    
+    <Window.Resources>
+        
+    </Window.Resources>
+    <Window.DataContext x:Uid="VVV">
+        <ObjectDataProvider x:Name="SS11" local:MainWindow="">
+            
+        </ObjectDataProvider>
+    </Window.DataContext>
+    
+    -->
+    
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="54*"/>
@@ -37,12 +55,23 @@
             <RowDefinition Height="34*"/>
             <RowDefinition Height="34*"/>
         </Grid.RowDefinitions>
+        
         <Button x:Name="btnLoad" Content="Загрузить..." Grid.Column="0" Grid.Row="0"  HorizontalAlignment="Stretch" Margin="4,3,3,3" VerticalAlignment="Stretch" Click="btnLoad_Click"/>
         <Button x:Name="btnDelete" Content="Удалить" Grid.Column="0" Grid.Row="1"  HorizontalAlignment="Stretch" Margin="4,3,3,3" VerticalAlignment="Stretch" IsEnabled="False"/>
         <DataGrid x:Name="dgrid__VID_CONNECT"  Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="12" Grid.RowSpan="11" Margin="3,3,3,3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsSynchronizedWithCurrentItem="True">
-            <DataGrid.DataContext>
-                <local:DbAppContext/>
-            </DataGrid.DataContext>
+
+            <DataGrid.Resources x:Uid="Vid_Connect">
+                
+            </DataGrid.Resources>
+            
+            
+            
+            <!--
+            
+            <Binding Source="{}" Path="{}}"/>
+            
+            -->
+            
 
             <!--
             

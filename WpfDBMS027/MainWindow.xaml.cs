@@ -162,6 +162,8 @@ namespace WpfDBMS027
 
             dgrid__VID_CONNECT.ItemsSource = DbAppContextProperty.pO_TEL_VID_CONNECTs.Local.ToList();
 
+            //dgrid__VID_CONNECT.DataContext = DbAppContextProperty.pO_TEL_VID_CONNECTs;
+
 
 
 
@@ -222,6 +224,13 @@ namespace WpfDBMS027
             //
             DbAppContextProperty.SaveChanges();
             btnSave.IsEnabled = false;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            ;
+            //dgrid__VID_CONNECT.ItemsSource = DbAppContextProperty.pO_TEL_VID_CONNECTs;
+            //dgrid__VID_CONNECT.ItemsSource = DbAppContextProperty.pO_TEL_VID_CONNECTs;
         }
     }
 }
