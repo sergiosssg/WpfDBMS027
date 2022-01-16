@@ -32,10 +32,10 @@ namespace WpfDBMS027
 
         public MainWindow()
         {
-            //ReadRecordsFromDBTable();
+            ReadRecordsFromDBTable();
 
 
-            //ReadRecordsFromDBTableUsing_EF();
+            ReadRecordsFromDBTableUsing_EF();
 
             OptionsOfDbContext = new DbContextOptionsBuilder<DbAppContext>().UseSqlServer(GetConnectionString()).Options;
 
@@ -73,7 +73,7 @@ namespace WpfDBMS027
         {
             DbConnectionStringBuilder builder = new SqlConnectionStringBuilder();
 
-            builder["Data Source"] = "localhost";////@"localhost\SQLExpress";
+            builder["Data Source"] = @"localhost\SQLExpress";////@"localhost\SQLExpress";
 
             builder["Database"] = "sampd_cexs";
 
