@@ -7,8 +7,10 @@
         x:Class="WpfDBMS027.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
-    
-    
+
+    <Window.Resources>
+        
+    </Window.Resources>
     <!--
     
     
