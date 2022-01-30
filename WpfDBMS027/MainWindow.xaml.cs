@@ -235,7 +235,9 @@ namespace WpfDBMS027
 
             DbAppContextProperty.pO_TEL_VID_CONNECTs.Load();
 
-            tel_vid_connectionViewSource.Source = DbAppContextProperty.pO_TEL_VID_CONNECTs.Local;
+            //tel_vid_connectionViewSource.Source = DbAppContextProperty.pO_TEL_VID_CONNECTs.Local;
+
+            tel_vid_connectionViewSource.Source = DbAppContextProperty.pO_TEL_VID_CONNECTs.ToList<PO_TEL_VID_CONNECT>();
 
             ;
 
