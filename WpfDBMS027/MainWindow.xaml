@@ -8,6 +8,15 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
 
+    <Window.DataContext>
+        <CollectionContainer x:Name="SPR">
+            
+        </CollectionContainer>
+    </Window.DataContext>
+
+    <Window.Resources>
+        <CollectionViewSource x:Key="TEL_VID_CONNECTS" d:DesignSource="{d:DesignInstance {x:Type local:PO_TEL_VID_CONNECT}, CreateList=True}"/>
+    </Window.Resources>
     <!--
     <Window.Resources>
         <CollectionContainer>
@@ -62,7 +71,7 @@
         
         <Button x:Name="btnLoad" Content="Загрузить..." Grid.Column="0" Grid.Row="0"  HorizontalAlignment="Stretch" Margin="4,3,3,3" VerticalAlignment="Stretch" Click="btnLoad_Click"/>
         <Button x:Name="btnDelete" Content="Удалить" Grid.Column="0" Grid.Row="1"  HorizontalAlignment="Stretch" Margin="4,3,3,3" VerticalAlignment="Stretch" IsEnabled="False"/>
-        <DataGrid x:Name="dgrid__VID_CONNECT"  Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="12" Grid.RowSpan="11" Margin="3,3,3,3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsSynchronizedWithCurrentItem="True">
+        <DataGrid x:Name="dgrid__VID_CONNECT"  Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="12" Grid.RowSpan="11" Margin="3,3,3,3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsSynchronizedWithCurrentItem="True" AutoGenerateColumns="False" EnableRowVirtualization="True">
 
             <DataGrid.Resources x:Uid="Vid_Connect">
                 
