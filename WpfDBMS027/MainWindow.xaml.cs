@@ -229,7 +229,7 @@ namespace WpfDBMS027
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
-
+/*
             tel_vid_connectionViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("TEL_VID_CONNECTS")));
 
 
@@ -237,7 +237,7 @@ namespace WpfDBMS027
 
             //tel_vid_connectionViewSource.Source = DbAppContextProperty.pO_TEL_VID_CONNECTs.Local;
 
-            tel_vid_connectionViewSource.Source = DbAppContextProperty.pO_TEL_VID_CONNECTs.ToList<PO_TEL_VID_CONNECT>();
+            tel_vid_connectionViewSource.Source = DbAppContextProperty.pO_TEL_VID_CONNECTs.ToList<PO_TEL_VID_CONNECT>();*/
 
             ;
 
