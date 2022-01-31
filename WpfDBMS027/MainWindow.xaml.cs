@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -15,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Path = System.IO.Path;
 
 namespace WpfDBMS027
 {
@@ -73,7 +76,8 @@ namespace WpfDBMS027
         {
             DbConnectionStringBuilder builder = new SqlConnectionStringBuilder();
 
-            builder["Data Source"] = @"localhost\SQLExpress";////@"localhost\SQLExpress";
+            builder["Data Source"] = "localhost";
+            //builder["Data Source"] = @"localhost\SQLExpress";////@"localhost\SQLExpress";
 
             builder["Database"] = "sampd_cexs";
 
@@ -162,6 +166,8 @@ namespace WpfDBMS027
 
             dgrid__VID_CONNECT.ItemsSource = DbAppContextProperty.pO_TEL_VID_CONNECTs.Local.ToList();
 
+            var typeName = dgrid__VID_CONNECT.GetType().Name;
+
             //dgrid__VID_CONNECT.DataContext = DbAppContextProperty.pO_TEL_VID_CONNECTs;
 
 
@@ -229,7 +235,7 @@ namespace WpfDBMS027
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
-/*
+
             tel_vid_connectionViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("TEL_VID_CONNECTS")));
 
 
@@ -237,12 +243,32 @@ namespace WpfDBMS027
 
             //tel_vid_connectionViewSource.Source = DbAppContextProperty.pO_TEL_VID_CONNECTs.Local;
 
-            tel_vid_connectionViewSource.Source = DbAppContextProperty.pO_TEL_VID_CONNECTs.ToList<PO_TEL_VID_CONNECT>();*/
+            tel_vid_connectionViewSource.Source = DbAppContextProperty.pO_TEL_VID_CONNECTs.ToList<PO_TEL_VID_CONNECT>();
 
             ;
 
             //dgrid__VID_CONNECT.ItemsSource = DbAppContextProperty.pO_TEL_VID_CONNECTs;
             //dgrid__VID_CONNECT.ItemsSource = DbAppContextProperty.pO_TEL_VID_CONNECTs;
         }
+
+
+
+        private static void WriteLineInLogFile(string message)
+        {
+            using (StreamWriter sw = new StreamWriter(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\log.txt", true))
+            {
+                sw.WriteLine(String.Format("{0,-23} {1}", DateTime.Now.ToString() + ":", message));
+            }
+        }
+
+
+        private static void WriteInLogFile(string text)
+        {
+            using (StreamWriter sw = new StreamWriter(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\log.txt", true))
+            {
+                sw.Write(text);
+            }
+        }
+
     }
 }
