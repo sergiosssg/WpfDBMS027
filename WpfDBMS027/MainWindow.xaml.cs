@@ -305,6 +305,7 @@ namespace WpfDBMS027
                 {
                     var dbAppContext = (DbAppContext)dbContext;
                     dGrid.DataContext = dbAppContext;
+                    //dGrid.SetBinding();
 
                     return true;
                 }
