@@ -285,6 +285,17 @@ namespace WpfDBMS027
 
                     Type ttt = itemsOf_TEL_VID_CONNECT.GetType();
 
+                    var arrayOfInterfaces = ttt.GetInterfaces();
+
+                    foreach(var oneTypeOfInterface in arrayOfInterfaces)
+                    {
+                        var strOfInterfaceType = oneTypeOfInterface.Name;
+                        if (strOfInterfaceType.EndsWith("INotifyCollectionChanged"))
+                        {
+                            ; ; ;
+                        }
+                    }
+
                     dGrid.ItemsSource = itemsOf_TEL_VID_CONNECT;
 
 
