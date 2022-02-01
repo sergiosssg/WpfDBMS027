@@ -249,12 +249,12 @@ namespace WpfDBMS027
 
             DbAppContextProperty.pO_TEL_VID_CONNECTs.Load();
 
-            bool resultOfRefreshing = SettingDataContextforControl(dgrid__VID_CONNECT, DbAppContextProperty);
+            //bool resultOfRefreshing = SettingDataContextforControl(dgrid__VID_CONNECT, DbAppContextProperty);
 
 
             //tel_vid_connectionViewSource.Source = DbAppContextProperty.pO_TEL_VID_CONNECTs.Local;
 
-            tel_vid_connectionViewSource.Source = DbAppContextProperty.pO_TEL_VID_CONNECTs.ToList<PO_TEL_VID_CONNECT>();
+            //tel_vid_connectionViewSource.Source = DbAppContextProperty.pO_TEL_VID_CONNECTs.ToList<PO_TEL_VID_CONNECT>();
 
             ;
 

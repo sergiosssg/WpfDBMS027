@@ -91,7 +91,10 @@
             <DataGrid.Resources x:Uid="Vid_Connect">
                 
             </DataGrid.Resources>
-            
+            <DataGrid.DataContext>
+                <local:DbAppContext/>
+            </DataGrid.DataContext>
+
 
 
 
