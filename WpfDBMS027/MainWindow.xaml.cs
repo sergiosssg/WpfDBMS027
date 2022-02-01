@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Data.SqlClient;
@@ -33,6 +34,8 @@ namespace WpfDBMS027
 
         public DbAppContext DbAppContextProperty { get; }
 
+
+
         public MainWindow()
         {
             ReadRecordsFromDBTable();
@@ -44,29 +47,30 @@ namespace WpfDBMS027
 
             DbAppContextProperty = new DbAppContext(OptionsOfDbContext);
 
-/*
-            try
-            {
-                ;
-                DbAppContextProperty.pO_TEL_VID_CONNECTs.Load();
-                ;
+            /*
+                        try
+                        {
+                            ;
+                            DbAppContextProperty.pO_TEL_VID_CONNECTs.Load();
+                            ;
 
-                foreach (var eee in DbAppContextProperty.pO_TEL_VID_CONNECTs)
-                {
-                    var iii = eee.Id;
-                    var kkk = eee.KodOfConnect;
-                    var nnn = eee.Name;
-                }
+                            foreach (var eee in DbAppContextProperty.pO_TEL_VID_CONNECTs)
+                            {
+                                var iii = eee.Id;
+                                var kkk = eee.KodOfConnect;
+                                var nnn = eee.Name;
+                            }
 
 
-            }
-            catch (Exception exe)
-            {
-                var _et = exe.GetType().Name;
-                var _eM = exe.Message;
-                var _eTr = exe.StackTrace;
-            }
-*/
+                        }
+                        catch (Exception exe)
+                        {
+                            var _et = exe.GetType().Name;
+                            var _eM = exe.Message;
+                            var _eTr = exe.StackTrace;
+                        }
+            */
+
 
 
             InitializeComponent();
@@ -142,7 +146,7 @@ namespace WpfDBMS027
 
 
 
-            using (var dbContent = new DbAppContext( _options))
+            using (var dbContent = new DbAppContext(_options))
             {
                 //dbContent.pO_TEL_VID_CONNECTs.Load();
 
@@ -162,26 +166,22 @@ namespace WpfDBMS027
         private void btnLoad_Click(object sender, RoutedEventArgs e)
         {
 
+            GettingDataContextFromControl(dgrid__VID_CONNECT);
+
             DbAppContextProperty.pO_TEL_VID_CONNECTs.Load();
+            bool resultOfRefreshing = RefreshDataGridWithCollection(dgrid__VID_CONNECT, DbAppContextProperty);
 
-            dgrid__VID_CONNECT.ItemsSource = DbAppContextProperty.pO_TEL_VID_CONNECTs.Local.ToList();
-
-            var typeName = dgrid__VID_CONNECT.GetType().Name;
-
-            //dgrid__VID_CONNECT.DataContext = DbAppContextProperty.pO_TEL_VID_CONNECTs;
-
-
-
-
-
-            txtFld1.IsEnabled = true;
-            txtFld2.IsEnabled = true;
-            txtFld3.IsEnabled = true;
+            if (resultOfRefreshing)
+            {
+                txtFld1.IsEnabled = true;
+                txtFld2.IsEnabled = true;
+                txtFld3.IsEnabled = true;
+            }
         }
 
         private void txtFld1_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if((txtFld1.Text != null && txtFld1.Text.Length > 0 ) && (txtFld2.Text != null && txtFld2.Text.Length == 1) && (txtFld3.Text != null && txtFld3.Text.Length > 0))
+            if ((txtFld1.Text != null && txtFld1.Text.Length > 0) && (txtFld2.Text != null && txtFld2.Text.Length == 1) && (txtFld3.Text != null && txtFld3.Text.Length > 0))
             {
                 btnAdd.IsEnabled = true;
             }
@@ -213,15 +213,21 @@ namespace WpfDBMS027
             new_TEL_VID_CONNECT.KodOfConnect = txtFld2.Text;
             new_TEL_VID_CONNECT.Name = txtFld3.Text;
 
-            txtFld1.Text = "";
-            txtFld2.Text = "";
-            txtFld3.Text = "";
-
-            btnAdd.IsEnabled = false;
-
             DbAppContextProperty.pO_TEL_VID_CONNECTs.Add(new_TEL_VID_CONNECT);
 
-            btnSave.IsEnabled = true;
+            bool resultOfRefreshing = RefreshDataGridWithCollection(dgrid__VID_CONNECT, DbAppContextProperty);
+
+            if (resultOfRefreshing)
+            {
+                txtFld1.Text = "";
+                txtFld2.Text = "";
+                txtFld3.Text = "";
+
+                btnAdd.IsEnabled = false;
+
+
+                btnSave.IsEnabled = true;
+            }
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
@@ -229,7 +235,9 @@ namespace WpfDBMS027
             //  сохранить модель в БД ..
             //
             DbAppContextProperty.SaveChanges();
+
             btnSave.IsEnabled = false;
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -250,6 +258,55 @@ namespace WpfDBMS027
             //dgrid__VID_CONNECT.ItemsSource = DbAppContextProperty.pO_TEL_VID_CONNECTs;
             //dgrid__VID_CONNECT.ItemsSource = DbAppContextProperty.pO_TEL_VID_CONNECTs;
         }
+
+
+
+        /**
+         *  <summary
+         *  
+         *  this function performs all work with displaying data in Control
+         *  
+         */
+        private bool RefreshDataGridWithCollection(Control dataViewControl, DbContext dbContext, ICollection collection = null)
+        {
+            if (dataViewControl == null) return false;
+            if (dataViewControl.GetType() == typeof(DataGrid))
+            {
+                DataGrid dGrid = (DataGrid)dataViewControl;
+
+                if (collection == null && dbContext.GetType() == typeof(DbAppContext))
+                {
+                    var dbAppContext = (DbAppContext)dbContext;
+                    dGrid.ItemsSource = dbAppContext.pO_TEL_VID_CONNECTs.Local.ToList();
+
+                    return true;
+
+                }
+                else
+                {
+                    dGrid.ItemsSource = collection;
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
+
+        private void GettingDataContextFromControl(Control dataViewControl)
+        {
+            if (dataViewControl == null) return;
+            if (dataViewControl.GetType() == typeof(DataGrid))
+            {
+                DataGrid dGrid = (DataGrid)dataViewControl;
+
+                var dataContext = dGrid.DataContext;
+
+                ;
+
+            }
+        }
+
 
 
 
