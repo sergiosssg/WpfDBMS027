@@ -166,7 +166,7 @@ namespace WpfDBMS027
         private void btnLoad_Click(object sender, RoutedEventArgs e)
         {
 
-            GettingDataContextFromControl(dgrid__VID_CONNECT);
+
 
             DbAppContextProperty.pO_TEL_VID_CONNECTs.Load();
             bool resultOfRefreshing = RefreshDataGridWithCollection(dgrid__VID_CONNECT, DbAppContextProperty);
@@ -249,6 +249,9 @@ namespace WpfDBMS027
 
             DbAppContextProperty.pO_TEL_VID_CONNECTs.Load();
 
+            bool resultOfRefreshing = SettingDataContextforControl(dgrid__VID_CONNECT, DbAppContextProperty);
+
+
             //tel_vid_connectionViewSource.Source = DbAppContextProperty.pO_TEL_VID_CONNECTs.Local;
 
             tel_vid_connectionViewSource.Source = DbAppContextProperty.pO_TEL_VID_CONNECTs.ToList<PO_TEL_VID_CONNECT>();
@@ -293,18 +296,22 @@ namespace WpfDBMS027
 
 
 
-        private void GettingDataContextFromControl(Control dataViewControl)
+        private bool SettingDataContextforControl(Control dataViewControl, DbContext dbContext)
         {
-            if (dataViewControl == null) return;
+            if (dataViewControl == null) return false;
             if (dataViewControl.GetType() == typeof(DataGrid))
             {
                 DataGrid dGrid = (DataGrid)dataViewControl;
+                if (dbContext.GetType() == typeof(DbAppContext))
+                {
+                    var dbAppContext = (DbAppContext)dbContext;
+                    dGrid.DataContext = dbAppContext;
 
-                var dataContext = dGrid.DataContext;
+                    return true;
 
-                ;
-
+                }
             }
+            return false;
         }
 
 
