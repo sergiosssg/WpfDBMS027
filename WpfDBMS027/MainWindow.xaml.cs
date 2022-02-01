@@ -304,7 +304,7 @@ namespace WpfDBMS027
                 if (dbContext.GetType() == typeof(DbAppContext))
                 {
                     var dbAppContext = (DbAppContext)dbContext;
-                    dGrid.DataContext = dbAppContext;
+                    dGrid.DataContext = dbAppContext.pO_TEL_VID_CONNECTs;
 
                     return true;
                 }
