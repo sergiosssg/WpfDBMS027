@@ -280,7 +280,12 @@ namespace WpfDBMS027
                 if (collection == null && dbContext.GetType() == typeof(DbAppContext))
                 {
                     var dbAppContext = (DbAppContext)dbContext;
-                    dGrid.ItemsSource = dbAppContext.pO_TEL_VID_CONNECTs.Local.ToBindingList();
+
+                    var itemsOf_TEL_VID_CONNECT = dbAppContext.pO_TEL_VID_CONNECTs.Local.ToBindingList();
+
+                    Type ttt = itemsOf_TEL_VID_CONNECT.GetType();
+
+                    dGrid.ItemsSource = itemsOf_TEL_VID_CONNECT;
 
 
 
