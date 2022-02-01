@@ -283,7 +283,6 @@ namespace WpfDBMS027
                     dGrid.ItemsSource = dbAppContext.pO_TEL_VID_CONNECTs.Local.ToList();
 
                     return true;
-
                 }
                 else
                 {
@@ -308,7 +307,6 @@ namespace WpfDBMS027
                     dGrid.DataContext = dbAppContext;
 
                     return true;
-
                 }
             }
             return false;
