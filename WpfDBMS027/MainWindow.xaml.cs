@@ -308,7 +308,7 @@ namespace WpfDBMS027
 
                     Binding bindingForDbGrid = new Binding("dbGridWithDbAppContext");
                     bindingForDbGrid.Mode = BindingMode.OneWay;
-                    bindingForDbGrid.Source = dbAppContext.pO_TEL_VID_CONNECTs;
+                    bindingForDbGrid.Source = dbAppContext.pO_TEL_VID_CONNECTs.Local.ToBindingList();
 
                     dGrid.SetBinding(DataGrid.ItemsSourceProperty, bindingForDbGrid);
 
