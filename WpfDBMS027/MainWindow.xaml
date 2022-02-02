@@ -81,8 +81,8 @@
         </Grid.RowDefinitions>
         
         <Button x:Name="btnLoad" Content="Загрузить..." Grid.Column="0" Grid.Row="0"  HorizontalAlignment="Stretch" Margin="4,3,3,3" VerticalAlignment="Stretch" Click="btnLoad_Click"/>
-        <Button x:Name="btnDelete" Content="Удалить" Grid.Column="0" Grid.Row="1"  HorizontalAlignment="Stretch" Margin="4,3,3,3" VerticalAlignment="Stretch" IsEnabled="False"/>
-        <DataGrid x:Name="dgrid__VID_CONNECT"  ItemsSource="{Binding}"  Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="12" Grid.RowSpan="11" Margin="3,3,3,3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsSynchronizedWithCurrentItem="True" AutoGenerateColumns="True" EnableRowVirtualization="True" DisplayMemberPath="" Focusable="False" AllowDrop="True" BeginningEdit="dgrid__VID_CONNECT_BeginningEdit" CellEditEnding="dgrid__VID_CONNECT_CellEditEnding" >
+        <Button x:Name="btnDelete" Content="Удалить" Grid.Column="0" Grid.Row="1"  HorizontalAlignment="Stretch" Margin="4,3,3,3" VerticalAlignment="Stretch" IsEnabled="False" Click="btnDelete_Click"/>
+        <DataGrid x:Name="dgrid__VID_CONNECT"  ItemsSource="{Binding}"  Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="12" Grid.RowSpan="11" Margin="3,3,3,3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsSynchronizedWithCurrentItem="True" AutoGenerateColumns="True" EnableRowVirtualization="True" DisplayMemberPath="" Focusable="False" AllowDrop="True" BeginningEdit="dgrid__VID_CONNECT_BeginningEdit" CellEditEnding="dgrid__VID_CONNECT_CellEditEnding" GotFocus="dgrid__VID_CONNECT_GotFocus" >
 
 
             <!--         DataContext="{StaticResource TEL_VID_CONNECTS}"      -->

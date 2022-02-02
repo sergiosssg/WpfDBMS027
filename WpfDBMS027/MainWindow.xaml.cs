@@ -32,6 +32,8 @@ namespace WpfDBMS027
 
         private PO_TEL_VID_CONNECT _po_tel_vid_connect;
 
+        private int _iKeySelected;
+
         public DbContextOptions<DbAppContext> OptionsOfDbContext { get; }
 
         public DbAppContext DbAppContextProperty { get; }
@@ -229,6 +231,10 @@ namespace WpfDBMS027
 
 
                 btnSave.IsEnabled = true;
+
+
+                this._iKeySelected = 0;
+                this._po_tel_vid_connect = null;
             }
         }
 
@@ -237,6 +243,10 @@ namespace WpfDBMS027
             //  сохранить модель в БД ..
             //
             DbAppContextProperty.SaveChanges();
+
+            this._po_tel_vid_connect = null;
+
+            this._iKeySelected = 0;
 
             btnSave.IsEnabled = false;
 
@@ -258,7 +268,8 @@ namespace WpfDBMS027
 
             //tel_vid_connectionViewSource.Source = DbAppContextProperty.pO_TEL_VID_CONNECTs.ToList<PO_TEL_VID_CONNECT>();
 
-            ;
+            this._iKeySelected = 0;
+            this._po_tel_vid_connect = null;
 
             //dgrid__VID_CONNECT.ItemsSource = DbAppContextProperty.pO_TEL_VID_CONNECTs;
             //dgrid__VID_CONNECT.ItemsSource = DbAppContextProperty.pO_TEL_VID_CONNECTs;
@@ -278,19 +289,40 @@ namespace WpfDBMS027
         {
             PO_TEL_VID_CONNECT currRecord_TEL_VID_CONNECT = (PO_TEL_VID_CONNECT)dgrid__VID_CONNECT.CurrentItem;
 
-            bool resultOfComparingOfRecords = iS_changedRecordAfterEditingDataGrid(currRecord_TEL_VID_CONNECT);
+
+            bool resultOfComparingOfRecords = is_validRecord(currRecord_TEL_VID_CONNECT);
+
+            resultOfComparingOfRecords &= is_changedRecordAfterEditingDataGrid(currRecord_TEL_VID_CONNECT);
+
             if (resultOfComparingOfRecords)
             {
                 btnSave.IsEnabled = true;
             }
         }
 
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            ;
+            ;// delete selected record
+            ;
+            this._iKeySelected = 0;
+            this._po_tel_vid_connect = null;
+
+            btnSave.IsEnabled = true;
+            btnDelete.IsEnabled = false;
+        }
 
 
 
+        private void dgrid__VID_CONNECT_GotFocus(object sender, RoutedEventArgs e)
+        {
+            this._iKeySelected = ((PO_TEL_VID_CONNECT)dgrid__VID_CONNECT.CurrentItem).Id;
+            btnDelete.IsEnabled = true;
+        }
 
 
-        private bool iS_changedRecordAfterEditingDataGrid(object recordTarget)
+
+        private bool is_changedRecordAfterEditingDataGrid(object recordTarget)
         {
             if (recordTarget.GetType() != typeof(PO_TEL_VID_CONNECT))
             {
@@ -373,8 +405,9 @@ namespace WpfDBMS027
 
 
             if((record_TEL_VID_CONNECT.Id == 0) ||
-                (record_TEL_VID_CONNECT.KodOfConnect == null) || (record_TEL_VID_CONNECT.KodOfConnect.Length == 0) || (record_TEL_VID_CONNECT.KodOfConnect.Equals(string.Empty)) ||
-                (record_TEL_VID_CONNECT.Name == null) || (record_TEL_VID_CONNECT.Name.Length == 0) || (record_TEL_VID_CONNECT.Name.Equals(string.Empty)))
+                (
+                (record_TEL_VID_CONNECT.KodOfConnect == null) || (record_TEL_VID_CONNECT.KodOfConnect.Length == 0) || (record_TEL_VID_CONNECT.KodOfConnect.Equals(string.Empty)) &&
+                (record_TEL_VID_CONNECT.Name == null) || (record_TEL_VID_CONNECT.Name.Length == 0) || (record_TEL_VID_CONNECT.Name.Equals(string.Empty))))
             {
                 return false;
             }
@@ -384,6 +417,49 @@ namespace WpfDBMS027
             }
         }
 
+
+        private bool is_unique_key_of_record(object recordTarget, DbContext dbContext)
+        {
+            if (recordTarget.GetType() != typeof(PO_TEL_VID_CONNECT) ||
+                (dbContext == null) || (dbContext.GetType() != typeof(DbAppContext)))
+            {
+                return false;
+            }
+            PO_TEL_VID_CONNECT record_TEL_VID_CONNECT = (PO_TEL_VID_CONNECT)recordTarget;
+            DbAppContext dbAppContext = (DbAppContext)dbContext;
+
+            var listOfRecords = dbAppContext.pO_TEL_VID_CONNECTs.Local.ToBindingList();
+
+            foreach(var oneRecord in listOfRecords)
+            {
+                if(record_TEL_VID_CONNECT.Id == oneRecord.Id)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+
+        private bool is_unique_key_of_integer_value(int keyValue, DbContext dbContext)
+        {
+            if ( (dbContext == null) || (dbContext.GetType() != typeof(DbAppContext)))
+            {
+                return false;
+            }
+            DbAppContext dbAppContext = (DbAppContext)dbContext;
+
+            var listOfRecords = dbAppContext.pO_TEL_VID_CONNECTs.Local.ToBindingList();
+
+            foreach (var oneRecord in listOfRecords)
+            {
+                if (keyValue == oneRecord.Id)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
 
 
         private bool SettingDataContextforControl(Control dataViewControl, DbContext dbContext)
