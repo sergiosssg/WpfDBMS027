@@ -30,6 +30,8 @@ namespace WpfDBMS027
 
         private CollectionViewSource tel_vid_connectionViewSource;
 
+        private PO_TEL_VID_CONNECT _po_tel_vid_connect;
+
         public DbContextOptions<DbAppContext> OptionsOfDbContext { get; }
 
         public DbAppContext DbAppContextProperty { get; }
@@ -262,6 +264,52 @@ namespace WpfDBMS027
             //dgrid__VID_CONNECT.ItemsSource = DbAppContextProperty.pO_TEL_VID_CONNECTs;
         }
 
+        private void dgrid__VID_CONNECT_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
+        {
+            _po_tel_vid_connect = (PO_TEL_VID_CONNECT)dgrid__VID_CONNECT.CurrentItem;
+
+            ;
+
+        }
+
+
+
+        private void dgrid__VID_CONNECT_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            PO_TEL_VID_CONNECT currRecord_TEL_VID_CONNECT = (PO_TEL_VID_CONNECT)dgrid__VID_CONNECT.CurrentItem;
+
+            bool resultOfComparingOfRecords = iS_changedRecordAfterEditingDataGrid(currRecord_TEL_VID_CONNECT);
+            if (resultOfComparingOfRecords)
+            {
+                btnSave.IsEnabled = true;
+            }
+        }
+
+
+
+
+
+
+        private bool iS_changedRecordAfterEditingDataGrid(object recordTarget)
+        {
+            if (recordTarget.GetType() != typeof(PO_TEL_VID_CONNECT))
+            {
+                return false;
+            }
+
+            PO_TEL_VID_CONNECT record_TEL_VID_CONNECT = (PO_TEL_VID_CONNECT)recordTarget;
+
+            if ((_po_tel_vid_connect.Id != record_TEL_VID_CONNECT.Id) ||
+                (!_po_tel_vid_connect.KodOfConnect.Equals(record_TEL_VID_CONNECT.KodOfConnect)) ||
+                (!_po_tel_vid_connect.Name.Equals(record_TEL_VID_CONNECT.Name)))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
 
 
         /**
@@ -287,7 +335,7 @@ namespace WpfDBMS027
 
                     var arrayOfInterfaces = ttt.GetInterfaces();
 
-                    foreach(var oneTypeOfInterface in arrayOfInterfaces)
+                    foreach (var oneTypeOfInterface in arrayOfInterfaces)
                     {
                         var strOfInterfaceType = oneTypeOfInterface.Name;
                         if (strOfInterfaceType.EndsWith("INotifyCollectionChanged"))
@@ -309,6 +357,31 @@ namespace WpfDBMS027
                 }
             }
             return false;
+        }
+
+
+
+
+
+        private bool is_validRecord(object recordTarget)
+        {
+            if (recordTarget.GetType() != typeof(PO_TEL_VID_CONNECT))
+            {
+                return false;
+            }
+            PO_TEL_VID_CONNECT record_TEL_VID_CONNECT = (PO_TEL_VID_CONNECT)recordTarget;
+
+
+            if((record_TEL_VID_CONNECT.Id == 0) ||
+                (record_TEL_VID_CONNECT.KodOfConnect == null) || (record_TEL_VID_CONNECT.KodOfConnect.Length == 0) || (record_TEL_VID_CONNECT.KodOfConnect.Equals(string.Empty)) ||
+                (record_TEL_VID_CONNECT.Name == null) || (record_TEL_VID_CONNECT.Name.Length == 0) || (record_TEL_VID_CONNECT.Name.Equals(string.Empty)))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
 
