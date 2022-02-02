@@ -9,7 +9,7 @@
         Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
 
         <Window.Resources>
-            <CollectionViewSource x:Key="TEL_VID_CONNECTS" Source="{Binding Path = PO_TEL_VID_CONNECT}">
+            <CollectionViewSource x:Key="TEL_VID_CONNECTS" >
                 <CollectionViewSource.SortDescriptions>
 
                 </CollectionViewSource.SortDescriptions>
@@ -82,56 +82,8 @@
         
         <Button x:Name="btnLoad" Content="Загрузить..." Grid.Column="0" Grid.Row="0"  HorizontalAlignment="Stretch" Margin="4,3,3,3" VerticalAlignment="Stretch" Click="btnLoad_Click"/>
         <Button x:Name="btnDelete" Content="Удалить" Grid.Column="0" Grid.Row="1"  HorizontalAlignment="Stretch" Margin="4,3,3,3" VerticalAlignment="Stretch" IsEnabled="False" Click="btnDelete_Click"/>
-        <DataGrid x:Name="dgrid__VID_CONNECT"  ItemsSource="{Binding}"  Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="12" Grid.RowSpan="11" Margin="3,3,3,3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsSynchronizedWithCurrentItem="True" AutoGenerateColumns="True" EnableRowVirtualization="True" DisplayMemberPath="" Focusable="False" AllowDrop="True" BeginningEdit="dgrid__VID_CONNECT_BeginningEdit" CellEditEnding="dgrid__VID_CONNECT_CellEditEnding" GotFocus="dgrid__VID_CONNECT_GotFocus" >
+        <DataGrid x:Name="dgrid__VID_CONNECT"    Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="12" Grid.RowSpan="11" Margin="3,3,3,3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsSynchronizedWithCurrentItem="True" AutoGenerateColumns="True" EnableRowVirtualization="True" DisplayMemberPath="" Focusable="False" AllowDrop="True" BeginningEdit="dgrid__VID_CONNECT_BeginningEdit" CellEditEnding="dgrid__VID_CONNECT_CellEditEnding" GotFocus="dgrid__VID_CONNECT_GotFocus" >
 
-
-            <!--         DataContext="{StaticResource TEL_VID_CONNECTS}"      -->
-
-
-            <DataGrid.Resources x:Uid="Vid_Connect">
-                
-            </DataGrid.Resources>
-            <DataGrid.DataContext>
-                <local:DbAppContext/>
-            </DataGrid.DataContext>
-
-
-
-
-            <!--
-            
-            <DataGrid.DataContext>
-
-                <local:DbAppContext/>
-            </DataGrid.DataContext>
-            
-            
-            
-            -->
-            
-
-            <!--
-            
-            <Binding Source="{}" Path="{}}"/>
-            
-            -->
-            
-
-            <!--
-            
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Width="8" SortDirection="Ascending">
-                    
-                </DataGridTextColumn>
-                <DataGridTextColumn Header="Код" Width="8" SortDirection="Ascending">
-                    
-                </DataGridTextColumn>
-                <DataGridTextColumn Header="Название">
-                    
-                </DataGridTextColumn>
-            </DataGrid.Columns>
-            
-            -->
             
         </DataGrid>
         <TextBox x:Name="txtFld1" Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Stretch" Margin="3,3,5,3" Text="" TextWrapping="Wrap" VerticalAlignment="Stretch" IsEnabled="False" TextChanged="txtFld1_TextChanged"/>

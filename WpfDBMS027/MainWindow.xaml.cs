@@ -51,29 +51,6 @@ namespace WpfDBMS027
 
             DbAppContextProperty = new DbAppContext(OptionsOfDbContext);
 
-            /*
-                        try
-                        {
-                            ;
-                            DbAppContextProperty.pO_TEL_VID_CONNECTs.Load();
-                            ;
-
-                            foreach (var eee in DbAppContextProperty.pO_TEL_VID_CONNECTs)
-                            {
-                                var iii = eee.Id;
-                                var kkk = eee.KodOfConnect;
-                                var nnn = eee.Name;
-                            }
-
-
-                        }
-                        catch (Exception exe)
-                        {
-                            var _et = exe.GetType().Name;
-                            var _eM = exe.Message;
-                            var _eTr = exe.StackTrace;
-                        }
-            */
 
 
 
@@ -217,24 +194,27 @@ namespace WpfDBMS027
             new_TEL_VID_CONNECT.KodOfConnect = txtFld2.Text;
             new_TEL_VID_CONNECT.Name = txtFld3.Text;
 
-            DbAppContextProperty.pO_TEL_VID_CONNECTs.Add(new_TEL_VID_CONNECT);
-
-            bool resultOfRefreshing = RefreshDataGridWithCollection(dgrid__VID_CONNECT, DbAppContextProperty);
-
-            if (resultOfRefreshing)
+            if (is_validRecord(new_TEL_VID_CONNECT) && is_unique_key_of_integer_value( new_TEL_VID_CONNECT.Id, DbAppContextProperty))
             {
-                txtFld1.Text = "";
-                txtFld2.Text = "";
-                txtFld3.Text = "";
+                DbAppContextProperty.pO_TEL_VID_CONNECTs.Add(new_TEL_VID_CONNECT);
 
-                btnAdd.IsEnabled = false;
+                bool resultOfRefreshing = RefreshDataGridWithCollection(dgrid__VID_CONNECT, DbAppContextProperty);
+
+                if (resultOfRefreshing)
+                {
+                    txtFld1.Text = "";
+                    txtFld2.Text = "";
+                    txtFld3.Text = "";
+
+                    btnAdd.IsEnabled = false;
 
 
-                btnSave.IsEnabled = true;
+                    btnSave.IsEnabled = true;
 
 
-                this._iKeySelected = 0;
-                this._po_tel_vid_connect = null;
+                    this._iKeySelected = 0;
+                    this._po_tel_vid_connect = null;
+                }
             }
         }
 
@@ -255,24 +235,9 @@ namespace WpfDBMS027
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
-
-            tel_vid_connectionViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("TEL_VID_CONNECTS")));
-
-
-            DbAppContextProperty.pO_TEL_VID_CONNECTs.Load();
-
-            //bool resultOfRefreshing = SettingDataContextforControl(dgrid__VID_CONNECT, DbAppContextProperty);
-
-
-            //tel_vid_connectionViewSource.Source = DbAppContextProperty.pO_TEL_VID_CONNECTs.Local;
-
-            //tel_vid_connectionViewSource.Source = DbAppContextProperty.pO_TEL_VID_CONNECTs.ToList<PO_TEL_VID_CONNECT>();
-
             this._iKeySelected = 0;
             this._po_tel_vid_connect = null;
 
-            //dgrid__VID_CONNECT.ItemsSource = DbAppContextProperty.pO_TEL_VID_CONNECTs;
-            //dgrid__VID_CONNECT.ItemsSource = DbAppContextProperty.pO_TEL_VID_CONNECTs;
         }
 
         private void dgrid__VID_CONNECT_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
@@ -302,14 +267,29 @@ namespace WpfDBMS027
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            ;
-            ;// delete selected record
-            ;
-            this._iKeySelected = 0;
-            this._po_tel_vid_connect = null;
+            bool resultOfRefreshing = false;
 
-            btnSave.IsEnabled = true;
-            btnDelete.IsEnabled = false;
+            IList<PO_TEL_VID_CONNECT> objectsForDeleting = new List<PO_TEL_VID_CONNECT>();
+
+            foreach (var oneItem in dgrid__VID_CONNECT.SelectedItems)
+            {
+                var oneRecord = DbAppContextProperty.pO_TEL_VID_CONNECTs.Find(((PO_TEL_VID_CONNECT)oneItem).Id);
+                objectsForDeleting.Add(oneRecord);
+            }
+            foreach (var el in objectsForDeleting)
+            {
+                DbAppContextProperty.pO_TEL_VID_CONNECTs.Remove(el);
+            }
+
+            resultOfRefreshing = RefreshDataGridWithCollection(dgrid__VID_CONNECT, DbAppContextProperty);
+            if (resultOfRefreshing)
+            {
+                this._iKeySelected = 0;
+                this._po_tel_vid_connect = null;
+
+                btnSave.IsEnabled = true;
+                btnDelete.IsEnabled = false;
+            }
         }
 
 
@@ -404,7 +384,7 @@ namespace WpfDBMS027
             PO_TEL_VID_CONNECT record_TEL_VID_CONNECT = (PO_TEL_VID_CONNECT)recordTarget;
 
 
-            if((record_TEL_VID_CONNECT.Id == 0) ||
+            if ((record_TEL_VID_CONNECT.Id == 0) ||
                 (
                 (record_TEL_VID_CONNECT.KodOfConnect == null) || (record_TEL_VID_CONNECT.KodOfConnect.Length == 0) || (record_TEL_VID_CONNECT.KodOfConnect.Equals(string.Empty)) &&
                 (record_TEL_VID_CONNECT.Name == null) || (record_TEL_VID_CONNECT.Name.Length == 0) || (record_TEL_VID_CONNECT.Name.Equals(string.Empty))))
@@ -430,9 +410,9 @@ namespace WpfDBMS027
 
             var listOfRecords = dbAppContext.pO_TEL_VID_CONNECTs.Local.ToBindingList();
 
-            foreach(var oneRecord in listOfRecords)
+            foreach (var oneRecord in listOfRecords)
             {
-                if(record_TEL_VID_CONNECT.Id == oneRecord.Id)
+                if (record_TEL_VID_CONNECT.Id == oneRecord.Id)
                 {
                     return false;
                 }
@@ -443,7 +423,7 @@ namespace WpfDBMS027
 
         private bool is_unique_key_of_integer_value(int keyValue, DbContext dbContext)
         {
-            if ( (dbContext == null) || (dbContext.GetType() != typeof(DbAppContext)))
+            if ((dbContext == null) || (dbContext.GetType() != typeof(DbAppContext)))
             {
                 return false;
             }
