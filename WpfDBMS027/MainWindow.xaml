@@ -86,8 +86,8 @@
 
             
         </DataGrid>
-        <TextBox x:Name="txtFld1" Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Stretch" Margin="3,3,5,3" Text="" TextWrapping="Wrap" VerticalAlignment="Stretch" IsEnabled="False" TextChanged="txtFld1_TextChanged"/>
-        <TextBox x:Name="txtFld2" Grid.ColumnSpan="2" Grid.Column="4" HorizontalAlignment="Stretch" Margin="5,3,5,3" Text="" TextWrapping="Wrap" VerticalAlignment="Stretch" IsEnabled="False" TextChanged="txtFld2_TextChanged"/>
+        <TextBox x:Name="txtFld_ID" Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Stretch" Margin="3,3,5,3" Text="" TextWrapping="Wrap" VerticalAlignment="Stretch" IsEnabled="False" TextChanged="txtFld1_TextChanged"/>
+        <TextBox x:Name="txtFld_KodOfConnect" Grid.ColumnSpan="2" Grid.Column="4" HorizontalAlignment="Stretch" Margin="5,3,5,3" Text="" TextWrapping="Wrap" VerticalAlignment="Stretch" IsEnabled="False" TextChanged="txtFld_KodOfConnect_TextChanged"/>
         <TextBox x:Name="txtFld3" Grid.ColumnSpan="4" Grid.Column="7" HorizontalAlignment="Stretch" Margin="5,3,5,3" Text="" TextWrapping="Wrap" VerticalAlignment="Stretch" IsEnabled="False" TextChanged="txtFld3_TextChanged"/>
         <Label Content=": ID" Grid.Column="3" HorizontalAlignment="Stretch" Margin="3,3,3,3" VerticalAlignment="Stretch"/>
         <Label Content=": Код" Grid.Column="6" HorizontalAlignment="Stretch" Margin="3,3,3,3" VerticalAlignment="Stretch"/>

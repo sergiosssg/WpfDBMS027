@@ -34,7 +34,12 @@ namespace WpfDBMS027
 
         private int _iKeySelected;
 
+        private bool _is_adding_new_element;
+
+
         public DbContextOptions<DbAppContext> OptionsOfDbContext { get; }
+
+
 
         public DbAppContext DbAppContextProperty { get; }
 
@@ -52,6 +57,7 @@ namespace WpfDBMS027
             DbAppContextProperty = new DbAppContext(OptionsOfDbContext);
 
 
+            this._is_adding_new_element = false;
 
 
             InitializeComponent();
@@ -154,23 +160,23 @@ namespace WpfDBMS027
 
             if (resultOfRefreshing)
             {
-                txtFld1.IsEnabled = true;
-                txtFld2.IsEnabled = true;
+                txtFld_ID.IsEnabled = true;
+                txtFld_KodOfConnect.IsEnabled = true;
                 txtFld3.IsEnabled = true;
             }
         }
 
         private void txtFld1_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if ((txtFld1.Text != null && txtFld1.Text.Length > 0) && (txtFld2.Text != null && txtFld2.Text.Length == 1) && (txtFld3.Text != null && txtFld3.Text.Length > 0))
+            if ((txtFld_ID.Text != null && txtFld_ID.Text.Length > 0) && (txtFld_KodOfConnect.Text != null && txtFld_KodOfConnect.Text.Length == 1) && (txtFld3.Text != null && txtFld3.Text.Length > 0))
             {
                 btnAdd.IsEnabled = true;
             }
         }
 
-        private void txtFld2_TextChanged(object sender, TextChangedEventArgs e)
+        private void txtFld_KodOfConnect_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if ((txtFld1.Text != null && txtFld1.Text.Length > 0) && (txtFld2.Text != null && txtFld2.Text.Length == 1) && (txtFld3.Text != null && txtFld3.Text.Length > 0))
+            if ((txtFld_ID.Text != null && txtFld_ID.Text.Length > 0) && (txtFld_KodOfConnect.Text != null && txtFld_KodOfConnect.Text.Length == 1) && (txtFld3.Text != null && txtFld3.Text.Length > 0))
             {
                 btnAdd.IsEnabled = true;
             }
@@ -178,7 +184,7 @@ namespace WpfDBMS027
 
         private void txtFld3_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if ((txtFld1.Text != null && txtFld1.Text.Length > 0) && (txtFld2.Text != null && txtFld2.Text.Length == 1) && (txtFld3.Text != null && txtFld3.Text.Length > 0))
+            if ((txtFld_ID.Text != null && txtFld_ID.Text.Length > 0) && (txtFld_KodOfConnect.Text != null && txtFld_KodOfConnect.Text.Length == 1) && (txtFld3.Text != null && txtFld3.Text.Length > 0))
             {
                 btnAdd.IsEnabled = true;
             }
@@ -190,11 +196,11 @@ namespace WpfDBMS027
             //  и добавить в модель  ..
 
             PO_TEL_VID_CONNECT new_TEL_VID_CONNECT = new PO_TEL_VID_CONNECT();
-            new_TEL_VID_CONNECT.Id = Int32.Parse(txtFld1.Text);
-            new_TEL_VID_CONNECT.KodOfConnect = txtFld2.Text;
+            new_TEL_VID_CONNECT.Id = Int32.Parse(txtFld_ID.Text);
+            new_TEL_VID_CONNECT.KodOfConnect = txtFld_KodOfConnect.Text;
             new_TEL_VID_CONNECT.Name = txtFld3.Text;
 
-            if (is_validRecord(new_TEL_VID_CONNECT) && is_unique_key_of_integer_value( new_TEL_VID_CONNECT.Id, DbAppContextProperty))
+            if (is_validRecord(new_TEL_VID_CONNECT) && is_unique_key_of_integer_value(new_TEL_VID_CONNECT.Id, DbAppContextProperty))
             {
                 DbAppContextProperty.pO_TEL_VID_CONNECTs.Add(new_TEL_VID_CONNECT);
 
@@ -202,8 +208,8 @@ namespace WpfDBMS027
 
                 if (resultOfRefreshing)
                 {
-                    txtFld1.Text = "";
-                    txtFld2.Text = "";
+                    txtFld_ID.Text = "";
+                    txtFld_KodOfConnect.Text = "";
                     txtFld3.Text = "";
 
                     btnAdd.IsEnabled = false;
@@ -214,6 +220,7 @@ namespace WpfDBMS027
 
                     this._iKeySelected = 0;
                     this._po_tel_vid_connect = null;
+                    this._is_adding_new_element = false;
                 }
             }
         }
@@ -296,8 +303,27 @@ namespace WpfDBMS027
 
         private void dgrid__VID_CONNECT_GotFocus(object sender, RoutedEventArgs e)
         {
-            this._iKeySelected = ((PO_TEL_VID_CONNECT)dgrid__VID_CONNECT.CurrentItem).Id;
-            btnDelete.IsEnabled = true;
+
+            try
+            {
+                var selectedElement = dgrid__VID_CONNECT.CurrentItem;
+                if ((selectedElement as PO_TEL_VID_CONNECT ) != null)
+                {
+                    this._iKeySelected = ((PO_TEL_VID_CONNECT)selectedElement).Id;
+                    btnDelete.IsEnabled = true;
+
+                }
+                else
+                {
+                    btnDelete.IsEnabled = false;
+                    this._iKeySelected = 0;
+                    this._is_adding_new_element = true;
+                }
+            }
+            catch (InvalidCastException ice)
+            {
+
+            }
         }
 
 
