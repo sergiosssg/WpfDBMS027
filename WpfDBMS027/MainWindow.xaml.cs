@@ -22,6 +22,20 @@ using Path = System.IO.Path;
 
 namespace WpfDBMS027
 {
+
+
+    enum DBGrid_editing_mode
+    {
+        EMPTY,
+        EDITING_MODE,
+        ADDING_MODE,
+        DELETING_MODE,
+        SEARCHING_MODE,
+        CHANGED_MODE,
+        SAVED_MODE
+    }
+
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -35,6 +49,10 @@ namespace WpfDBMS027
         private int _iKeySelected;
 
         private bool _is_adding_new_element;
+
+
+
+        private DBGrid_editing_mode _DBGrid_Editing_Mode;
 
 
         public DbContextOptions<DbAppContext> OptionsOfDbContext { get; }
@@ -59,6 +77,8 @@ namespace WpfDBMS027
 
             this._is_adding_new_element = false;
 
+
+            this._DBGrid_Editing_Mode = DBGrid_editing_mode.EMPTY;
 
             InitializeComponent();
         }
@@ -162,35 +182,38 @@ namespace WpfDBMS027
             {
                 txtFld_ID.IsEnabled = true;
                 txtFld_KodOfConnect.IsEnabled = true;
-                txtFld3.IsEnabled = true;
+                txtFld_Name.IsEnabled = true;
+                btn_Search.IsEnabled = true;
+
+                this._DBGrid_Editing_Mode = DBGrid_editing_mode.SAVED_MODE;
             }
         }
 
         private void txtFld1_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if ((txtFld_ID.Text != null && txtFld_ID.Text.Length > 0) && (txtFld_KodOfConnect.Text != null && txtFld_KodOfConnect.Text.Length == 1) && (txtFld3.Text != null && txtFld3.Text.Length > 0))
+            if ((txtFld_ID.Text != null && txtFld_ID.Text.Length > 0) && (txtFld_KodOfConnect.Text != null && txtFld_KodOfConnect.Text.Length == 1) && (txtFld_Name.Text != null && txtFld_Name.Text.Length > 0))
             {
-                btnAdd.IsEnabled = true;
+                btn_OK.IsEnabled = true;
             }
         }
 
         private void txtFld_KodOfConnect_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if ((txtFld_ID.Text != null && txtFld_ID.Text.Length > 0) && (txtFld_KodOfConnect.Text != null && txtFld_KodOfConnect.Text.Length == 1) && (txtFld3.Text != null && txtFld3.Text.Length > 0))
+            if ((txtFld_ID.Text != null && txtFld_ID.Text.Length > 0) && (txtFld_KodOfConnect.Text != null && txtFld_KodOfConnect.Text.Length == 1) && (txtFld_Name.Text != null && txtFld_Name.Text.Length > 0))
             {
-                btnAdd.IsEnabled = true;
+                btn_OK.IsEnabled = true;
             }
         }
 
-        private void txtFld3_TextChanged(object sender, TextChangedEventArgs e)
+        private void txtFld_Name_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if ((txtFld_ID.Text != null && txtFld_ID.Text.Length > 0) && (txtFld_KodOfConnect.Text != null && txtFld_KodOfConnect.Text.Length == 1) && (txtFld3.Text != null && txtFld3.Text.Length > 0))
+            if ((txtFld_ID.Text != null && txtFld_ID.Text.Length > 0) && (txtFld_KodOfConnect.Text != null && txtFld_KodOfConnect.Text.Length == 1) && (txtFld_Name.Text != null && txtFld_Name.Text.Length > 0))
             {
-                btnAdd.IsEnabled = true;
+                btn_OK.IsEnabled = true;
             }
         }
 
-        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        private void btn_OK_Click(object sender, RoutedEventArgs e)
         {
             //  сформировать новую   PO_TEL_VID_CONNECT
             //  и добавить в модель  ..
@@ -198,7 +221,7 @@ namespace WpfDBMS027
             PO_TEL_VID_CONNECT new_TEL_VID_CONNECT = new PO_TEL_VID_CONNECT();
             new_TEL_VID_CONNECT.Id = Int32.Parse(txtFld_ID.Text);
             new_TEL_VID_CONNECT.KodOfConnect = txtFld_KodOfConnect.Text;
-            new_TEL_VID_CONNECT.Name = txtFld3.Text;
+            new_TEL_VID_CONNECT.Name = txtFld_Name.Text;
 
             if (is_validRecord(new_TEL_VID_CONNECT) && is_unique_key_of_integer_value(new_TEL_VID_CONNECT.Id, DbAppContextProperty))
             {
@@ -210,9 +233,9 @@ namespace WpfDBMS027
                 {
                     txtFld_ID.Text = "";
                     txtFld_KodOfConnect.Text = "";
-                    txtFld3.Text = "";
+                    txtFld_Name.Text = "";
 
-                    btnAdd.IsEnabled = false;
+                    btn_OK.IsEnabled = false;
 
 
                     btnSave.IsEnabled = true;
@@ -221,6 +244,11 @@ namespace WpfDBMS027
                     this._iKeySelected = 0;
                     this._po_tel_vid_connect = null;
                     this._is_adding_new_element = false;
+                    if (this._DBGrid_Editing_Mode == DBGrid_editing_mode.ADDING_MODE || this._DBGrid_Editing_Mode == DBGrid_editing_mode.EDITING_MODE)
+                    {
+                        this._DBGrid_Editing_Mode = DBGrid_editing_mode.CHANGED_MODE;
+                    }
+
                 }
             }
         }
@@ -234,6 +262,8 @@ namespace WpfDBMS027
             this._po_tel_vid_connect = null;
 
             this._iKeySelected = 0;
+
+            this._DBGrid_Editing_Mode = DBGrid_editing_mode.SAVED_MODE;
 
             btnSave.IsEnabled = false;
 
@@ -307,7 +337,7 @@ namespace WpfDBMS027
             try
             {
                 var selectedElement = dgrid__VID_CONNECT.CurrentItem;
-                if ((selectedElement as PO_TEL_VID_CONNECT ) != null)
+                if ((selectedElement as PO_TEL_VID_CONNECT) != null)
                 {
                     this._iKeySelected = ((PO_TEL_VID_CONNECT)selectedElement).Id;
                     btnDelete.IsEnabled = true;

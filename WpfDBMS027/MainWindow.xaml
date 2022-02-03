@@ -88,13 +88,14 @@
         </DataGrid>
         <TextBox x:Name="txtFld_ID" Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Stretch" Margin="3,3,5,3" Text="" TextWrapping="Wrap" VerticalAlignment="Stretch" IsEnabled="False" TextChanged="txtFld1_TextChanged"/>
         <TextBox x:Name="txtFld_KodOfConnect" Grid.ColumnSpan="2" Grid.Column="4" HorizontalAlignment="Stretch" Margin="5,3,5,3" Text="" TextWrapping="Wrap" VerticalAlignment="Stretch" IsEnabled="False" TextChanged="txtFld_KodOfConnect_TextChanged"/>
-        <TextBox x:Name="txtFld3" Grid.ColumnSpan="4" Grid.Column="7" HorizontalAlignment="Stretch" Margin="5,3,5,3" Text="" TextWrapping="Wrap" VerticalAlignment="Stretch" IsEnabled="False" TextChanged="txtFld3_TextChanged"/>
+        <TextBox x:Name="txtFld_Name" Grid.ColumnSpan="4" Grid.Column="7" HorizontalAlignment="Stretch" Margin="5,3,5,3" Text="" TextWrapping="Wrap" VerticalAlignment="Stretch" IsEnabled="False" TextChanged="txtFld_Name_TextChanged"/>
         <Label Content=": ID" Grid.Column="3" HorizontalAlignment="Stretch" Margin="3,3,3,3" VerticalAlignment="Stretch"/>
         <Label Content=": Код" Grid.Column="6" HorizontalAlignment="Stretch" Margin="3,3,3,3" VerticalAlignment="Stretch"/>
         <Label Content=": Название" Grid.Column="11" HorizontalAlignment="Stretch" Margin="3,3,3,3" VerticalAlignment="Stretch"/>
-        <Button x:Name="btnAdd" Content="Добавить" Grid.Column="12" Grid.Row="0"  HorizontalAlignment="Stretch" Margin="3,3,4,3" VerticalAlignment="Stretch" IsEnabled="False" Click="btnAdd_Click"/>
+        <Button x:Name="btn_OK" Content="Ok" Grid.Column="12" Grid.Row="0"  HorizontalAlignment="Stretch" Margin="3,3,4,3" VerticalAlignment="Stretch" IsEnabled="False" Click="btn_OK_Click"/>
         <TextBlock HorizontalAlignment="Stretch" Grid.Row="2" Grid.Column="0" Text=" ###" TextWrapping="Wrap" Margin="3,3,3,3"  VerticalAlignment="Stretch" IsEnabled="False"/>
         <Button x:Name="btnEdit" Content="Редактировать" Grid.Column="0" Grid.Row="3"  HorizontalAlignment="Stretch" Margin="3,3,4,3" VerticalAlignment="Stretch" IsEnabled="False"/>
         <Button x:Name="btnSave" Content="Сохранить" Grid.Column="0" Grid.Row="4"  HorizontalAlignment="Stretch" Margin="3,3,4,3" VerticalAlignment="Stretch" IsEnabled="False" Click="btnSave_Click"/>
+        <Button x:Name="btn_Search" Content="Найти .." Grid.Column="0" Grid.Row="6" Margin="3,3,4,3" IsEnabled="False"/>
     </Grid>
 </Window>
