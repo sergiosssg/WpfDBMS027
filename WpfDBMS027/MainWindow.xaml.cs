@@ -304,6 +304,8 @@ namespace WpfDBMS027
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
+            this._DBGrid_Editing_Mode = DBGrid_editing_mode.DELETING_MODE;
+
             bool resultOfRefreshing = false;
 
             IList<PO_TEL_VID_CONNECT> objectsForDeleting = new List<PO_TEL_VID_CONNECT>();
@@ -326,6 +328,7 @@ namespace WpfDBMS027
 
                 btnSave.IsEnabled = true;
                 btnDelete.IsEnabled = false;
+                this._DBGrid_Editing_Mode = DBGrid_editing_mode.CHANGED_MODE;
             }
         }
 
