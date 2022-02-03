@@ -27,6 +27,7 @@ namespace WpfDBMS027
     enum DBGrid_editing_mode
     {
         EMPTY,
+        PREMODIFY_MODE,
         EDITING_MODE,
         ADDING_MODE,
         DELETING_MODE,
@@ -344,7 +345,7 @@ namespace WpfDBMS027
                 {
                     this._iKeySelected = ((PO_TEL_VID_CONNECT)selectedElement).Id;
                     btnDelete.IsEnabled = true;
-
+                    this._DBGrid_Editing_Mode = DBGrid_editing_mode.PREMODIFY_MODE;
                 }
                 else
                 {
@@ -433,7 +434,12 @@ namespace WpfDBMS027
 
 
 
-
+        /**
+         * <summary
+         * 
+         * is selected record is valid for modifying 
+         * 
+         */
         private bool is_validRecord(object recordTarget)
         {
             if (recordTarget.GetType() != typeof(PO_TEL_VID_CONNECT))
