@@ -292,6 +292,10 @@ namespace WpfDBMS027
         private void dgrid__VID_CONNECT_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
         {
             _po_tel_vid_connect = (PO_TEL_VID_CONNECT)dgrid__VID_CONNECT.CurrentItem;
+            if (this._DBGrid_Editing_Mode != DBGrid_editing_mode.ADDING_MODE || this._DBGrid_Editing_Mode != DBGrid_editing_mode.EDITING_MODE)
+            {
+
+            }
 
             ;
 
@@ -372,6 +376,14 @@ namespace WpfDBMS027
                 }
                 else
                 {
+                    PO_TEL_VID_CONNECT potelvidconnectCandidate = new PO_TEL_VID_CONNECT();
+
+                    var iResult = DbAppContextProperty.pO_TEL_VID_CONNECTs.Max(rr => rr.Id);
+
+                    var ttt = iResult.GetType().Name;
+
+                    //int iMaxOfID = from DbAppContextProperty
+
                     btnDelete.IsEnabled = false;
                     this._iKeySelected = 0;
                     this._is_adding_new_element = true;
