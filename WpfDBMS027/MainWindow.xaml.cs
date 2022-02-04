@@ -213,7 +213,9 @@ namespace WpfDBMS027
 
             var _txtBox = txtFld_ID;
 
-            var ttt = _txtBox.GetType().Name;
+            var ttt = _txtBox.Foreground.GetType().Name;
+            var tforeground = _txtBox.Foreground;
+            var tval = _txtBox.Foreground.ToString();
 
             if ((txtFld_ID.Text != null && txtFld_ID.Text.Length > 0) && 
                 (txtFld_KodOfConnect.Text != null && txtFld_KodOfConnect.Text.Length == 1) && 
@@ -356,7 +358,17 @@ namespace WpfDBMS027
                 {
                     this._iKeySelected = ((PO_TEL_VID_CONNECT)selectedElement).Id;
                     btnDelete.IsEnabled = true;
+
+                    IList<Control> textFields = new List<Control>();
+
+                    textFields.Add(txtFld_ID);
+                    textFields.Add(txtFld_KodOfConnect);
+                    textFields.Add(txtFld_Name);
+
                     this._DBGrid_Editing_Mode = DBGrid_editing_mode.PREMODIFY_MODE;
+
+                    FillTextBoxesByRecordValues(textFields, (PO_TEL_VID_CONNECT)selectedElement, this._DBGrid_Editing_Mode, _editingModeWithColorMatching);
+
                 }
                 else
                 {
@@ -571,7 +583,6 @@ namespace WpfDBMS027
                 textBoxes[0].Text = pO_record.Id.ToString();
                 textBoxes[1].Text = pO_record.KodOfConnect;
                 textBoxes[2].Text = pO_record.Name;
-
 
                 return true;
             }
