@@ -192,7 +192,7 @@ namespace WpfDBMS027
             }
         }
 
-        private void txtFld1_TextChanged(object sender, TextChangedEventArgs e)
+        private void txtFld_ID_TextChanged(object sender, TextChangedEventArgs e)
         {
             if ((txtFld_ID.Text != null && txtFld_ID.Text.Length > 0) && (txtFld_KodOfConnect.Text != null && txtFld_KodOfConnect.Text.Length == 1) && (txtFld_Name.Text != null && txtFld_Name.Text.Length > 0))
             {
@@ -210,7 +210,14 @@ namespace WpfDBMS027
 
         private void txtFld_Name_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if ((txtFld_ID.Text != null && txtFld_ID.Text.Length > 0) && (txtFld_KodOfConnect.Text != null && txtFld_KodOfConnect.Text.Length == 1) && (txtFld_Name.Text != null && txtFld_Name.Text.Length > 0))
+
+            var _txtBox = txtFld_ID;
+
+            var ttt = _txtBox.GetType().Name;
+
+            if ((txtFld_ID.Text != null && txtFld_ID.Text.Length > 0) && 
+                (txtFld_KodOfConnect.Text != null && txtFld_KodOfConnect.Text.Length == 1) && 
+                (txtFld_Name.Text != null && txtFld_Name.Text.Length > 0))
             {
                 btn_OK.IsEnabled = true;
             }
