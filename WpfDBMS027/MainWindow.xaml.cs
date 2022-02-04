@@ -400,6 +400,11 @@ namespace WpfDBMS027
 
                 PO_TEL_VID_CONNECT record_TEL_VID_CONNECT = (PO_TEL_VID_CONNECT)recordTarget;
 
+                if(this._po_tel_vid_connect.isEmpty() || record_TEL_VID_CONNECT.isEmpty())
+                {
+                    return false;
+                }
+
                 if ((this._po_tel_vid_connect.Id != record_TEL_VID_CONNECT.Id) ||
                     (!this._po_tel_vid_connect.KodOfConnect.Equals(record_TEL_VID_CONNECT.KodOfConnect)) ||
                     (!this._po_tel_vid_connect.Name.Equals(record_TEL_VID_CONNECT.Name)))
