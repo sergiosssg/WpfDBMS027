@@ -357,17 +357,20 @@ namespace WpfDBMS027
 
             try
             {
+
+                IList<Control> textFields = new List<Control>();
+
+                textFields.Add(txtFld_ID);
+                textFields.Add(txtFld_KodOfConnect);
+                textFields.Add(txtFld_Name);
+
+
                 var selectedElement = dgrid__VID_CONNECT.CurrentItem;
                 if ((selectedElement as PO_TEL_VID_CONNECT) != null)
                 {
                     this._iKeySelected = ((PO_TEL_VID_CONNECT)selectedElement).Id;
                     btnDelete.IsEnabled = true;
 
-                    IList<Control> textFields = new List<Control>();
-
-                    textFields.Add(txtFld_ID);
-                    textFields.Add(txtFld_KodOfConnect);
-                    textFields.Add(txtFld_Name);
 
                     this._DBGrid_Editing_Mode = DBGrid_editing_mode.PREMODIFY_MODE;
 
@@ -378,11 +381,16 @@ namespace WpfDBMS027
                 {
                     PO_TEL_VID_CONNECT potelvidconnectCandidate = new PO_TEL_VID_CONNECT();
 
-                    var iResult = DbAppContextProperty.pO_TEL_VID_CONNECTs.Max(rr => rr.Id);
+                    var iResult = (DbAppContextProperty.pO_TEL_VID_CONNECTs.Max(rr => rr.Id));
 
-                    var ttt = iResult.GetType().Name;
+                    potelvidconnectCandidate.Id = iResult + 1;
 
                     //int iMaxOfID = from DbAppContextProperty
+
+                    this._DBGrid_Editing_Mode = DBGrid_editing_mode.ADDING_MODE;
+
+
+                    FillTextBoxesByRecordValues(textFields, potelvidconnectCandidate, this._DBGrid_Editing_Mode, _editingModeWithColorMatching);
 
                     btnDelete.IsEnabled = false;
                     this._iKeySelected = 0;
