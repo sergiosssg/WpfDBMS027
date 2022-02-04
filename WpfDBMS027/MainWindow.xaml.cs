@@ -51,7 +51,7 @@ namespace WpfDBMS027
 
         private bool _is_adding_new_element;
 
-
+        private IDictionary<DBGrid_editing_mode, Color> _editingModeWithColorMatching;
 
         private DBGrid_editing_mode _DBGrid_Editing_Mode;
 
@@ -75,6 +75,8 @@ namespace WpfDBMS027
 
             DbAppContextProperty = new DbAppContext(OptionsOfDbContext);
 
+
+            this._editingModeWithColorMatching = new Dictionary<DBGrid_editing_mode, Color>();
 
             this._is_adding_new_element = false;
 
@@ -285,6 +287,8 @@ namespace WpfDBMS027
             ;
 
         }
+
+
 
 
 
@@ -533,6 +537,41 @@ namespace WpfDBMS027
         }
 
 
+        /**
+         * <summary>
+         *  filling controls with record values
+         * </summary>
+         * 
+         * 
+         */
+        private bool FillTextBoxesByRecordValues(IList<Control> controls, object oRecord, DBGrid_editing_mode dBGrid_Editing_Mode, IDictionary<DBGrid_editing_mode, Color> editingModeWithColorMatching)
+        {
+            TextBox[] textBoxes = new TextBox[controls.Count];
+            PO_TEL_VID_CONNECT pO_record;
+            int iii = 0;
+            foreach (var el in controls)
+            {
+                var textBox = el; ;
+                if ((textBox as TextBox) != null)
+                {
+                    textBoxes[iii++] = (TextBox)textBox;
+                }
+            }
+            if (oRecord.GetType() == typeof(PO_TEL_VID_CONNECT))
+            {
+                pO_record = (PO_TEL_VID_CONNECT)oRecord;
+
+                textBoxes[0].Text = pO_record.Id.ToString();
+                textBoxes[1].Text = pO_record.KodOfConnect;
+                textBoxes[2].Text = pO_record.Name;
+
+
+                return true;
+            }
+
+
+            return false;
+        }
 
 
         private static void WriteLineInLogFile(string message)
