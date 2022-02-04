@@ -49,7 +49,7 @@ namespace WpfDBMS027
 
         private int _iKeySelected;
 
-        private bool _is_adding_new_element;
+        //private bool _is_adding_new_element;
 
         private IDictionary<DBGrid_editing_mode, Color> _editingModeWithColorMatching;
 
@@ -78,7 +78,7 @@ namespace WpfDBMS027
 
             this._editingModeWithColorMatching = new Dictionary<DBGrid_editing_mode, Color>();
 
-            this._is_adding_new_element = false;
+            //this._is_adding_new_element = false;
 
 
             this._DBGrid_Editing_Mode = DBGrid_editing_mode.EMPTY;
@@ -255,7 +255,7 @@ namespace WpfDBMS027
 
                     this._iKeySelected = 0;
                     this._po_tel_vid_connect = null;
-                    this._is_adding_new_element = false;
+                    //this._is_adding_new_element = false;
                     if (this._DBGrid_Editing_Mode == DBGrid_editing_mode.ADDING_MODE || this._DBGrid_Editing_Mode == DBGrid_editing_mode.EDITING_MODE)
                     {
                         this._DBGrid_Editing_Mode = DBGrid_editing_mode.CHANGED_MODE;
@@ -291,10 +291,14 @@ namespace WpfDBMS027
 
         private void dgrid__VID_CONNECT_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
         {
-            _po_tel_vid_connect = (PO_TEL_VID_CONNECT)dgrid__VID_CONNECT.CurrentItem;
-            if (this._DBGrid_Editing_Mode != DBGrid_editing_mode.ADDING_MODE || this._DBGrid_Editing_Mode != DBGrid_editing_mode.EDITING_MODE)
+            this._po_tel_vid_connect = (PO_TEL_VID_CONNECT)dgrid__VID_CONNECT.CurrentItem;
+            if (this._DBGrid_Editing_Mode == DBGrid_editing_mode.PREMODIFY_MODE && !this._po_tel_vid_connect.isEmpty())
             {
-
+                this._DBGrid_Editing_Mode = DBGrid_editing_mode.EDITING_MODE;
+            }
+            else if (this._DBGrid_Editing_Mode == DBGrid_editing_mode.PREMODIFY_MODE && this._po_tel_vid_connect.isEmpty())
+            {
+                this._DBGrid_Editing_Mode = DBGrid_editing_mode.ADDING_MODE;
             }
 
             ;
@@ -371,8 +375,19 @@ namespace WpfDBMS027
                     this._iKeySelected = ((PO_TEL_VID_CONNECT)selectedElement).Id;
                     btnDelete.IsEnabled = true;
 
+                    if (this._DBGrid_Editing_Mode == DBGrid_editing_mode.EDITING_MODE )
+                    {
 
-                    this._DBGrid_Editing_Mode = DBGrid_editing_mode.PREMODIFY_MODE;
+                    }
+                    else if(this._DBGrid_Editing_Mode == DBGrid_editing_mode.SAVED_MODE ||
+                            this._DBGrid_Editing_Mode == DBGrid_editing_mode.CHANGED_MODE ||
+                            this._DBGrid_Editing_Mode == DBGrid_editing_mode.SEARCHING_MODE
+                            )
+                    {
+                        this._po_tel_vid_connect = (PO_TEL_VID_CONNECT)selectedElement;
+                        this._DBGrid_Editing_Mode = DBGrid_editing_mode.PREMODIFY_MODE;
+
+                    }
 
                     FillTextBoxesByRecordValues(textFields, (PO_TEL_VID_CONNECT)selectedElement, this._DBGrid_Editing_Mode, _editingModeWithColorMatching);
 
@@ -394,7 +409,7 @@ namespace WpfDBMS027
 
                     btnDelete.IsEnabled = false;
                     this._iKeySelected = 0;
-                    this._is_adding_new_element = true;
+                    //this._is_adding_new_element = true;
                 }
             }
             catch (InvalidCastException ice)
@@ -407,7 +422,7 @@ namespace WpfDBMS027
 
         private bool is_changedRecordAfterEditingDataGrid(object recordTarget)
         {
-            if(recordTarget == null || this._po_tel_vid_connect == null)
+            if (recordTarget == null || this._po_tel_vid_connect == null)
             {
                 return false;
             }
@@ -420,7 +435,7 @@ namespace WpfDBMS027
 
                 PO_TEL_VID_CONNECT record_TEL_VID_CONNECT = (PO_TEL_VID_CONNECT)recordTarget;
 
-                if(this._po_tel_vid_connect.isEmpty() || record_TEL_VID_CONNECT.isEmpty())
+                if (this._po_tel_vid_connect.isEmpty() || record_TEL_VID_CONNECT.isEmpty())
                 {
                     return false;
                 }
