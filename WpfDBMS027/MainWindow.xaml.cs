@@ -377,7 +377,9 @@ namespace WpfDBMS027
 
                     if (this._DBGrid_Editing_Mode == DBGrid_editing_mode.EDITING_MODE )
                     {
-
+                        /**
+                         *   to do ..
+                         */
                     }
                     else if(this._DBGrid_Editing_Mode == DBGrid_editing_mode.SAVED_MODE ||
                             this._DBGrid_Editing_Mode == DBGrid_editing_mode.CHANGED_MODE ||
