@@ -82,7 +82,6 @@ namespace WpfDBMS027
                 return true;
             }
             return false;
-
         }
     }
 }
