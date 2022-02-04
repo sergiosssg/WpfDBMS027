@@ -12,6 +12,14 @@ namespace WpfDBMS027
     public class PO_TEL_VID_CONNECT
     {
 
+        public PO_TEL_VID_CONNECT()
+        {
+            this.Id = 0;
+            this.KodOfConnect = string.Empty;
+            this.Name = string.Empty;
+
+        }
+
 
         [Required]
         [Key]

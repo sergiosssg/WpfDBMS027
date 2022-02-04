@@ -217,8 +217,8 @@ namespace WpfDBMS027
             var tforeground = _txtBox.Foreground;
             var tval = _txtBox.Foreground.ToString();
 
-            if ((txtFld_ID.Text != null && txtFld_ID.Text.Length > 0) && 
-                (txtFld_KodOfConnect.Text != null && txtFld_KodOfConnect.Text.Length == 1) && 
+            if ((txtFld_ID.Text != null && txtFld_ID.Text.Length > 0) &&
+                (txtFld_KodOfConnect.Text != null && txtFld_KodOfConnect.Text.Length == 1) &&
                 (txtFld_Name.Text != null && txtFld_Name.Text.Length > 0))
             {
                 btn_OK.IsEnabled = true;
@@ -387,23 +387,36 @@ namespace WpfDBMS027
 
         private bool is_changedRecordAfterEditingDataGrid(object recordTarget)
         {
-            if (recordTarget.GetType() != typeof(PO_TEL_VID_CONNECT))
+            if(recordTarget == null || this._po_tel_vid_connect == null)
             {
                 return false;
             }
-
-            PO_TEL_VID_CONNECT record_TEL_VID_CONNECT = (PO_TEL_VID_CONNECT)recordTarget;
-
-            if ((_po_tel_vid_connect.Id != record_TEL_VID_CONNECT.Id) ||
-                (!_po_tel_vid_connect.KodOfConnect.Equals(record_TEL_VID_CONNECT.KodOfConnect)) ||
-                (!_po_tel_vid_connect.Name.Equals(record_TEL_VID_CONNECT.Name)))
+            try
             {
-                return false;
+                if (recordTarget.GetType() != typeof(PO_TEL_VID_CONNECT))
+                {
+                    return false;
+                }
+
+                PO_TEL_VID_CONNECT record_TEL_VID_CONNECT = (PO_TEL_VID_CONNECT)recordTarget;
+
+                if ((this._po_tel_vid_connect.Id != record_TEL_VID_CONNECT.Id) ||
+                    (!this._po_tel_vid_connect.KodOfConnect.Equals(record_TEL_VID_CONNECT.KodOfConnect)) ||
+                    (!this._po_tel_vid_connect.Name.Equals(record_TEL_VID_CONNECT.Name)))
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
             }
-            else
+            catch (NullReferenceException nre)
             {
-                return true;
+
             }
+            return false;
+
         }
 
 
