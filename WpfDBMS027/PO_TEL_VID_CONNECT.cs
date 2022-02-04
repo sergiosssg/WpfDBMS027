@@ -21,6 +21,7 @@ namespace WpfDBMS027
         }
 
 
+
         [Required]
         [Key]
         [Column("ID_CONNECT")]
@@ -49,6 +50,16 @@ namespace WpfDBMS027
         }
 
 
-
+        public bool isEmpty()
+        {
+            if(this.Id == 0 && this.KodOfConnect == string.Empty && this.Name == string.Empty)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
