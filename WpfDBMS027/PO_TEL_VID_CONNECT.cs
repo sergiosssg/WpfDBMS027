@@ -52,7 +52,7 @@ namespace WpfDBMS027
 
         public bool isEmpty()
         {
-            if(this.Id == 0 && this.KodOfConnect == string.Empty && this.Name == string.Empty)
+            if (this.Id == 0 && this.KodOfConnect == string.Empty && this.Name == string.Empty)
             {
                 return true;
             }
@@ -60,6 +60,29 @@ namespace WpfDBMS027
             {
                 return false;
             }
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            if (obj.GetType() != typeof(PO_TEL_VID_CONNECT))
+            {
+                return false;
+            }
+            PO_TEL_VID_CONNECT tObj = (PO_TEL_VID_CONNECT)obj;
+            if (this.isEmpty() || tObj.isEmpty())
+            {
+                return false;
+            }
+            if (this.Id == tObj.Id && this.KodOfConnect.Equals(tObj.KodOfConnect) && this.Name.Equals(tObj.Name))
+            {
+                return true;
+            }
+            return false;
+
         }
     }
 }
