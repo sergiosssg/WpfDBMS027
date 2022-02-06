@@ -348,10 +348,11 @@ namespace WpfDBMS027
                 this._iKeySelected = 0;
                 this._po_tel_vid_connect = null;
 
-                btnSave.IsEnabled = true;
                 btnDelete.IsEnabled = false;
-                this._DBGrid_Editing_Mode = DBGrid_editing_mode.CHANGED_MODE;
             }
+
+            btnSave.IsEnabled = true;
+            this._DBGrid_Editing_Mode = DBGrid_editing_mode.CHANGED_MODE;
         }
 
 
@@ -375,13 +376,13 @@ namespace WpfDBMS027
                     this._iKeySelected = ((PO_TEL_VID_CONNECT)selectedElement).Id;
                     btnDelete.IsEnabled = true;
 
-                    if (this._DBGrid_Editing_Mode == DBGrid_editing_mode.EDITING_MODE )
+                    if (this._DBGrid_Editing_Mode == DBGrid_editing_mode.EDITING_MODE)
                     {
                         /**
                          *   to do ..
                          */
                     }
-                    else if(this._DBGrid_Editing_Mode == DBGrid_editing_mode.SAVED_MODE ||
+                    else if (this._DBGrid_Editing_Mode == DBGrid_editing_mode.SAVED_MODE ||
                             this._DBGrid_Editing_Mode == DBGrid_editing_mode.CHANGED_MODE ||
                             this._DBGrid_Editing_Mode == DBGrid_editing_mode.SEARCHING_MODE
                             )
