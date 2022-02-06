@@ -90,8 +90,8 @@ namespace WpfDBMS027
         {
             DbConnectionStringBuilder builder = new SqlConnectionStringBuilder();
 
-            builder["Data Source"] = "localhost";
-            //builder["Data Source"] = @"localhost\SQLExpress";////@"localhost\SQLExpress";
+            //builder["Data Source"] = "localhost";
+            builder["Data Source"] = @"localhost\SQLExpress";////@"localhost\SQLExpress";
 
             builder["Database"] = "sampd_cexs";
 
