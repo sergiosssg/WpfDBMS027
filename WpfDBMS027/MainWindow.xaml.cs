@@ -374,10 +374,10 @@ namespace WpfDBMS027
                 if ((selectedElement as PO_TEL_VID_CONNECT) != null)
                 {
                     this._iKeySelected = ((PO_TEL_VID_CONNECT)selectedElement).Id;
-                    btnDelete.IsEnabled = true;
 
                     if (this._DBGrid_Editing_Mode == DBGrid_editing_mode.EDITING_MODE)
                     {
+                        btnDelete.IsEnabled = false;
                         /**
                          *   to do ..
                          */
@@ -389,6 +389,7 @@ namespace WpfDBMS027
                     {
                         this._po_tel_vid_connect = (PO_TEL_VID_CONNECT)selectedElement;
                         this._DBGrid_Editing_Mode = DBGrid_editing_mode.PREMODIFY_MODE;
+                        btnDelete.IsEnabled = true;
 
                     }
 
