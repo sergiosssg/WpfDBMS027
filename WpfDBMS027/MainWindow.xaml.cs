@@ -79,19 +79,15 @@ namespace WpfDBMS027
             DbAppContextProperty = new DbAppContext(OptionsOfDbContext);
 
 
-            this._editingModeWithColorMatching = new Dictionary<DBGrid_editing_mode, Color>();
-
-            //this._is_adding_new_element = false;
-
-
             this._DBGrid_Editing_Mode = DBGrid_editing_mode.EMPTY;
-
 
             this._textFields = new List<Control>();
 
+            this._editingModeWithColorMatching = new Dictionary<DBGrid_editing_mode, Color>();
 
+            this._iKeySelected = 0;
 
-
+            this._po_tel_vid_connect = null;
 
 
             InitializeComponent();
