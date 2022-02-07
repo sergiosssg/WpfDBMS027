@@ -47,6 +47,10 @@ namespace WpfDBMS027
 
         private PO_TEL_VID_CONNECT _po_tel_vid_connect;
 
+        private ICollection<PO_TEL_VID_CONNECT> _found_PO_TEL_VID_CONNECTs;
+
+        private bool _is_found_PO_TEL_VID_CONNECT;
+
         private int _iKeySelected;
 
         //private bool _is_adding_new_element;
@@ -80,6 +84,7 @@ namespace WpfDBMS027
             this._textFields = new List<Control>();
             this._editingModeWithColorMatching = new Dictionary<DBGrid_editing_mode, Color>();
 
+            this._is_found_PO_TEL_VID_CONNECT = false;
             this._DBGrid_Editing_Mode = DBGrid_editing_mode.EMPTY;
             this._iKeySelected = 0;
             this._po_tel_vid_connect = null;
@@ -395,14 +400,16 @@ namespace WpfDBMS027
                              */
                         }
                         else if (this._DBGrid_Editing_Mode == DBGrid_editing_mode.SAVED_MODE ||
-                                this._DBGrid_Editing_Mode == DBGrid_editing_mode.CHANGED_MODE ||
-                                this._DBGrid_Editing_Mode == DBGrid_editing_mode.SEARCHING_MODE
+                                this._DBGrid_Editing_Mode == DBGrid_editing_mode.CHANGED_MODE
                                 )
                         {
                             this._po_tel_vid_connect = (PO_TEL_VID_CONNECT)selectedElement;
                             this._DBGrid_Editing_Mode = DBGrid_editing_mode.PREMODIFY_MODE;
                             btnDelete.IsEnabled = true;
 
+                        }else if (this._DBGrid_Editing_Mode == DBGrid_editing_mode.SEARCHING_MODE)
+                        {
+                            btn_OK.Content = "Найти далее ..";
                         }
 
                         FillTextBoxesByRecordValues(this._textFields, (PO_TEL_VID_CONNECT)selectedElement, this._DBGrid_Editing_Mode, _editingModeWithColorMatching);
