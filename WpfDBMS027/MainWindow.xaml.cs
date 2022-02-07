@@ -640,8 +640,8 @@ namespace WpfDBMS027
             int iii = 0;
             foreach (var el in controls)
             {
-                var textBox = el; ;
-                if ((textBox as TextBox) != null)
+                var textBox = (el as TextBox);
+                if (  textBox  != null)
                 {
                     textBoxes[iii++] = (TextBox)textBox;
                 }
