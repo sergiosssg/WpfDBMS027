@@ -96,6 +96,6 @@
         <TextBlock HorizontalAlignment="Stretch" Grid.Row="2" Grid.Column="0" Text=" ###" TextWrapping="Wrap" Margin="3,3,3,3"  VerticalAlignment="Stretch" IsEnabled="False"/>
         <Button x:Name="btnEdit" Content="Редактировать" Grid.Column="0" Grid.Row="3"  HorizontalAlignment="Stretch" Margin="3,3,4,3" VerticalAlignment="Stretch" IsEnabled="False"/>
         <Button x:Name="btnSave" Content="Сохранить" Grid.Column="0" Grid.Row="4"  HorizontalAlignment="Stretch" Margin="3,3,4,3" VerticalAlignment="Stretch" IsEnabled="False" Click="btnSave_Click"/>
-        <Button x:Name="btn_Search" Content="Найти .." Grid.Column="0" Grid.Row="6" Margin="3,3,4,3" IsEnabled="False"/>
+        <Button x:Name="btn_Search" Content="Найти .." Grid.Column="0" Grid.Row="6" Margin="3,3,4,3" IsEnabled="False" Click="btn_Search_Click"/>
     </Grid>
 </Window>

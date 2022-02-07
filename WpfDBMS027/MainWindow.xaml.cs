@@ -438,6 +438,18 @@ namespace WpfDBMS027
 
 
 
+
+        private void btn_Search_Click(object sender, RoutedEventArgs e)
+        {
+            this._DBGrid_Editing_Mode = DBGrid_editing_mode.SEARCHING_MODE;
+            btn_OK.IsEnabled = true;
+            btn_OK.Content = "Найти";
+        }
+
+
+
+
+
         private bool is_changedRecordAfterEditingDataGrid(object recordTarget)
         {
             if (recordTarget == null || this._po_tel_vid_connect == null)
@@ -524,7 +536,6 @@ namespace WpfDBMS027
             }
             return false;
         }
-
 
 
 
@@ -680,6 +691,8 @@ namespace WpfDBMS027
                 }
                 else
                 {
+                    btn_OK.Content = "Ок";
+
                     textBoxes[0].Foreground = Brushes.Black;
 
                     textBoxes[1].Foreground = Brushes.Black;
