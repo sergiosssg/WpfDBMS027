@@ -652,10 +652,46 @@ namespace WpfDBMS027
                 pO_record = (PO_TEL_VID_CONNECT)oRecord;
 
                 textBoxes[0].Text = pO_record.Id.ToString();
-                textBoxes[0].Foreground = Brushes.DarkBlue;
                 textBoxes[1].Text = pO_record.KodOfConnect;
+                textBoxes[2].Foreground = Brushes.DarkBlue;
+                if (dBGrid_Editing_Mode == DBGrid_editing_mode.ADDING_MODE)
+                {
+                    textBoxes[0].Foreground = Brushes.DarkBlue;
+
+                    textBoxes[1].Foreground = Brushes.DarkBlue;
+
+                    textBoxes[2].Foreground = Brushes.DarkBlue;
+                }
+                else if (dBGrid_Editing_Mode == DBGrid_editing_mode.CHANGED_MODE)
+                {
+                    textBoxes[0].Foreground = Brushes.DarkGreen;
+
+                    textBoxes[1].Foreground = Brushes.DarkGreen;
+
+                    textBoxes[2].Foreground = Brushes.DarkGreen;
+                }
+                else if (dBGrid_Editing_Mode == DBGrid_editing_mode.SEARCHING_MODE)
+                {
+                    textBoxes[0].Foreground = Brushes.Brown;
+
+                    textBoxes[1].Foreground = Brushes.Brown;
+
+                    textBoxes[2].Foreground = Brushes.Brown;
+                }
+                else
+                {
+                    textBoxes[0].Foreground = Brushes.Black;
+
+                    textBoxes[1].Foreground = Brushes.Black;
+
+                    textBoxes[2].Foreground = Brushes.Black;
+                }
+
+
+                textBoxes[0].Foreground = Brushes.DarkBlue;
+
                 textBoxes[1].Foreground = Brushes.DarkBlue;
-                textBoxes[2].Text = pO_record.Name;
+
                 textBoxes[2].Foreground = Brushes.DarkBlue;
 
                 return true;
