@@ -56,6 +56,9 @@ namespace WpfDBMS027
         private DBGrid_editing_mode _DBGrid_Editing_Mode;
 
 
+        private IList<Control> _textFields;
+
+
         public DbContextOptions<DbAppContext> OptionsOfDbContext { get; }
 
 
@@ -83,6 +86,17 @@ namespace WpfDBMS027
 
             this._DBGrid_Editing_Mode = DBGrid_editing_mode.EMPTY;
 
+
+            this._textFields = new List<Control>();
+
+
+            this._textFields.Add(txtFld_ID);
+            this._textFields.Add(txtFld_KodOfConnect);
+            this._textFields.Add(txtFld_Name);
+
+
+
+
             InitializeComponent();
         }
 
@@ -90,8 +104,8 @@ namespace WpfDBMS027
         {
             DbConnectionStringBuilder builder = new SqlConnectionStringBuilder();
 
-            //builder["Data Source"] = "localhost";
-            builder["Data Source"] = @"localhost\SQLExpress";////@"localhost\SQLExpress";
+            builder["Data Source"] = "localhost";
+            //builder["Data Source"] = @"localhost\SQLExpress";////@"localhost\SQLExpress";
 
             builder["Database"] = "sampd_cexs";
 
@@ -359,69 +373,66 @@ namespace WpfDBMS027
 
         private void dgrid__VID_CONNECT_GotFocus(object sender, RoutedEventArgs e)
         {
-            Type objType = sender.GetType();
-            string sOfType = objType.Name;
+            DataGrid dataGrid;
 
-            try
+            if ((dataGrid = (sender as DataGrid)) != null)
             {
+                //dataGrid = (DataGrid)sender;
 
-                IList<Control> textFields = new List<Control>();
-
-                textFields.Add(txtFld_ID);
-                textFields.Add(txtFld_KodOfConnect);
-                textFields.Add(txtFld_Name);
-
-
-                var selectedElement = dgrid__VID_CONNECT.CurrentItem;
-                if ((selectedElement as PO_TEL_VID_CONNECT) != null)
+                try
                 {
-                    this._iKeySelected = ((PO_TEL_VID_CONNECT)selectedElement).Id;
-
-                    if (this._DBGrid_Editing_Mode == DBGrid_editing_mode.EDITING_MODE)
+                    var selectedElement = dataGrid.CurrentItem;
+                    if ((selectedElement as PO_TEL_VID_CONNECT) != null)
                     {
+                        this._iKeySelected = ((PO_TEL_VID_CONNECT)selectedElement).Id;
+
+                        if (this._DBGrid_Editing_Mode == DBGrid_editing_mode.EDITING_MODE)
+                        {
+                            btnDelete.IsEnabled = false;
+                            /**
+                             *   to do ..
+                             */
+                        }
+                        else if (this._DBGrid_Editing_Mode == DBGrid_editing_mode.SAVED_MODE ||
+                                this._DBGrid_Editing_Mode == DBGrid_editing_mode.CHANGED_MODE ||
+                                this._DBGrid_Editing_Mode == DBGrid_editing_mode.SEARCHING_MODE
+                                )
+                        {
+                            this._po_tel_vid_connect = (PO_TEL_VID_CONNECT)selectedElement;
+                            this._DBGrid_Editing_Mode = DBGrid_editing_mode.PREMODIFY_MODE;
+                            btnDelete.IsEnabled = true;
+
+                        }
+
+                        FillTextBoxesByRecordValues( this._textFields, (PO_TEL_VID_CONNECT)selectedElement, this._DBGrid_Editing_Mode, _editingModeWithColorMatching);
+
+                    }
+                    else
+                    {
+                        PO_TEL_VID_CONNECT potelvidconnectCandidate = new PO_TEL_VID_CONNECT();
+
+                        var iResult = (DbAppContextProperty.pO_TEL_VID_CONNECTs.Max(rr => rr.Id));
+
+                        potelvidconnectCandidate.Id = iResult + 1;
+
+                        //int iMaxOfID = from DbAppContextProperty
+
+                        this._DBGrid_Editing_Mode = DBGrid_editing_mode.ADDING_MODE;
+
+
+                        FillTextBoxesByRecordValues(this._textFields, potelvidconnectCandidate, this._DBGrid_Editing_Mode, _editingModeWithColorMatching);
+
                         btnDelete.IsEnabled = false;
-                        /**
-                         *   to do ..
-                         */
+                        this._iKeySelected = 0;
+                        //this._is_adding_new_element = true;
                     }
-                    else if (this._DBGrid_Editing_Mode == DBGrid_editing_mode.SAVED_MODE ||
-                            this._DBGrid_Editing_Mode == DBGrid_editing_mode.CHANGED_MODE ||
-                            this._DBGrid_Editing_Mode == DBGrid_editing_mode.SEARCHING_MODE
-                            )
-                    {
-                        this._po_tel_vid_connect = (PO_TEL_VID_CONNECT)selectedElement;
-                        this._DBGrid_Editing_Mode = DBGrid_editing_mode.PREMODIFY_MODE;
-                        btnDelete.IsEnabled = true;
-
-                    }
-
-                    FillTextBoxesByRecordValues(textFields, (PO_TEL_VID_CONNECT)selectedElement, this._DBGrid_Editing_Mode, _editingModeWithColorMatching);
-
                 }
-                else
+                catch (InvalidCastException ice)
                 {
-                    PO_TEL_VID_CONNECT potelvidconnectCandidate = new PO_TEL_VID_CONNECT();
 
-                    var iResult = (DbAppContextProperty.pO_TEL_VID_CONNECTs.Max(rr => rr.Id));
-
-                    potelvidconnectCandidate.Id = iResult + 1;
-
-                    //int iMaxOfID = from DbAppContextProperty
-
-                    this._DBGrid_Editing_Mode = DBGrid_editing_mode.ADDING_MODE;
-
-
-                    FillTextBoxesByRecordValues(textFields, potelvidconnectCandidate, this._DBGrid_Editing_Mode, _editingModeWithColorMatching);
-
-                    btnDelete.IsEnabled = false;
-                    this._iKeySelected = 0;
-                    //this._is_adding_new_element = true;
                 }
             }
-            catch (InvalidCastException ice)
-            {
 
-            }
         }
 
 
