@@ -86,7 +86,6 @@ namespace WpfDBMS027
             this._editingModeWithColorMatching = new Dictionary<DBGrid_editing_mode, Color>();
 
             this._iKeySelected = 0;
-
             this._po_tel_vid_connect = null;
 
 
@@ -195,8 +194,11 @@ namespace WpfDBMS027
                 txtFld_Name.IsEnabled = true;
                 btn_Search.IsEnabled = true;
 
-                this._DBGrid_Editing_Mode = DBGrid_editing_mode.SAVED_MODE;
             }
+
+            this._DBGrid_Editing_Mode = DBGrid_editing_mode.SAVED_MODE;
+            this._iKeySelected = 0;
+            this._po_tel_vid_connect = null;
         }
 
         private void txtFld_ID_TextChanged(object sender, TextChangedEventArgs e)
