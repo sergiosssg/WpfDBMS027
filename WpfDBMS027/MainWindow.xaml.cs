@@ -387,9 +387,18 @@ namespace WpfDBMS027
                     {
                         this._iKeySelected = ((PO_TEL_VID_CONNECT)selectedElement).Id;
 
+
+
+
+                        if (this._po_tel_vid_connect != null)
+                        {
+                            ;
+                        }
+
                         if (this._DBGrid_Editing_Mode == DBGrid_editing_mode.EDITING_MODE)
                         {
                             btnDelete.IsEnabled = false;
+
                             /**
                              *   to do ..
                              */
@@ -405,7 +414,7 @@ namespace WpfDBMS027
 
                         }
 
-                        FillTextBoxesByRecordValues( this._textFields, (PO_TEL_VID_CONNECT)selectedElement, this._DBGrid_Editing_Mode, _editingModeWithColorMatching);
+                        FillTextBoxesByRecordValues(this._textFields, (PO_TEL_VID_CONNECT)selectedElement, this._DBGrid_Editing_Mode, _editingModeWithColorMatching);
 
                     }
                     else
@@ -642,7 +651,7 @@ namespace WpfDBMS027
             foreach (var el in controls)
             {
                 var textBox = (el as TextBox);
-                if (  textBox  != null)
+                if (textBox != null)
                 {
                     textBoxes[iii++] = (TextBox)textBox;
                 }
