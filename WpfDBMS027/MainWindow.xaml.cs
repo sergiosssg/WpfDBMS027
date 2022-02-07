@@ -358,6 +358,8 @@ namespace WpfDBMS027
 
         private void dgrid__VID_CONNECT_GotFocus(object sender, RoutedEventArgs e)
         {
+            Type objType = sender.GetType();
+            string sOfType = objType.Name;
 
             try
             {
