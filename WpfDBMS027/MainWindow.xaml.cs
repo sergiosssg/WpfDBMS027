@@ -90,9 +90,6 @@ namespace WpfDBMS027
             this._textFields = new List<Control>();
 
 
-            this._textFields.Add(txtFld_ID);
-            this._textFields.Add(txtFld_KodOfConnect);
-            this._textFields.Add(txtFld_Name);
 
 
 
@@ -297,6 +294,10 @@ namespace WpfDBMS027
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            this._textFields.Add(txtFld_ID);
+            this._textFields.Add(txtFld_KodOfConnect);
+            this._textFields.Add(txtFld_Name);
+
 
             this._iKeySelected = 0;
             this._po_tel_vid_connect = null;
