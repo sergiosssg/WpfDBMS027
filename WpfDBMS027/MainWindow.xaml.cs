@@ -653,7 +653,7 @@ namespace WpfDBMS027
 
                 textBoxes[0].Text = pO_record.Id.ToString();
                 textBoxes[1].Text = pO_record.KodOfConnect;
-                textBoxes[2].Foreground = Brushes.DarkBlue;
+                textBoxes[2].Text = pO_record.Name;
                 if (dBGrid_Editing_Mode == DBGrid_editing_mode.ADDING_MODE)
                 {
                     textBoxes[0].Foreground = Brushes.DarkBlue;
@@ -686,13 +686,6 @@ namespace WpfDBMS027
 
                     textBoxes[2].Foreground = Brushes.Black;
                 }
-
-
-                textBoxes[0].Foreground = Brushes.DarkBlue;
-
-                textBoxes[1].Foreground = Brushes.DarkBlue;
-
-                textBoxes[2].Foreground = Brushes.DarkBlue;
 
                 return true;
             }
