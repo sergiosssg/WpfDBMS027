@@ -276,14 +276,12 @@ namespace WpfDBMS027
             //
             DbAppContextProperty.SaveChanges();
 
+            this._DBGrid_Editing_Mode = DBGrid_editing_mode.SAVED_MODE;
+            this._iKeySelected = 0;
             this._po_tel_vid_connect = null;
 
-            this._iKeySelected = 0;
-
-            this._DBGrid_Editing_Mode = DBGrid_editing_mode.SAVED_MODE;
 
             btnSave.IsEnabled = false;
-
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -354,14 +352,13 @@ namespace WpfDBMS027
             resultOfRefreshing = RefreshDataGridWithCollection(dgrid__VID_CONNECT, DbAppContextProperty);
             if (resultOfRefreshing)
             {
-                this._iKeySelected = 0;
-                this._po_tel_vid_connect = null;
-
                 btnDelete.IsEnabled = false;
             }
 
-            btnSave.IsEnabled = true;
             this._DBGrid_Editing_Mode = DBGrid_editing_mode.CHANGED_MODE;
+            this._iKeySelected = 0;
+            this._po_tel_vid_connect = null;
+            btnSave.IsEnabled = true;
         }
 
 
@@ -655,8 +652,11 @@ namespace WpfDBMS027
                 pO_record = (PO_TEL_VID_CONNECT)oRecord;
 
                 textBoxes[0].Text = pO_record.Id.ToString();
+                textBoxes[0].Foreground = Brushes.DarkBlue;
                 textBoxes[1].Text = pO_record.KodOfConnect;
+                textBoxes[1].Foreground = Brushes.DarkBlue;
                 textBoxes[2].Text = pO_record.Name;
+                textBoxes[2].Foreground = Brushes.DarkBlue;
 
                 return true;
             }
