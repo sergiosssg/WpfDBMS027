@@ -448,6 +448,10 @@ namespace WpfDBMS027
 
         private void btn_Search_Click(object sender, RoutedEventArgs e)
         {
+            if(this._DBGrid_Editing_Mode != DBGrid_editing_mode.SEARCHING_MODE)
+            {
+
+            }
             this._DBGrid_Editing_Mode = DBGrid_editing_mode.SEARCHING_MODE;
             btn_OK.IsEnabled = true;
             btn_OK.Content = "Найти";
