@@ -47,7 +47,7 @@ namespace WpfDBMS027
 
         private PO_TEL_VID_CONNECT _po_tel_vid_connect;
 
-        private ICollection<PO_TEL_VID_CONNECT> _found_PO_TEL_VID_CONNECTs;
+        private IEnumerable<PO_TEL_VID_CONNECT> _found_PO_TEL_VID_CONNECTs;
 
         private bool _is_found_PO_TEL_VID_CONNECT;
 
