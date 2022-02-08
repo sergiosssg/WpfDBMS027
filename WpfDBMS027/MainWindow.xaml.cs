@@ -679,25 +679,19 @@ namespace WpfDBMS027
                 if (dBGrid_Editing_Mode == DBGrid_editing_mode.ADDING_MODE)
                 {
                     textBoxes[0].Foreground = Brushes.DarkBlue;
-
                     textBoxes[1].Foreground = Brushes.DarkBlue;
-
                     textBoxes[2].Foreground = Brushes.DarkBlue;
                 }
                 else if (dBGrid_Editing_Mode == DBGrid_editing_mode.CHANGED_MODE)
                 {
                     textBoxes[0].Foreground = Brushes.DarkGreen;
-
                     textBoxes[1].Foreground = Brushes.DarkGreen;
-
                     textBoxes[2].Foreground = Brushes.DarkGreen;
                 }
                 else if (dBGrid_Editing_Mode == DBGrid_editing_mode.SEARCHING_MODE)
                 {
                     textBoxes[0].Foreground = Brushes.Brown;
-
                     textBoxes[1].Foreground = Brushes.Brown;
-
                     textBoxes[2].Foreground = Brushes.Brown;
                 }
                 else
@@ -705,9 +699,7 @@ namespace WpfDBMS027
                     btn_OK.Content = "Ок";
 
                     textBoxes[0].Foreground = Brushes.Black;
-
                     textBoxes[1].Foreground = Brushes.Black;
-
                     textBoxes[2].Foreground = Brushes.Black;
                 }
 
