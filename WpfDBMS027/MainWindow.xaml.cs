@@ -464,6 +464,7 @@ namespace WpfDBMS027
             this._DBGrid_Editing_Mode = DBGrid_editing_mode.SEARCHING_MODE;
             btn_OK.IsEnabled = true;
             btn_OK.Content = "Найти";
+
             this._wndForFilter.Show();
         }
 
