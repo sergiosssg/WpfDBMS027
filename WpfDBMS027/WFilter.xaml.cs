@@ -23,5 +23,15 @@ namespace WpfDBMS027
         {
             InitializeComponent();
         }
+
+        private void btn_Ok_from_filter_Click(object sender, RoutedEventArgs e)
+        {
+            ;
+        }
+
+        private void btn_Cancel_from_filter_Click(object sender, RoutedEventArgs e)
+        {
+            ;
+        }
     }
 }
