@@ -110,15 +110,15 @@
         /-->
         
         <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="13" Margin="1,1,1,1" Orientation="Horizontal">
-            <Button  x:Name="btnLoad"  Content="Загрузить" Click="btnLoad_Click"/>
-            <Separator />
-            <Button  x:Name="btnSave" Content="Сохранить" Click="btnSave_Click"/>
-            <Separator />
-            <Button  x:Name="btnEdit" Content="Редактировать" Click="btnSave_Click" IsEnabled="False"/>
-            <Separator />
-            <Button  x:Name="btnDelete" Content="Удалить" Click="btnDelete_Click" IsEnabled="False"/>
-            <Separator Width="5"/>
-            <Button  x:Name="btn_Search" Content="Найти .." Click="btn_Search_Click" IsEnabled="False"/>
+            <Button  x:Name="btnLoad" Margin="4,2,5,2"  Content="Загрузить" Click="btnLoad_Click"/>
+            <Separator Width="4"/>
+            <Button  x:Name="btnSave" Margin="2,2,2,2" Content="Сохранить" Click="btnSave_Click"/>
+            <Separator Width="4"/>
+            <Button  x:Name="btnEdit" Margin="2,2,2,2" Content="Редактировать" Click="btnSave_Click" IsEnabled="False"/>
+            <Separator Width="4"/>
+            <Button  x:Name="btnDelete" Margin="2,2,2,2" Content="Удалить" Click="btnDelete_Click" IsEnabled="False"/>
+            <Separator Width="8"/>
+            <Button  x:Name="btn_Search" Margin="2,2,2,2" Content="Найти .." Click="btn_Search_Click" IsEnabled="False"/>
         </StackPanel>
         <StatusBar Grid.Column="0" Grid.ColumnSpan="15" Grid.Row="13"/>
     </Grid>

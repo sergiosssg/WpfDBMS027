@@ -70,6 +70,8 @@ namespace WpfDBMS027
         public DbAppContext DbAppContextProperty { get; }
 
 
+        //public Window 
+
 
         public MainWindow()
         {
