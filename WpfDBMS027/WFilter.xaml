@@ -48,27 +48,14 @@
             <Separator Width="4"/>
             <TextBox x:Name="txtfld_Name_from_filter_right" Width="204"/>
         </WrapPanel>
-
         
         <Separator Width="4"/>
-        <!--
-        
-        <StackPanel Orientation="Horizontal">
-            <Separator Width="8"/>
-            
-            <Button x:Name="btn_Ok_from_filter" Content="Установить ..." ToolTip="Установить фильтр"/>
-            <Separator Width="8"/>
-            <Button x:Name="btn_Cancel_from_filter" Content="Установить ..." ToolTip="Установить фильтр"/>
-        </StackPanel>
-        
-        -->
+
         <DockPanel>
             <Button x:Name="btn_Ok_from_filter" Content="Установить ..." Margin="8,2,2,2" ToolTip="Установить фильтр" HorizontalAlignment="Left" Click="btn_Ok_from_filter_Click"/>
             
             <Button x:Name="btn_Cancel_from_filter" Content="Отмена" Margin="2,2,8,2" HorizontalAlignment="Right" Click="btn_Cancel_from_filter_Click"/>
         </DockPanel>
-        
         <Separator Width="7"/>
-        
     </StackPanel>
 </Window>

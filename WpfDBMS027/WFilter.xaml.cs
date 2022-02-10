@@ -31,7 +31,7 @@ namespace WpfDBMS027
 
         private void btn_Cancel_from_filter_Click(object sender, RoutedEventArgs e)
         {
-            ;
+            this.Close();
         }
     }
 }

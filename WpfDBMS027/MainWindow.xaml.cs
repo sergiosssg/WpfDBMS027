@@ -43,6 +43,9 @@ namespace WpfDBMS027
     public partial class MainWindow : Window
     {
 
+
+        private Window _wndForFilter;
+
         private CollectionViewSource tel_vid_connectionViewSource;
 
         private PO_TEL_VID_CONNECT _po_tel_vid_connect;
@@ -70,6 +73,8 @@ namespace WpfDBMS027
         public DbAppContext DbAppContextProperty { get; }
 
 
+
+
         //public Window 
 
 
@@ -91,6 +96,8 @@ namespace WpfDBMS027
             this._iKeySelected = 0;
             this._po_tel_vid_connect = null;
 
+
+            this._wndForFilter = new WFilter();
 
             InitializeComponent();
         }
@@ -457,6 +464,7 @@ namespace WpfDBMS027
             this._DBGrid_Editing_Mode = DBGrid_editing_mode.SEARCHING_MODE;
             btn_OK.IsEnabled = true;
             btn_OK.Content = "Найти";
+            this._wndForFilter.Show();
         }
 
 
