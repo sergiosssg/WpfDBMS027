@@ -7,21 +7,21 @@
         mc:Ignorable="d"
         Title="WFilter" Height="180" Width="360">
 
-    <StackPanel>
+    <StackPanel Orientation="Vertical">
         <Separator Width="7"/>
-        <StackPanel>
+        <StackPanel Orientation="Horizontal">
             
         </StackPanel>
         <Separator Width="4"/>
-        <StackPanel>
+        <StackPanel Orientation="Horizontal">
             
         </StackPanel>
         <Separator Width="4"/>
-        <StackPanel>
+        <StackPanel Orientation="Horizontal">
             
         </StackPanel>
         <Separator Width="4"/>
-        <StackPanel>
+        <StackPanel Orientation="Horizontal">
             
         </StackPanel>
         <Separator Width="7"/>
