@@ -78,24 +78,26 @@
             <RowDefinition Height="34*"/>
             <RowDefinition Height="34*"/>
             <RowDefinition Height="34*"/>
+            <RowDefinition Height="34*"/>
+            <RowDefinition Height="34*"/>
         </Grid.RowDefinitions>
 
-        <Button x:Name="btnLoad" Content="Загрузить..." Grid.Column="0" Grid.Row="0"  HorizontalAlignment="Stretch" Margin="4,3,3,3" VerticalAlignment="Stretch" Click="btnLoad_Click"/>
-        <Button x:Name="btnDelete" Content="Удалить" Grid.Column="0" Grid.Row="1"  HorizontalAlignment="Stretch" Margin="4,3,3,3" VerticalAlignment="Stretch" IsEnabled="False" Click="btnDelete_Click"/>
-        <DataGrid x:Name="dgrid__VID_CONNECT"    Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="12" Grid.RowSpan="11" Margin="3,3,3,3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsSynchronizedWithCurrentItem="True" AutoGenerateColumns="True" EnableRowVirtualization="True" DisplayMemberPath="" Focusable="False" AllowDrop="True" BeginningEdit="dgrid__VID_CONNECT_BeginningEdit" CellEditEnding="dgrid__VID_CONNECT_CellEditEnding" GotFocus="dgrid__VID_CONNECT_GotFocus" >
+        <Button x:Name="btnLoad" Content="Загрузить..." Grid.Column="0" Grid.Row="1"  HorizontalAlignment="Stretch" Margin="4,3,3,3" VerticalAlignment="Stretch" Click="btnLoad_Click"/>
+        <Button x:Name="btnDelete" Content="Удалить" Grid.Column="0" Grid.Row="3" Margin="1,3,6,3" IsEnabled="False" Click="btnDelete_Click"/>
+        <DataGrid x:Name="dgrid__VID_CONNECT"    Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="12" Grid.RowSpan="11" Margin="3,3,3,3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsSynchronizedWithCurrentItem="True" AutoGenerateColumns="True" EnableRowVirtualization="True" DisplayMemberPath="" Focusable="False" AllowDrop="True" BeginningEdit="dgrid__VID_CONNECT_BeginningEdit" CellEditEnding="dgrid__VID_CONNECT_CellEditEnding" GotFocus="dgrid__VID_CONNECT_GotFocus" >
 
 
         </DataGrid>
-        <TextBox x:Name="txtFld_ID" Grid.ColumnSpan="2" Grid.Column="1" Margin="5,3,3,3" Text="" TextWrapping="Wrap" IsEnabled="False" TextChanged="txtFld_ID_TextChanged"/>
-        <TextBox x:Name="txtFld_KodOfConnect" Grid.ColumnSpan="2" Grid.Column="4" HorizontalAlignment="Stretch" Margin="5,3,5,3" Text="" TextWrapping="Wrap" VerticalAlignment="Stretch" IsEnabled="False" TextChanged="txtFld_KodOfConnect_TextChanged"/>
-        <TextBox x:Name="txtFld_Name" Grid.ColumnSpan="4" Grid.Column="7" HorizontalAlignment="Stretch" Margin="5,3,5,3" Text="" TextWrapping="Wrap" VerticalAlignment="Stretch" IsEnabled="False" TextChanged="txtFld_Name_TextChanged"/>
-        <Label Content=": ID" Grid.Column="3" HorizontalAlignment="Stretch" Margin="3,3,3,3" VerticalAlignment="Stretch"/>
-        <Label Content=": Код" Grid.Column="6" HorizontalAlignment="Stretch" Margin="3,3,3,3" VerticalAlignment="Stretch"/>
-        <Label Content=": Название" Grid.Column="11" HorizontalAlignment="Stretch" Margin="3,3,3,3" VerticalAlignment="Stretch"/>
-        <Button x:Name="btn_OK" Content="Ok" Grid.Column="12" Grid.Row="0"  HorizontalAlignment="Stretch" Margin="3,3,4,3" VerticalAlignment="Stretch" IsEnabled="False" Click="btn_OK_Click"/>
-        <TextBlock HorizontalAlignment="Stretch" Grid.Row="2" Grid.Column="0" Text=" ###" TextWrapping="Wrap" Margin="3,3,3,3"  VerticalAlignment="Stretch" IsEnabled="False"/>
-        <Button x:Name="btnEdit" Content="Редактировать" Grid.Column="0" Grid.Row="3"  HorizontalAlignment="Stretch" Margin="3,3,4,3" VerticalAlignment="Stretch" IsEnabled="False"/>
-        <Button x:Name="btnSave" Content="Сохранить" Grid.Column="0" Grid.Row="4"  HorizontalAlignment="Stretch" Margin="3,3,4,3" VerticalAlignment="Stretch" IsEnabled="False" Click="btnSave_Click"/>
-        <Button x:Name="btn_Search" Content="Найти .." Grid.Column="0" Grid.Row="6" Margin="3,3,4,3" IsEnabled="False" Click="btn_Search_Click"/>
+        <TextBox x:Name="txtFld_ID" Grid.ColumnSpan="2" Grid.Column="1" Margin="2,2,2,2" Text="" TextWrapping="Wrap" IsEnabled="False" TextChanged="txtFld_ID_TextChanged" Grid.Row="1"/>
+        <TextBox x:Name="txtFld_KodOfConnect" Grid.ColumnSpan="2" Grid.Column="4" Grid.Row="1"  HorizontalAlignment="Stretch" Margin="2,2,2,2" Text="" TextWrapping="Wrap" VerticalAlignment="Stretch" IsEnabled="False" TextChanged="txtFld_KodOfConnect_TextChanged"/>
+        <TextBox x:Name="txtFld_Name" Grid.ColumnSpan="4" Grid.Column="7"   Grid.Row="1"  HorizontalAlignment="Stretch" Margin="2,2,2,2" Text="" TextWrapping="Wrap" VerticalAlignment="Stretch" IsEnabled="False" TextChanged="txtFld_Name_TextChanged"/>
+        <Label Content=": ID" Grid.Column="3"  Grid.Row="1"  HorizontalAlignment="Stretch" Margin="3,3,3,3" VerticalAlignment="Stretch"/>
+        <Label Content=": Код" Grid.Column="6"  Grid.Row="1" HorizontalAlignment="Stretch" Margin="3,3,3,3" VerticalAlignment="Stretch"/>
+        <Label Content=": Название" Grid.Column="11"  Grid.Row="1"  HorizontalAlignment="Stretch" Margin="3,3,3,3" VerticalAlignment="Stretch"/>
+        <Button x:Name="btn_OK" Content="Ok" Grid.Column="12" Grid.Row="1"  HorizontalAlignment="Stretch" Margin="3,3,4,3" VerticalAlignment="Stretch" IsEnabled="False" Click="btn_OK_Click"/>
+        <TextBlock Grid.Row="4" Grid.Column="0" Text=" ###" TextWrapping="Wrap" Margin="2,2,2,2" IsEnabled="False"/>
+        <Button x:Name="btnEdit" Content="Редактировать" Grid.Column="0" Grid.Row="5" Margin="2,2,2,2" IsEnabled="False"/>
+        <Button x:Name="btnSave" Content="Сохранить" Grid.Column="0" Grid.Row="6" Margin="2,2,2,2" IsEnabled="False" Click="btnSave_Click"/>
+        <Button x:Name="btn_Search" Content="Найти .." Grid.Column="0" Grid.Row="7" Margin="2,2,2,2" IsEnabled="False" Click="btn_Search_Click"/>
     </Grid>
 </Window>
