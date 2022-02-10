@@ -10,15 +10,15 @@
     <StackPanel Orientation="Vertical">
         <Separator Width="7"/>
         <StackPanel Orientation="Horizontal">
-            <Separator /><Label Content="ID :"/><Separator /><TextBox x:Name="txtfld_ID_from_filter"/>
+            <Separator /><Label Content="ID :"/><Separator /><TextBox x:Name="txtfld_ID_from_filter" Width="84"/>
         </StackPanel>
         <Separator Width="4"/>
         <StackPanel Orientation="Horizontal">
-            <Separator /><Label Content="Код :" /><Separator /><TextBox x:Name="txtfld_KOD_from_filter"/>
+            <Separator /><Label Content="Код :" /><Separator /><TextBox x:Name="txtfld_KOD_from_filter" Width="84"/>
         </StackPanel>
         <Separator Width="4"/>
         <StackPanel Orientation="Horizontal">
-            <Separator /><Label Content="Name :" /><Separator /><TextBox x:Name="txtfld_Name_from_filter"/>
+            <Separator /><Label Content="Name :" /><Separator /><TextBox x:Name="txtfld_Name_from_filter" Width="204"/>
         </StackPanel>
         <Separator Width="4"/>
         <StackPanel Orientation="Horizontal">
