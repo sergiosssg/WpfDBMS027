@@ -10,19 +10,19 @@
     <StackPanel Orientation="Vertical">
         <Separator Width="7"/>
         <StackPanel Orientation="Horizontal">
-            <Separator /><Label Content="ID :"/><Separator /><TextBox />
+            <Separator /><Label Content="ID :"/><Separator /><TextBox x:Name="txtfld_ID_from_filter"/>
         </StackPanel>
         <Separator Width="4"/>
         <StackPanel Orientation="Horizontal">
-            <Separator /><Label Content="Код :" /><Separator /><TextBox />
+            <Separator /><Label Content="Код :" /><Separator /><TextBox x:Name="txtfld_KOD_from_filter"/>
         </StackPanel>
         <Separator Width="4"/>
         <StackPanel Orientation="Horizontal">
-            <Separator /><Label Content="Name :" /><Separator /><TextBox />
+            <Separator /><Label Content="Name :" /><Separator /><TextBox x:Name="txtfld_Name_from_filter"/>
         </StackPanel>
         <Separator Width="4"/>
         <StackPanel Orientation="Horizontal">
-            <Separator /><Separator/><Button/><Separator/>
+            <Separator Width="8"/><Button x:Name="btn_Ok_from_filer" Content="Установить ..." ToolTip="Установить фильтр"/><Separator Width="8"/>
         </StackPanel>
         <Separator Width="7"/>
     </StackPanel>
