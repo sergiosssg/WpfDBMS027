@@ -21,9 +21,22 @@
             <Separator /><Label Content="Name :" /><Separator /><TextBox x:Name="txtfld_Name_from_filter" Width="204"/>
         </StackPanel>
         <Separator Width="4"/>
+        <!--
+        
         <StackPanel Orientation="Horizontal">
-            <Separator Width="8"/><Button x:Name="btn_Ok_from_filer" Content="Установить ..." ToolTip="Установить фильтр"/><Separator Width="8"/>
+            <Separator Width="8"/>
+            
+            <Button x:Name="btn_Ok_from_filter" Content="Установить ..." ToolTip="Установить фильтр"/>
+            <Separator Width="8"/>
+            <Button x:Name="btn_Cancel_from_filter" Content="Установить ..." ToolTip="Установить фильтр"/>
         </StackPanel>
+        
+        -->
         <Separator Width="7"/>
+        <DockPanel>
+            <Button x:Name="btn_Ok_from_filter" Content="Установить ..." Margin="8,2,2,2" ToolTip="Установить фильтр" HorizontalAlignment="Left"/>
+            
+            <Button x:Name="btn_Cancel_from_filter" Content="Отмена" Margin="2,2,8,2" HorizontalAlignment="Right"/>
+        </DockPanel>
     </StackPanel>
 </Window>
