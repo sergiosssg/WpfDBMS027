@@ -98,16 +98,17 @@
         <Label Content=": Код" Grid.Column="6"  Grid.Row="1" HorizontalAlignment="Stretch" Margin="3,3,3,3" VerticalAlignment="Stretch"/>
         <Label Content=": Название" Grid.Column="11"  Grid.Row="1"  HorizontalAlignment="Stretch" Margin="3,3,3,3" VerticalAlignment="Stretch"/>
         <Button x:Name="btn_OK" Content="Ok" Grid.Column="12" Grid.Row="1"  HorizontalAlignment="Stretch" Margin="3,3,4,3" VerticalAlignment="Stretch" IsEnabled="False" Click="btn_OK_Click"/>
-        <TextBlock Grid.Row="4" Grid.Column="0" Text=" ###" TextWrapping="Wrap" Margin="2,2,2,2" IsEnabled="False"/>
         <!--
         
         <Button x:Name="btnEdit" Content="Редактировать" Grid.Column="0" Grid.Row="5" Margin="2,2,2,2" IsEnabled="False"/>
         <Button x:Name="btnSave" Content="Сохранить" Grid.Column="0" Grid.Row="6" Margin="2,2,2,2" IsEnabled="False" Click="btnSave_Click"/>
         
         <Button x:Name="btnDelete" Content="Удалить" Grid.Column="0" Grid.Row="3" Margin="1,3,6,3" IsEnabled="False" Click="btnDelete_Click"/>
-        /-->
         
         <Button x:Name="btn_Search" Content="Найти .." Grid.Column="0" Grid.Row="7" Margin="2,2,2,2" IsEnabled="False" Click="btn_Search_Click"/>
+        
+        /-->
+        
         <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="13" Margin="1,1,1,1" Orientation="Horizontal">
             <Button  x:Name="btnLoad"  Content="Загрузить" Click="btnLoad_Click"/>
             <Separator />
@@ -116,6 +117,9 @@
             <Button  x:Name="btnEdit" Content="Редактировать" Click="btnSave_Click" IsEnabled="False"/>
             <Separator />
             <Button  x:Name="btnDelete" Content="Удалить" Click="btnDelete_Click" IsEnabled="False"/>
+            <Separator Width="5"/>
+            <Button  x:Name="btn_Search" Content="Найти .." Click="btn_Search_Click" IsEnabled="False"/>
         </StackPanel>
+        <StatusBar Grid.Column="0" Grid.ColumnSpan="15" Grid.Row="13"/>
     </Grid>
 </Window>
