@@ -10,19 +10,19 @@
     <StackPanel Orientation="Vertical">
         <Separator Width="7"/>
         <StackPanel Orientation="Horizontal">
-            
+            <Separator /><Label Content="ID :"/><Separator /><TextBox />
         </StackPanel>
         <Separator Width="4"/>
         <StackPanel Orientation="Horizontal">
-            
+            <Separator /><Label Content="Код :" /><Separator /><TextBox />
         </StackPanel>
         <Separator Width="4"/>
         <StackPanel Orientation="Horizontal">
-            
+            <Separator /><Label Content="Name :" /><Separator /><TextBox />
         </StackPanel>
         <Separator Width="4"/>
         <StackPanel Orientation="Horizontal">
-            
+            <Separator /><Separator/><Button/><Separator/>
         </StackPanel>
         <Separator Width="7"/>
     </StackPanel>
