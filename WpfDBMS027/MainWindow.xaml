@@ -108,7 +108,7 @@
         <Button x:Name="btn_Search" Content="Найти .." Grid.Column="0" Grid.Row="7" Margin="2,2,2,2" IsEnabled="False" Click="btn_Search_Click"/>
         
         /-->
-        
+
         <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="13" Margin="1,1,1,1" Orientation="Horizontal">
             <Button  x:Name="btnLoad" Margin="4,2,5,2"  Content="Загрузить" Click="btnLoad_Click"/>
             <Separator Width="4"/>
@@ -122,4 +122,15 @@
         </StackPanel>
         <StatusBar Grid.Column="0" Grid.ColumnSpan="15" Grid.Row="13"/>
     </Grid>
+
+    <!--
+    
+    
+    <Popup x:Name="PopupFilterSetter">
+        
+    </Popup>
+    
+    -->
 </Window>
+
+    
