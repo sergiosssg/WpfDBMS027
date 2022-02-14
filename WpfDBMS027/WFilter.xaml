@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfDBMS027"
         mc:Ignorable="d"
-        Title="Фильтр" Height="180" Width="360" WindowStyle="ToolWindow" ResizeMode="CanMinimize" WindowStartupLocation="CenterOwner" ShowActivated="False">
+        Title="Фильтр" Height="180" Width="360" WindowStyle="None" ResizeMode="CanMinimize" WindowStartupLocation="CenterOwner" ShowActivated="False">
     <Window.Style>
         <Style/>
     </Window.Style>

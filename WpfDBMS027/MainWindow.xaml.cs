@@ -44,7 +44,8 @@ namespace WpfDBMS027
     {
 
 
-        private Window _wndForFilter;
+        //private Window _wndForFilter;
+        private WFilter _wndForFilter;
 
         private CollectionViewSource tel_vid_connectionViewSource;
 
@@ -97,7 +98,8 @@ namespace WpfDBMS027
             this._po_tel_vid_connect = null;
 
 
-            this._wndForFilter = new WFilter();
+            this._wndForFilter = new WFilter( this);
+
 
             InitializeComponent();
         }
@@ -416,7 +418,8 @@ namespace WpfDBMS027
                             this._DBGrid_Editing_Mode = DBGrid_editing_mode.PREMODIFY_MODE;
                             btnDelete.IsEnabled = true;
 
-                        }else if (this._DBGrid_Editing_Mode == DBGrid_editing_mode.SEARCHING_MODE)
+                        }
+                        else if (this._DBGrid_Editing_Mode == DBGrid_editing_mode.SEARCHING_MODE)
                         {
                             btn_OK.Content = "Найти далее ..";
                         }
@@ -457,7 +460,9 @@ namespace WpfDBMS027
 
         private void btn_Search_Click(object sender, RoutedEventArgs e)
         {
-            if(this._DBGrid_Editing_Mode != DBGrid_editing_mode.SEARCHING_MODE)
+            
+
+            if (this._DBGrid_Editing_Mode != DBGrid_editing_mode.SEARCHING_MODE)
             {
 
             }
@@ -465,7 +470,15 @@ namespace WpfDBMS027
             btn_OK.IsEnabled = true;
             btn_OK.Content = "Найти";
 
-            this._wndForFilter.Show();
+            //this._wndForFilter.Show();
+
+            if (this._wndForFilter != null && this._wndForFilter.IsEnabled == true  )
+            {
+                this._wndForFilter.ShowDialog();
+                //this._wndForFilter
+
+
+            }
         }
 
 

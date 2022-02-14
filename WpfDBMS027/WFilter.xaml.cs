@@ -19,7 +19,9 @@ namespace WpfDBMS027
     /// </summary>
     public partial class WFilter : Window
     {
-        public WFilter()
+        private Window _parentWindow;
+
+        public WFilter(Window parent)
         {
             InitializeComponent();
         }
@@ -31,7 +33,10 @@ namespace WpfDBMS027
 
         private void btn_Cancel_from_filter_Click(object sender, RoutedEventArgs e)
         {
-            this.Visibility = Visibility.Hidden;
+            //this.Visibility = Visibility.Hidden;
+            //this.WindowState = WindowState.Minimized;
+            
+            this.Close();
 
         }
     }
