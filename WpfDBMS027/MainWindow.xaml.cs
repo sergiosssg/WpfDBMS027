@@ -472,7 +472,7 @@ namespace WpfDBMS027
 
             //this._wndForFilter.Show();
 
-            if (this._wndForFilter != null && this._wndForFilter.IsEnabled == true  )
+            if (this._wndForFilter != null && this._wndForFilter.IsEnabled == true && this._wndForFilter.IsLoaded == false)
             {
                 this._wndForFilter.ShowDialog();
                 //this._wndForFilter

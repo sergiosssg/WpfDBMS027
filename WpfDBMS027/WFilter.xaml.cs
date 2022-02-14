@@ -23,6 +23,8 @@ namespace WpfDBMS027
 
         public WFilter(Window parent)
         {
+            this.Owner = parent;
+
             InitializeComponent();
         }
 
@@ -36,7 +38,9 @@ namespace WpfDBMS027
             //this.Visibility = Visibility.Hidden;
             //this.WindowState = WindowState.Minimized;
             
-            this.Close();
+            
+
+            //this.Close();
 
         }
     }
