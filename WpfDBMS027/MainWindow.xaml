@@ -96,7 +96,9 @@
                     <ComboBox x:Name="cmb_ID_from_filter_right"/>
                     <TextBox x:Name="txtfld_ID_from_filter_right" Width="84"/>
                 </WrapPanel>
-                <Separator Width="4"/>
+                <Separator Width="3"/>
+                <ComboBox  x:Name="cmb_LogicOperator12" Width="40"/>
+                <Separator Width="3"/>
                 <WrapPanel Orientation="Horizontal">
                     <Separator Width="6"/>
                     <Label Content="Код :" />
@@ -109,7 +111,9 @@
                     <Separator Width="4"/>
                     <TextBox x:Name="txtfld_KOD_from_filter_right" Width="84"/>
                 </WrapPanel>
-                <Separator Width="4"/>
+                <Separator Width="3"/>
+                <ComboBox  x:Name="cmb_LogicOperator23" Width="40"/>
+                <Separator Width="3"/>
                 <WrapPanel Orientation="Horizontal">
                     <Separator Width="6"/>
                     <Label Content="Name :" />

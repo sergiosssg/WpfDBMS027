@@ -43,6 +43,29 @@ namespace WpfDBMS027
     public partial class MainWindow : Window
     {
 
+
+        readonly static IDictionary<OperatorSignComparision, string> OperatorSignComparisionStrings = new Dictionary<OperatorSignComparision, string> 
+        {
+            { OperatorSignComparision._EQ_, "==" },
+            { OperatorSignComparision._NE_, "!="},
+            { OperatorSignComparision._GT_, ">"},
+            { OperatorSignComparision._LT_, "<"},
+            { OperatorSignComparision._GE_, ">="},
+            { OperatorSignComparision._LE_, "<="},
+            { OperatorSignComparision._BETWEEN_NO_STRICT_, "<= .. >="},
+            { OperatorSignComparision._BETWEEN_STRICT_, "< .. >"},
+            { OperatorSignComparision._BETWEEN_STRICT_LEFT_, "< .. >="},
+            { OperatorSignComparision._BETWEEN_STRICT_RIGHT_, "<= .. >"}
+        };
+
+
+        readonly static IDictionary<OperatorSignLogic, string> OperatorSignLogicStrings = new Dictionary<OperatorSignLogic, string>
+        {
+            { OperatorSignLogic._AND_, "AND" },
+            { OperatorSignLogic._OR_, "OR"},
+            { OperatorSignLogic._NOT_, "NOT"}
+        };
+
         private CollectionViewSource tel_vid_connectionViewSource;
 
         private PO_TEL_VID_CONNECT _po_tel_vid_connect;
@@ -458,7 +481,8 @@ namespace WpfDBMS027
         {
 
 
-            ;
+            PopupSearch.PlacementTarget = btn_Search;
+            PopupSearch.IsOpen = true;
 
 /*            if (this._DBGrid_Editing_Mode != DBGrid_editing_mode.SEARCHING_MODE)
             {
