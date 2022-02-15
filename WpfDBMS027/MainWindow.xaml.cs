@@ -492,13 +492,13 @@ namespace WpfDBMS027
 
             cmb_LogicOperator12.ItemsSource = OperatorSignLogicStrings.Keys;
             cmb_LogicOperator23.ItemsSource = OperatorSignLogicStrings.Keys;
-            cmb_ID_from_filter_left.ItemsSource = OperatorSignComparisionStrings.Keys;
-            cmb_ID_from_filter_right.ItemsSource = OperatorSignComparisionStrings.Keys;
-            cmb_KOD_from_filter_left.ItemsSource = OperatorSignComparisionStrings.Keys;
-            cmb_KOD_from_filter_right.ItemsSource = OperatorSignComparisionStrings.Keys;
-            cmb_Name_from_filter_left.ItemsSource = OperatorSignComparisionStrings.Keys;
-            cmb_Name_from_filter_right.ItemsSource = OperatorSignComparisionStrings.Keys;
-
+            cmb_ID_from_filter.ItemsSource = OperatorSignComparisionStrings.Keys;
+            //cmb_ID_from_filter_right.ItemsSource = OperatorSignComparisionStrings.Keys;
+            cmb_KOD_from_filter.ItemsSource = OperatorSignComparisionStrings.Keys;
+            //cmb_KOD_from_filter_right.ItemsSource = OperatorSignComparisionStrings.Keys;
+            cmb_Name_from_filter.ItemsSource = OperatorSignComparisionStrings.Keys;
+            //cmb_Name_from_filter_right.ItemsSource = OperatorSignComparisionStrings.Keys;
+            mainWindowForGrid.IsEnabled = false;
             PopupSearch.IsOpen = true;
 
 
@@ -777,11 +777,20 @@ namespace WpfDBMS027
 
         private void btn_Ok_from_popupfilter_Click(object sender, RoutedEventArgs e)
         {
-            ; ; ;
+
+
+/*            cmb_ID_from_filter; 
+            cmb_LogicOperator12;
+            cmb_KOD_from_filter;
+            cmb_LogicOperator23;
+            cmb_Name_from_filter;*/
+
+
         }
 
         private void btn_Cancel_from_popupfilter_Click(object sender, RoutedEventArgs e)
         {
+            mainWindowForGrid.IsEnabled = true;
             PopupSearch.IsOpen = false;
         }
     }

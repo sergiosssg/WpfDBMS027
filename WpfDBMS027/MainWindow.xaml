@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfDBMS027"
-        x:Class="WpfDBMS027.MainWindow"
+        x:Class="WpfDBMS027.MainWindow" x:Name="mainWindowForGrid"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
 
@@ -77,20 +77,22 @@
         </StackPanel>
         <StatusBar Grid.Column="0" Grid.ColumnSpan="15" Grid.Row="13"/>
 
-        <Popup x:Name="PopupSearch" IsOpen="False">
+        <Popup x:Name="PopupSearch" IsOpen="False" Width="380" Height="260">
             <StackPanel Orientation="Vertical" Background="LightGray">
                 <Separator Width="7"/>
                 <WrapPanel Orientation="Horizontal">
                     <Separator Width="6"/>
                     <Label Content="ID :"/>
                     <Separator Width="4" />
-                    <ComboBox x:Name="cmb_ID_from_filter_left">
+                    <ComboBox x:Name="cmb_ID_from_filter">
                     </ComboBox>
                     <Separator Width="4" />
                     <TextBox x:Name="txtfld_ID_from_filter_left" Width="84"/>
-                    <Separator Width="12" />
-                    <ComboBox x:Name="cmb_ID_from_filter_right"/>
-                    <TextBox x:Name="txtfld_ID_from_filter_right" Width="84"/>
+                    <Separator Width="12" Visibility="Hidden"/>
+                    <!--
+                    <ComboBox x:Name="cmb_ID_from_filter_right" Visibility="Hidden"/>
+                    -->
+                    <TextBox x:Name="txtfld_ID_from_filter_right" Width="84" Visibility="Hidden"/>
                 </WrapPanel>
                 <Separator Width="3"/>
                 <ComboBox  x:Name="cmb_LogicOperator12" Width="54"/>
@@ -99,13 +101,15 @@
                     <Separator Width="6"/>
                     <Label Content="Код :" />
                     <Separator Width="4"/>
-                    <ComboBox  x:Name="cmb_KOD_from_filter_left"/>
+                    <ComboBox  x:Name="cmb_KOD_from_filter"/>
                     <Separator Width="4"/>
                     <TextBox x:Name="txtfld_KOD_from_filter_left" Width="84"/>
                     <Separator Width="12" />
-                    <ComboBox  x:Name="cmb_KOD_from_filter_right"/>
+                    <!--
+                    <ComboBox  x:Name="cmb_KOD_from_filter_right" Visibility="Hidden"/>
+                    -->
                     <Separator Width="4"/>
-                    <TextBox x:Name="txtfld_KOD_from_filter_right" Width="84"/>
+                    <TextBox x:Name="txtfld_KOD_from_filter_right" Width="84" Visibility="Hidden"/>
                 </WrapPanel>
                 <Separator Width="3"/>
                 <ComboBox  x:Name="cmb_LogicOperator23" Width="54"/>
@@ -114,13 +118,15 @@
                     <Separator Width="6"/>
                     <Label Content="Name :" />
                     <Separator Width="4"/>
-                    <ComboBox x:Name="cmb_Name_from_filter_left"/>
+                    <ComboBox x:Name="cmb_Name_from_filter"/>
                     <Separator Width="4"/>
                     <TextBox x:Name="txtfld_Name_from_filter_left" Width="204"/>
                     <Separator Width="12" />
-                    <ComboBox x:Name="cmb_Name_from_filter_right"/>
+                    <!--
+                    <ComboBox x:Name="cmb_Name_from_filter_right" Visibility="Hidden"/>
+                    -->
                     <Separator Width="4"/>
-                    <TextBox x:Name="txtfld_Name_from_filter_right" Width="204"/>
+                    <TextBox x:Name="txtfld_Name_from_filter_right" Width="204" Visibility="Hidden"/>
                 </WrapPanel>
                 <Separator Width="4"/>
                 <DockPanel>
