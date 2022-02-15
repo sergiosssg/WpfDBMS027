@@ -492,8 +492,13 @@ namespace WpfDBMS027
             //PopupSearch.cmb_ID_from_filter_left
 
             cmb_LogicOperator12.ItemsSource = OperatorSignLogicStrings.Keys;
-
             cmb_LogicOperator23.ItemsSource = OperatorSignLogicStrings.Keys;
+            cmb_ID_from_filter_left.ItemsSource = OperatorSignComparisionStrings.Keys;
+            cmb_ID_from_filter_right.ItemsSource = OperatorSignComparisionStrings.Keys;
+            cmb_KOD_from_filter_left.ItemsSource = OperatorSignComparisionStrings.Keys;
+            cmb_KOD_from_filter_right.ItemsSource = OperatorSignComparisionStrings.Keys;
+            cmb_Name_from_filter_left.ItemsSource = OperatorSignComparisionStrings.Keys;
+            cmb_Name_from_filter_right.ItemsSource = OperatorSignComparisionStrings.Keys;
 
             PopupSearch.IsOpen = true;
 
