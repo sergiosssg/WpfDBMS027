@@ -51,11 +51,6 @@
             <RowDefinition Height="34*"/>
         </Grid.RowDefinitions>
 
-        <!--
-        
-        <Button x:Name="btnLoad" Content="Загрузить..."Grid.Column="0" Margin="7,3,61,3" Click="btnLoad_Click" Grid.ColumnSpan="2"/>
-        
-        -->
         <DataGrid x:Name="dgrid__VID_CONNECT"    Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="12" Grid.RowSpan="11" Margin="3,3,3,3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsSynchronizedWithCurrentItem="True" AutoGenerateColumns="True" EnableRowVirtualization="True" DisplayMemberPath="" Focusable="False" AllowDrop="True" BeginningEdit="dgrid__VID_CONNECT_BeginningEdit" CellEditEnding="dgrid__VID_CONNECT_CellEditEnding" GotFocus="dgrid__VID_CONNECT_GotFocus" >
 
 
@@ -137,17 +132,6 @@
         </Popup>
     </Grid>
 
-    <!--
-    
-    <Popup x:Name="PopupSearch" IsOpen="False">
-
-    </Popup>
-    
-    <Popup x:Name="PopupFilterSetter">
-        
-    </Popup>
-    
-    -->
 </Window>
 
     
