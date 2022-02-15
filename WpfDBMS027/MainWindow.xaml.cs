@@ -43,10 +43,6 @@ namespace WpfDBMS027
     public partial class MainWindow : Window
     {
 
-
-        //private Window _wndForFilter;
-        private WFilter _wndForFilter;
-
         private CollectionViewSource tel_vid_connectionViewSource;
 
         private PO_TEL_VID_CONNECT _po_tel_vid_connect;
@@ -98,7 +94,7 @@ namespace WpfDBMS027
             this._po_tel_vid_connect = null;
 
 
-            this._wndForFilter = new WFilter( this);
+
 
 
             InitializeComponent();
@@ -460,9 +456,11 @@ namespace WpfDBMS027
 
         private void btn_Search_Click(object sender, RoutedEventArgs e)
         {
-            
 
-            if (this._DBGrid_Editing_Mode != DBGrid_editing_mode.SEARCHING_MODE)
+
+            ;
+
+/*            if (this._DBGrid_Editing_Mode != DBGrid_editing_mode.SEARCHING_MODE)
             {
 
             }
@@ -474,11 +472,15 @@ namespace WpfDBMS027
 
             if (this._wndForFilter != null && this._wndForFilter.IsEnabled == true && this._wndForFilter.IsLoaded == false)
             {
-                this._wndForFilter.ShowDialog();
+                //this._wndForFilter.ShowDialog();
                 //this._wndForFilter
 
 
             }
+*/
+
+
+
         }
 
 

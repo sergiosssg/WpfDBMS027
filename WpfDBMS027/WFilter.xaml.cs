@@ -21,6 +21,7 @@ namespace WpfDBMS027
     {
         private Window _parentWindow;
 
+
         public WFilter(Window parent)
         {
             this.Owner = parent;

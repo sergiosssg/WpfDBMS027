@@ -121,6 +121,67 @@
             <Button  x:Name="btn_Search" Margin="2,2,2,2" Content="Найти .." Click="btn_Search_Click" IsEnabled="False"/>
         </StackPanel>
         <StatusBar Grid.Column="0" Grid.ColumnSpan="15" Grid.Row="13"/>
+
+        <!--
+                        <Popup x:Name="PopupSearch" IsOpen="False" Visibility="Hidden">
+                    
+                            <StackPanel Orientation="Vertical">
+                                <WrapPanel Orientation="Horizontal">
+                                    <Separator Width="6"/>
+                                    <Label Content="ID :"/>
+                                    <Separator Width="4" />
+                                    <ComboBox x:Name="cmb_ID_from_filter_left"/>
+                                    <Separator Width="4" />
+                                    <TextBox x:Name="txtfld_ID_from_filter_left" Width="84"/>
+                                    <Separator Width="12" />
+                                    <ComboBox x:Name="cmb_ID_from_filter_right"/>
+                                    <TextBox x:Name="txtfld_ID_from_filter_right" Width="84"/>
+                                </WrapPanel>
+
+                                <Separator Width="4"/>
+                                <Separator Width="7"/>
+                                <WrapPanel Orientation="Horizontal">
+                                    <Separator Width="6"/>
+                                    <Label Content="Код :" />
+                                    <Separator Width="4"/>
+                                    <ComboBox  x:Name="cmb_KOD_from_filter_left"/>
+                                    <Separator Width="4"/>
+                                    <TextBox x:Name="txtfld_KOD_from_filter_left" Width="84"/>
+                                    <Separator Width="12" />
+                                    <ComboBox  x:Name="cmb_KOD_from_filter_right"/>
+                                    <Separator Width="4"/>
+                                    <TextBox x:Name="txtfld_KOD_from_filter_right" Width="84"/>
+                                </WrapPanel>
+                                <Separator Width="4"/>
+
+                                <WrapPanel Orientation="Horizontal">
+                                    <Separator Width="6"/>
+                                    <Label Content="Name :" />
+                                    <Separator Width="4"/>
+                                    <ComboBox x:Name="cmb_Name_from_filter_left"/>
+                                    <Separator Width="4"/>
+                                    <TextBox x:Name="txtfld_Name_from_filter_left" Width="204"/>
+                                    <Separator Width="12" />
+                                    <ComboBox x:Name="cmb_Name_from_filter_right"/>
+                                    <Separator Width="4"/>
+                                    <TextBox x:Name="txtfld_Name_from_filter_right" Width="204"/>
+                                </WrapPanel>
+                                <Separator Width="4"/>
+
+                                <DockPanel>
+                                    <Button x:Name="btn_Ok_from_filter" Content="Установить ..." Margin="8,2,2,2" ToolTip="Установить фильтр" HorizontalAlignment="Left"/>
+
+                                    <Button x:Name="btn_Cancel_from_filter" Content="Отмена" Margin="2,2,8,2" HorizontalAlignment="Right"/>
+                                </DockPanel>
+                                <Separator Width="7"/>
+                            </StackPanel>
+
+                        </Popup>
+            
+         -->
+
+
+
     </Grid>
 
     <!--
