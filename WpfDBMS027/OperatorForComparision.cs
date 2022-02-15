@@ -23,7 +23,7 @@ namespace WpfDBMS027
     {
 
 
-        public delegate bool comparisionSimpleDelegate(object arg1, object arg2, object arg3, OperatorSignComparision operatorSigh, OperatorSignLogic? operatorSignLogic, comparisionSimpleDelegate comparisionSimpleDelegate);
+        public delegate bool comparisionSimpleDelegate(object arg1, object arg2, object arg3, OperatorSignComparision operatorSigh, comparisionSimpleDelegate comparisionSimpleDelegate, OperatorSignLogic? operatorSignLogic);
 
     }
 }
