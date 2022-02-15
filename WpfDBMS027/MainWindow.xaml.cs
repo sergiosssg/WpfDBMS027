@@ -798,5 +798,14 @@ namespace WpfDBMS027
             }
         }
 
+        private void btn_Ok_from_popupfilter_Click(object sender, RoutedEventArgs e)
+        {
+            ; ; ;
+        }
+
+        private void btn_Cancel_from_popupfilter_Click(object sender, RoutedEventArgs e)
+        {
+            PopupSearch.IsOpen = false;
+        }
     }
 }

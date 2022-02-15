@@ -129,8 +129,8 @@
                 </WrapPanel>
                 <Separator Width="4"/>
                 <DockPanel>
-                    <Button x:Name="btn_Ok_from_popupfilter" Content="Установить ..." Margin="8,2,2,2" ToolTip="Установить фильтр" HorizontalAlignment="Left"/>
-                    <Button x:Name="btn_Cancel_from_popupfilter" Content="Отмена" Margin="2,2,8,2" HorizontalAlignment="Right"/>
+                    <Button x:Name="btn_Ok_from_popupfilter" Content="Установить ..." Margin="8,2,2,2" ToolTip="Установить фильтр" HorizontalAlignment="Left" Click="btn_Ok_from_popupfilter_Click"/>
+                    <Button x:Name="btn_Cancel_from_popupfilter" Content="Отмена" Margin="2,2,8,2" HorizontalAlignment="Right" Click="btn_Cancel_from_popupfilter_Click"/>
                 </DockPanel>
                 <Separator Width="7"/>
             </StackPanel>
