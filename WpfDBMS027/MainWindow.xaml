@@ -16,38 +16,7 @@
         </CollectionViewSource>
     </Window.Resources>
 
-    <!--
-
-    <Window.DataContext>
-        <CollectionContainer x:Name="SPR">
-        </CollectionContainer>
-    </Window.DataContext>
     
-    <Window.Resources>
-        <CollectionViewSource x:Key="TEL_VID_CONNECTS" d:DesignSource="{d:DesignInstance {x:Type local:PO_TEL_VID_CONNECT}, CreateList=True}"/>
-    </Window.Resources>
-    
-    
-    
-    <Window.Resources>
-        <CollectionContainer>
-            
-        </CollectionContainer>
-    </Window.Resources>
-    
-    
-    
-    <Window.Resources>
-        
-    </Window.Resources>
-    <Window.DataContext x:Uid="VVV">
-        <ObjectDataProvider x:Name="SS11" local:MainWindow="">
-            
-        </ObjectDataProvider>
-    </Window.DataContext>
-    
-    -->
-
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -118,7 +87,11 @@
             <Separator Width="4"/>
             <Button  x:Name="btnDelete" Margin="2,2,2,2" Content="Удалить" Click="btnDelete_Click" IsEnabled="False"/>
             <Separator Width="8"/>
-            <Button  x:Name="btn_Search" Margin="2,2,2,2" Content="Найти .." Click="btn_Search_Click" IsEnabled="False"/>
+            <Button  Width="48*" x:Name="btn_Search" Margin="2,2,2,2"  Click="btn_Search_Click" IsEnabled="False" >
+                  <Popup x:Name="PopupSearch" IsOpen="False">
+                    
+                </Popup>
+            </Button>
         </StackPanel>
         <StatusBar Grid.Column="0" Grid.ColumnSpan="15" Grid.Row="13"/>
     </Grid>
