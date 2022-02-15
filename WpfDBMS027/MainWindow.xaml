@@ -78,7 +78,7 @@
         <StatusBar Grid.Column="0" Grid.ColumnSpan="15" Grid.Row="13"/>
 
         <Popup x:Name="PopupSearch" IsOpen="False">
-            <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Vertical" Background="LightGray">
                 <Separator Width="7"/>
                 <WrapPanel Orientation="Horizontal">
                     <Separator Width="6"/>
