@@ -16,7 +16,7 @@
         </CollectionViewSource>
     </Window.Resources>
 
-    
+
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -67,16 +67,6 @@
         <Label Content=": Код" Grid.Column="6"  Grid.Row="1" HorizontalAlignment="Stretch" Margin="3,3,3,3" VerticalAlignment="Stretch"/>
         <Label Content=": Название" Grid.Column="11"  Grid.Row="1"  HorizontalAlignment="Stretch" Margin="3,3,3,3" VerticalAlignment="Stretch"/>
         <Button x:Name="btn_OK" Content="Ok" Grid.Column="12" Grid.Row="1"  HorizontalAlignment="Stretch" Margin="3,3,4,3" VerticalAlignment="Stretch" IsEnabled="False" Click="btn_OK_Click"/>
-        <!--
-        
-        <Button x:Name="btnEdit" Content="Редактировать" Grid.Column="0" Grid.Row="5" Margin="2,2,2,2" IsEnabled="False"/>
-        <Button x:Name="btnSave" Content="Сохранить" Grid.Column="0" Grid.Row="6" Margin="2,2,2,2" IsEnabled="False" Click="btnSave_Click"/>
-        
-        <Button x:Name="btnDelete" Content="Удалить" Grid.Column="0" Grid.Row="3" Margin="1,3,6,3" IsEnabled="False" Click="btnDelete_Click"/>
-        
-        <Button x:Name="btn_Search" Content="Найти .." Grid.Column="0" Grid.Row="7" Margin="2,2,2,2" IsEnabled="False" Click="btn_Search_Click"/>
-        
-        /-->
 
         <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="13" Margin="1,1,1,1" Orientation="Horizontal">
             <Button  x:Name="btnLoad" Margin="4,2,5,2"  Content="Загрузить" Click="btnLoad_Click"/>
@@ -89,125 +79,57 @@
             <Separator Width="8"/>
             <Button  x:Name="btn_Search" Margin="2,2,2,2" Content="Найти .."  Click="btn_Search_Click" IsEnabled="False" >
             </Button>
-            <Popup x:Name="PopupSearch" IsOpen="False">
-                <StackPanel Orientation="Vertical">
-
-                    <Separator Width="7"/>
-                    <WrapPanel Orientation="Horizontal">
-                        <Separator Width="6"/>
-                        <Label Content="ID :"/>
-                        <Separator Width="4" />
-                        <ComboBox x:Name="cmb_ID_from_filter_left"/>
-                        <Separator Width="4" />
-                        <TextBox x:Name="txtfld_ID_from_filter_left" Width="84"/>
-                        <Separator Width="12" />
-                        <ComboBox x:Name="cmb_ID_from_filter_right"/>
-                        <TextBox x:Name="txtfld_ID_from_filter_right" Width="84"/>
-                    </WrapPanel>
-
-                    <Separator Width="4"/>
-                    <WrapPanel Orientation="Horizontal">
-                        <Separator Width="6"/>
-                        <Label Content="Код :" />
-                        <Separator Width="4"/>
-                        <ComboBox  x:Name="cmb_KOD_from_filter_left"/>
-                        <Separator Width="4"/>
-                        <TextBox x:Name="txtfld_KOD_from_filter_left" Width="84"/>
-                        <Separator Width="12" />
-                        <ComboBox  x:Name="cmb_KOD_from_filter_right"/>
-                        <Separator Width="4"/>
-                        <TextBox x:Name="txtfld_KOD_from_filter_right" Width="84"/>
-                    </WrapPanel>
-                    <Separator Width="4"/>
-
-                    <WrapPanel Orientation="Horizontal">
-                        <Separator Width="6"/>
-                        <Label Content="Name :" />
-                        <Separator Width="4"/>
-                        <ComboBox x:Name="cmb_Name_from_filter_left"/>
-                        <Separator Width="4"/>
-                        <TextBox x:Name="txtfld_Name_from_filter_left" Width="204"/>
-                        <Separator Width="12" />
-                        <ComboBox x:Name="cmb_Name_from_filter_right"/>
-                        <Separator Width="4"/>
-                        <TextBox x:Name="txtfld_Name_from_filter_right" Width="204"/>
-                    </WrapPanel>
-
-                    <Separator Width="4"/>
-
-                    <DockPanel>
-                        <Button x:Name="btn_Ok_from_filter" Content="Установить ..." Margin="8,2,2,2" ToolTip="Установить фильтр" HorizontalAlignment="Left"/>
-
-                        <Button x:Name="btn_Cancel_from_filter" Content="Отмена" Margin="2,2,8,2" HorizontalAlignment="Right"/>
-                    </DockPanel>
-                    <Separator Width="7"/>
-
-
-                </StackPanel>
-            </Popup>
         </StackPanel>
         <StatusBar Grid.Column="0" Grid.ColumnSpan="15" Grid.Row="13"/>
 
-        <!--
-                        <Popup x:Name="PopupSearch" IsOpen="False" Visibility="Hidden">
-                    
-                            <StackPanel Orientation="Vertical">
-                                <WrapPanel Orientation="Horizontal">
-                                    <Separator Width="6"/>
-                                    <Label Content="ID :"/>
-                                    <Separator Width="4" />
-                                    <ComboBox x:Name="cmb_ID_from_filter_left"/>
-                                    <Separator Width="4" />
-                                    <TextBox x:Name="txtfld_ID_from_filter_left" Width="84"/>
-                                    <Separator Width="12" />
-                                    <ComboBox x:Name="cmb_ID_from_filter_right"/>
-                                    <TextBox x:Name="txtfld_ID_from_filter_right" Width="84"/>
-                                </WrapPanel>
-
-                                <Separator Width="4"/>
-                                <Separator Width="7"/>
-                                <WrapPanel Orientation="Horizontal">
-                                    <Separator Width="6"/>
-                                    <Label Content="Код :" />
-                                    <Separator Width="4"/>
-                                    <ComboBox  x:Name="cmb_KOD_from_filter_left"/>
-                                    <Separator Width="4"/>
-                                    <TextBox x:Name="txtfld_KOD_from_filter_left" Width="84"/>
-                                    <Separator Width="12" />
-                                    <ComboBox  x:Name="cmb_KOD_from_filter_right"/>
-                                    <Separator Width="4"/>
-                                    <TextBox x:Name="txtfld_KOD_from_filter_right" Width="84"/>
-                                </WrapPanel>
-                                <Separator Width="4"/>
-
-                                <WrapPanel Orientation="Horizontal">
-                                    <Separator Width="6"/>
-                                    <Label Content="Name :" />
-                                    <Separator Width="4"/>
-                                    <ComboBox x:Name="cmb_Name_from_filter_left"/>
-                                    <Separator Width="4"/>
-                                    <TextBox x:Name="txtfld_Name_from_filter_left" Width="204"/>
-                                    <Separator Width="12" />
-                                    <ComboBox x:Name="cmb_Name_from_filter_right"/>
-                                    <Separator Width="4"/>
-                                    <TextBox x:Name="txtfld_Name_from_filter_right" Width="204"/>
-                                </WrapPanel>
-                                <Separator Width="4"/>
-
-                                <DockPanel>
-                                    <Button x:Name="btn_Ok_from_filter" Content="Установить ..." Margin="8,2,2,2" ToolTip="Установить фильтр" HorizontalAlignment="Left"/>
-
-                                    <Button x:Name="btn_Cancel_from_filter" Content="Отмена" Margin="2,2,8,2" HorizontalAlignment="Right"/>
-                                </DockPanel>
-                                <Separator Width="7"/>
-                            </StackPanel>
-
-                        </Popup>
-            
-         -->
-
-
-
+        <Popup x:Name="PopupSearch" IsOpen="False">
+            <StackPanel Orientation="Vertical">
+                <Separator Width="7"/>
+                <WrapPanel Orientation="Horizontal">
+                    <Separator Width="6"/>
+                    <Label Content="ID :"/>
+                    <Separator Width="4" />
+                    <ComboBox x:Name="cmb_ID_from_filter_left"/>
+                    <Separator Width="4" />
+                    <TextBox x:Name="txtfld_ID_from_filter_left" Width="84"/>
+                    <Separator Width="12" />
+                    <ComboBox x:Name="cmb_ID_from_filter_right"/>
+                    <TextBox x:Name="txtfld_ID_from_filter_right" Width="84"/>
+                </WrapPanel>
+                <Separator Width="4"/>
+                <WrapPanel Orientation="Horizontal">
+                    <Separator Width="6"/>
+                    <Label Content="Код :" />
+                    <Separator Width="4"/>
+                    <ComboBox  x:Name="cmb_KOD_from_filter_left"/>
+                    <Separator Width="4"/>
+                    <TextBox x:Name="txtfld_KOD_from_filter_left" Width="84"/>
+                    <Separator Width="12" />
+                    <ComboBox  x:Name="cmb_KOD_from_filter_right"/>
+                    <Separator Width="4"/>
+                    <TextBox x:Name="txtfld_KOD_from_filter_right" Width="84"/>
+                </WrapPanel>
+                <Separator Width="4"/>
+                <WrapPanel Orientation="Horizontal">
+                    <Separator Width="6"/>
+                    <Label Content="Name :" />
+                    <Separator Width="4"/>
+                    <ComboBox x:Name="cmb_Name_from_filter_left"/>
+                    <Separator Width="4"/>
+                    <TextBox x:Name="txtfld_Name_from_filter_left" Width="204"/>
+                    <Separator Width="12" />
+                    <ComboBox x:Name="cmb_Name_from_filter_right"/>
+                    <Separator Width="4"/>
+                    <TextBox x:Name="txtfld_Name_from_filter_right" Width="204"/>
+                </WrapPanel>
+                <Separator Width="4"/>
+                <DockPanel>
+                    <Button x:Name="btn_Ok_from_filter" Content="Установить ..." Margin="8,2,2,2" ToolTip="Установить фильтр" HorizontalAlignment="Left"/>
+                    <Button x:Name="btn_Cancel_from_filter" Content="Отмена" Margin="2,2,8,2" HorizontalAlignment="Right"/>
+                </DockPanel>
+                <Separator Width="7"/>
+            </StackPanel>
+        </Popup>
     </Grid>
 
     <!--
