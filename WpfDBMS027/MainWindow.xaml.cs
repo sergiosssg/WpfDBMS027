@@ -44,25 +44,26 @@ namespace WpfDBMS027
     public partial class MainWindow : Window
     {
 
-        public readonly static IDictionary<OperatorSignComparision, string> OperatorSignComparisionStrings = new Dictionary<OperatorSignComparision, string>
+        //public readonly static IDictionary<OperatorSignComparision, string> OperatorSignComparisionStrings = new Dictionary<OperatorSignComparision, string>
+        public readonly static IDictionary< string, OperatorSignComparision> OperatorSignComparisionStrings = new Dictionary< string, OperatorSignComparision>
         {
-            { OperatorSignComparision._EQ_, "==" },
-            { OperatorSignComparision._NE_, "!="},
-            { OperatorSignComparision._GT_, ">"},
-            { OperatorSignComparision._LT_, "<"},
-            { OperatorSignComparision._GE_, ">="},
-            { OperatorSignComparision._LE_, "<="},
-            { OperatorSignComparision._BETWEEN_NO_STRICT_, "<= .. >="},
-            { OperatorSignComparision._BETWEEN_STRICT_, "< .. >"},
-            { OperatorSignComparision._BETWEEN_STRICT_LEFT_, "< .. >="},
-            { OperatorSignComparision._BETWEEN_STRICT_RIGHT_, "<= .. >"}
+            {  "==", OperatorSignComparision._EQ_ },
+            { "!=", OperatorSignComparision._NE_},
+            { ">", OperatorSignComparision._GT_},
+            { "<", OperatorSignComparision._LT_},
+            { ">=", OperatorSignComparision._GE_},
+            { "<=", OperatorSignComparision._LE_},
+            { "<= .. >=", OperatorSignComparision._BETWEEN_NO_STRICT_},
+            { "< .. >", OperatorSignComparision._BETWEEN_STRICT_},
+            { "< .. >=", OperatorSignComparision._BETWEEN_STRICT_LEFT_},
+            { "<= .. >", OperatorSignComparision._BETWEEN_STRICT_RIGHT_}
         };
 
-        public readonly static IDictionary<OperatorSignLogic, string> OperatorSignLogicStrings = new Dictionary<OperatorSignLogic, string>
+        public readonly static IDictionary<string, OperatorSignLogic> OperatorSignLogicStrings = new Dictionary<string, OperatorSignLogic>
         {
-            { OperatorSignLogic._AND_, "AND" },
-            { OperatorSignLogic._OR_, "OR"},
-            { OperatorSignLogic._NOT_, "NOT"}
+            { "AND", OperatorSignLogic._AND_ },
+            { "OR", OperatorSignLogic._OR_},
+            { "NOT", OperatorSignLogic._NOT_}
         };
 
 
@@ -487,7 +488,16 @@ namespace WpfDBMS027
 
 
             PopupSearch.PlacementTarget = btn_Search;
+
+            //PopupSearch.cmb_ID_from_filter_left
+
+            cmb_LogicOperator12.ItemsSource = OperatorSignLogicStrings.Keys;
+
+            cmb_LogicOperator23.ItemsSource = OperatorSignLogicStrings.Keys;
+
             PopupSearch.IsOpen = true;
+
+
 
             /*            if (this._DBGrid_Editing_Mode != DBGrid_editing_mode.SEARCHING_MODE)
                         {
