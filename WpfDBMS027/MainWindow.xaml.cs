@@ -489,7 +489,6 @@ namespace WpfDBMS027
 
             PopupSearch.PlacementTarget = btn_Search;
 
-            //PopupSearch.cmb_ID_from_filter_left
 
             cmb_LogicOperator12.ItemsSource = OperatorSignLogicStrings.Keys;
             cmb_LogicOperator23.ItemsSource = OperatorSignLogicStrings.Keys;
@@ -501,28 +500,6 @@ namespace WpfDBMS027
             cmb_Name_from_filter_right.ItemsSource = OperatorSignComparisionStrings.Keys;
 
             PopupSearch.IsOpen = true;
-
-
-
-            /*            if (this._DBGrid_Editing_Mode != DBGrid_editing_mode.SEARCHING_MODE)
-                        {
-
-                        }
-                        this._DBGrid_Editing_Mode = DBGrid_editing_mode.SEARCHING_MODE;
-                        btn_OK.IsEnabled = true;
-                        btn_OK.Content = "Найти";
-
-                        //this._wndForFilter.Show();
-
-                        if (this._wndForFilter != null && this._wndForFilter.IsEnabled == true && this._wndForFilter.IsLoaded == false)
-                        {
-                            //this._wndForFilter.ShowDialog();
-                            //this._wndForFilter
-
-
-                        }
-            */
-
 
 
         }
