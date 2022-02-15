@@ -37,14 +37,14 @@ namespace WpfDBMS027
     }
 
 
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
 
-
-        readonly static IDictionary<OperatorSignComparision, string> OperatorSignComparisionStrings = new Dictionary<OperatorSignComparision, string> 
+        public readonly static IDictionary<OperatorSignComparision, string> OperatorSignComparisionStrings = new Dictionary<OperatorSignComparision, string>
         {
             { OperatorSignComparision._EQ_, "==" },
             { OperatorSignComparision._NE_, "!="},
@@ -58,13 +58,18 @@ namespace WpfDBMS027
             { OperatorSignComparision._BETWEEN_STRICT_RIGHT_, "<= .. >"}
         };
 
-
-        readonly static IDictionary<OperatorSignLogic, string> OperatorSignLogicStrings = new Dictionary<OperatorSignLogic, string>
+        public readonly static IDictionary<OperatorSignLogic, string> OperatorSignLogicStrings = new Dictionary<OperatorSignLogic, string>
         {
             { OperatorSignLogic._AND_, "AND" },
             { OperatorSignLogic._OR_, "OR"},
             { OperatorSignLogic._NOT_, "NOT"}
         };
+
+
+
+
+
+
 
         private CollectionViewSource tel_vid_connectionViewSource;
 
@@ -484,24 +489,24 @@ namespace WpfDBMS027
             PopupSearch.PlacementTarget = btn_Search;
             PopupSearch.IsOpen = true;
 
-/*            if (this._DBGrid_Editing_Mode != DBGrid_editing_mode.SEARCHING_MODE)
-            {
+            /*            if (this._DBGrid_Editing_Mode != DBGrid_editing_mode.SEARCHING_MODE)
+                        {
 
-            }
-            this._DBGrid_Editing_Mode = DBGrid_editing_mode.SEARCHING_MODE;
-            btn_OK.IsEnabled = true;
-            btn_OK.Content = "Найти";
+                        }
+                        this._DBGrid_Editing_Mode = DBGrid_editing_mode.SEARCHING_MODE;
+                        btn_OK.IsEnabled = true;
+                        btn_OK.Content = "Найти";
 
-            //this._wndForFilter.Show();
+                        //this._wndForFilter.Show();
 
-            if (this._wndForFilter != null && this._wndForFilter.IsEnabled == true && this._wndForFilter.IsLoaded == false)
-            {
-                //this._wndForFilter.ShowDialog();
-                //this._wndForFilter
+                        if (this._wndForFilter != null && this._wndForFilter.IsEnabled == true && this._wndForFilter.IsLoaded == false)
+                        {
+                            //this._wndForFilter.ShowDialog();
+                            //this._wndForFilter
 
 
-            }
-*/
+                        }
+            */
 
 
 
