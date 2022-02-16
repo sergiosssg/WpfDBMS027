@@ -83,5 +83,10 @@ namespace WpfDBMS027
             }
             return false;
         }
+
+        public override int GetHashCode()
+        {
+            return this.;
+        }
     }
 }
