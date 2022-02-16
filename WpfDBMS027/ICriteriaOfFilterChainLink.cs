@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace WpfDBMS027
 {
-    interface ICriteriaOfFilterChainLink<T>
+    public interface ICriteriaOfFilterChainLink<T>
     {
+        
     }
 }
