@@ -50,6 +50,36 @@ namespace WpfDBMS027
         }
 
 
+
+        public bool CompareByDefault(object obj)
+        {
+            if(obj == null || obj.GetType() != typeof(PO_TEL_VID_CONNECT))
+            {
+                return false;
+            }
+
+            PO_TEL_VID_CONNECT obj_TEL_VID_CONNECT = (PO_TEL_VID_CONNECT)obj;
+
+            if (this.isEmpty() || obj_TEL_VID_CONNECT.isEmpty())
+            {
+                return false;
+            }
+            else if (this.Id == obj_TEL_VID_CONNECT.Id && this.KodOfConnect == string.Empty && this.Name == string.Empty)
+            {
+                return true;
+            }
+            else if (this.Id == 0 && this.KodOfConnect.Equals(obj_TEL_VID_CONNECT.KodOfConnect) && this.Name == string.Empty)
+            {
+                return true;
+            }
+            else if (this.Id == 0 && this.KodOfConnect == string.Empty && this.Name.Equals(obj_TEL_VID_CONNECT.Name))
+            {
+                return true;
+            }
+            return false;
+        }
+
+
         public bool isEmpty()
         {
             if (this.Id == 0 && this.KodOfConnect == string.Empty && this.Name == string.Empty)
@@ -86,7 +116,7 @@ namespace WpfDBMS027
 
         public override int GetHashCode()
         {
-            return this.;
+            return this.Id;
         }
     }
 }
