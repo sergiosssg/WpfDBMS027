@@ -15,14 +15,14 @@ namespace WpfDBMS027
         public CriteriaOfFilterChainLink()
         {
             this._oneItemOfCriteria = default(T);
-            this._operatorSignComparision = OperatorSignComparision._EQ_;
+            this._operatorSignComparision = OperatorSignComparision._REGEX_;
             this._operatorSignLogic = OperatorSignLogic._NIL_;
         }
 
         public CriteriaOfFilterChainLink(T el)
         {
             this._oneItemOfCriteria = el;
-            this._operatorSignComparision = OperatorSignComparision._EQ_;
+            this._operatorSignComparision = OperatorSignComparision._REGEX_;
             this._operatorSignLogic = OperatorSignLogic._NIL_;
         }
 
