@@ -8,10 +8,14 @@ namespace WpfDBMS027
 {
     public class CriteriaOfFilter<T>
     {
-        public CriteriaOfFilter()
-        {
 
-        }
+        private ICollection<ICriteriaOfFilterChainLink<T>>  _criteriaOfFilterCollection;
+
+
+        public CriteriaOfFilter() => this._criteriaOfFilterCollection = new List<ICriteriaOfFilterChainLink<T>>();
+
+
+
 
 
     }
