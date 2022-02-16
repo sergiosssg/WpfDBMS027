@@ -13,7 +13,7 @@ namespace WpfDBMS027
 
     public enum OperatorSignLogic
     {
-        _AND_, _OR_, _NOT_
+        _AND_, _OR_, _NOT_, _NIL_
     }
 
 
