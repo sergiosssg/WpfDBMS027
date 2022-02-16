@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WpfDBMS027
 {
-    public class CriteriaOfFilterChainLink<T>
+    public class CriteriaOfFilterChainLink<T> : ICriteriaOfFilterChainLink<T>
     {
         private T  _oneItemOfCriteria;
         private OperatorSignComparision _operatorSignComparision;
