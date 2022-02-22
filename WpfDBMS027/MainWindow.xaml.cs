@@ -1018,7 +1018,10 @@ namespace WpfDBMS027
 
         private void cmb_ID_from_filter_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ; ; ; ; ; ; ; ; ;
+            if(cmb_ID_from_filter.Text.Equals("< .. >") || cmb_ID_from_filter.Text.Equals("<= .. >=") || cmb_ID_from_filter.Text.Equals("< .. >=") || cmb_ID_from_filter.Text.Equals("<= .. >"))
+            {
+                ;
+            }
         }
 
         private void cmb_KOD_from_filter_SelectionChanged(object sender, SelectionChangedEventArgs e)
