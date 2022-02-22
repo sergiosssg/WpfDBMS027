@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -44,8 +45,15 @@ namespace WpfDBMS027
     public partial class MainWindow : Window
     {
 
+
+        static CriteriaOfFilter<PO_TEL_VID_CONNECT> CriteriaOfFilterCollection;
+
+
+        static public readonly IEnumerable<PO_TEL_VID_CONNECT> TEL_VID_CONNECTs;
+
+
         //public readonly static IDictionary<OperatorSignComparision, string> OperatorSignComparisionStrings = new Dictionary<OperatorSignComparision, string>
-        public readonly static IDictionary< string, OperatorSignComparision> OperatorSignComparisionStrings = new Dictionary< string, OperatorSignComparision>
+        public readonly static IDictionary<string, OperatorSignComparision> OperatorSignComparisionStrings = new Dictionary<string, OperatorSignComparision>
         {
             {  "==", OperatorSignComparision._EQ_ },
             { "!=", OperatorSignComparision._NE_},
@@ -59,14 +67,64 @@ namespace WpfDBMS027
             { "<= .. >", OperatorSignComparision._BETWEEN_STRICT_RIGHT_}
         };
 
+
+
         public readonly static IDictionary<string, OperatorSignLogic> OperatorSignLogicStrings = new Dictionary<string, OperatorSignLogic>
         {
             { "AND", OperatorSignLogic._AND_ },
             { "OR", OperatorSignLogic._OR_},
-            { "NOT", OperatorSignLogic._NOT_}
+            { "AND NOT", OperatorSignLogic._AND_NOT_},
+            { "OR NOT", OperatorSignLogic._OR_NOT_},
+            { "NIL", OperatorSignLogic._NIL_}
         };
 
 
+
+
+        static public readonly IDictionary<OperatorSignComparision, DelegateOperatorForComparision<PO_TEL_VID_CONNECT>> MapComparisioOperatorToComparisionPredicate = new Dictionary<OperatorSignComparision, DelegateOperatorForComparision<PO_TEL_VID_CONNECT>>()
+        {
+            { OperatorSignComparision._EQ_, (arg1, arg2, operatorComparision)=> ( operatorComparision == OperatorSignComparision._EQ_) &&
+                                                                                (( arg1.Id == arg2.Id ) ||
+                                                                                ( arg2.KodOfConnect != string.Empty  && arg1.KodOfConnect.Equals(arg2.KodOfConnect) ) ||
+                                                                                ( arg2.Name != string.Empty && arg1.Name.Equals( arg2.Name))) },
+            { OperatorSignComparision._NE_, (arg1, arg2, operatorComparision)=> ( operatorComparision == OperatorSignComparision._NE_) &&
+                                                                                (( arg1.Id != arg2.Id ) &&
+                                                                                ( arg2.KodOfConnect != string.Empty && !arg1.KodOfConnect.Equals(arg2.KodOfConnect) ) &&
+                                                                                ( arg2.Name != string.Empty && !arg1.Name.Equals( arg2.Name))) },
+            { OperatorSignComparision._GT_, (arg1, arg2, operatorComparision)=> {
+                                                                 return ( operatorComparision == OperatorSignComparision._GT_) &&
+                                                                              (( arg1.Id > arg2.Id ) ||
+                                                                              (arg2.KodOfConnect != string.Empty &&
+                                                                              string.Compare(arg1.KodOfConnect, arg2.KodOfConnect, StringComparison.OrdinalIgnoreCase) > 0) ||
+                                                                              ( arg2.Name != string.Empty &&
+                                                                              string.Compare(arg1.Name, arg2.Name, StringComparison.OrdinalIgnoreCase) > 0)); } },
+            { OperatorSignComparision._LT_, (arg1, arg2, operatorComparision)=> {
+                                                                 return ( operatorComparision == OperatorSignComparision._LT_) &&
+                                                                              ( ( arg1.Id < arg2.Id ) ||
+                                                                              (arg2.KodOfConnect != string.Empty &&
+                                                                              string.Compare(arg1.KodOfConnect, arg2.KodOfConnect, StringComparison.OrdinalIgnoreCase) < 0) ||
+                                                                              ( arg2.Name != string.Empty  &&
+                                                                              string.Compare(arg1.Name, arg2.Name, StringComparison.OrdinalIgnoreCase) < 0)); } },
+            { OperatorSignComparision._GE_, (arg1, arg2, operatorComparision)=> {
+                                                                 return ( operatorComparision == OperatorSignComparision._GE_) &&
+                                                                              (( arg1.Id >= arg2.Id ) ||
+                                                                              (arg2.KodOfConnect != string.Empty &&
+                                                                              string.Compare(arg1.KodOfConnect, arg2.KodOfConnect, StringComparison.OrdinalIgnoreCase) >= 0) ||
+                                                                              ( arg2.Name != string.Empty &&
+                                                                              string.Compare(arg1.Name, arg2.Name, StringComparison.OrdinalIgnoreCase) >= 0)); } },
+            { OperatorSignComparision._LE_, (arg1, arg2, operatorComparision)=> {
+                                                                 return ( operatorComparision == OperatorSignComparision._LE_) &&
+                                                                              (( arg1.Id <= arg2.Id ) ||
+                                                                              (arg2.KodOfConnect != string.Empty  &&
+                                                                              string.Compare(arg1.KodOfConnect, arg2.KodOfConnect, StringComparison.OrdinalIgnoreCase) <= 0) ||
+                                                                              ( arg2.Name != string.Empty &&
+                                                                              string.Compare(arg1.Name, arg2.Name, StringComparison.OrdinalIgnoreCase) <= 0)); } },
+            { OperatorSignComparision._REGEX_, (arg1, arg2, operatorComparision)=> {
+                                                                 var regexTemplate = (arg2.KodOfConnect != string.Empty)? new Regex(arg2.KodOfConnect, RegexOptions.IgnoreCase) : (arg2.Name != string.Empty)? new Regex(arg2.Name, RegexOptions.IgnoreCase) : new Regex("");
+                                                                 return ( operatorComparision == OperatorSignComparision._REGEX_) &&
+                                                                              ( arg1.KodOfConnect != null  &&   !arg1.KodOfConnect.Equals(string.Empty) && regexTemplate.IsMatch(arg1.KodOfConnect) ||
+                                                                              ( arg1.Name != null  &&   !arg1.Name.Equals(string.Empty) &&  regexTemplate.IsMatch( arg1.Name))); }}
+        };
 
 
 
@@ -779,19 +837,198 @@ namespace WpfDBMS027
         {
 
 
-/*            cmb_ID_from_filter; 
-            cmb_LogicOperator12;
-            cmb_KOD_from_filter;
-            cmb_LogicOperator23;
-            cmb_Name_from_filter;*/
 
+            if (!txtfld_ID_from_filter_left.Text.Equals(string.Empty) ||
+                !txtfld_ID_from_filter_right.Text.Equals(string.Empty) ||
+                !txtfld_KOD_from_filter_left.Text.Equals(string.Empty) ||
+                !txtfld_KOD_from_filter_right.Text.Equals(string.Empty) ||
+                !txtfld_Name_from_filter_left.Text.Equals(string.Empty) ||
+                !txtfld_Name_from_filter_right.Text.Equals(string.Empty))
+            {
+                if (!txtfld_ID_from_filter_left.Text.Equals(string.Empty) && txtfld_ID_from_filter_right.Text.Equals(string.Empty))
+                {
+
+                    CriteriaOfFilterCollection = MakeCriteriaOfFilterFromTextField(CriteriaOfFilterCollection, txtfld_ID_from_filter_left, cmb_ID_from_filter, cmb_ID_from_filter, 0);
+
+                }
+                if (!txtfld_ID_from_filter_right.Text.Equals(string.Empty))
+                {
+
+                }
+                if (!txtfld_KOD_from_filter_left.Text.Equals(string.Empty) && txtfld_KOD_from_filter_right.Text.Equals(string.Empty))
+                {
+
+                    CriteriaOfFilterCollection = MakeCriteriaOfFilterFromTextField(CriteriaOfFilterCollection, txtfld_KOD_from_filter_left, cmb_KOD_from_filter, cmb_LogicOperator12, 1);
+                }
+                if (!txtfld_KOD_from_filter_right.Text.Equals(string.Empty))
+                {
+
+                }
+                if (!txtfld_Name_from_filter_left.Text.Equals(string.Empty) && txtfld_Name_from_filter_right.Text.Equals(string.Empty))
+                {
+
+                    CriteriaOfFilterCollection = MakeCriteriaOfFilterFromTextField(CriteriaOfFilterCollection, txtfld_Name_from_filter_left, cmb_Name_from_filter, cmb_LogicOperator23, 2);
+                }
+                if (!txtfld_Name_from_filter_right.Text.Equals(string.Empty))
+                {
+
+                }
+                mainWindowForGrid.IsEnabled = true;
+                PopupSearch.IsOpen = false;
+            }
+
+
+            //this._DBGrid_Editing_Mode;
+
+
+            //this._is_found_PO_TEL_VID_CONNECT
 
         }
+
+
+
+
 
         private void btn_Cancel_from_popupfilter_Click(object sender, RoutedEventArgs e)
         {
             mainWindowForGrid.IsEnabled = true;
             PopupSearch.IsOpen = false;
+        }
+
+
+
+        /**
+         * <summary>
+         * 
+         * 
+         * </summary>
+         */
+        static private CriteriaOfFilter<PO_TEL_VID_CONNECT> MakeCriteriaOfFilterFromTextField(CriteriaOfFilter<PO_TEL_VID_CONNECT> inputCriteriaOfFilter,
+                                                                                               TextBox inputTextBoxOfCriteriaItem,
+                                                                                               ComboBox inputCmBoxOfComparisionOperationInCriteria,
+                                                                                               ComboBox inputCmBoxOfLogicalOperationInCriteria,
+                                                                                               int indxOfFieldIn)
+        {
+            if (inputCriteriaOfFilter == null)
+            {
+                inputCriteriaOfFilter = new CriteriaOfFilter<PO_TEL_VID_CONNECT>();
+            }
+
+            if (inputTextBoxOfCriteriaItem.Text.Equals(string.Empty))
+            {
+                PO_TEL_VID_CONNECT pTELVIDCONNECT = new PO_TEL_VID_CONNECT();
+
+                try
+                {
+                    if (indxOfFieldIn == 0)
+                    {
+                        int Id_dirty = -1;
+                        bool isParsable = Int32.TryParse(inputTextBoxOfCriteriaItem.Text, out Id_dirty);
+                        if (isParsable)
+                        {
+                            pTELVIDCONNECT.Id = Id_dirty;
+                        }
+                    }
+                    else if (indxOfFieldIn == 1)
+                    {
+                        pTELVIDCONNECT.KodOfConnect = inputTextBoxOfCriteriaItem.Text;
+
+                    }
+                    else if (indxOfFieldIn == 2)
+                    {
+                        pTELVIDCONNECT.Name = inputTextBoxOfCriteriaItem.Text;
+                    }
+
+                    var operatorSignComparision = MakeOperatorSignComparisionEnumFromCombobox(inputCmBoxOfComparisionOperationInCriteria, MainWindow.OperatorSignComparisionStrings);
+                    var operatorSignLogic = MakeOperatorSignLogicComparisionEnumFromCombobox(inputCmBoxOfLogicalOperationInCriteria, MainWindow.OperatorSignLogicStrings);
+                    var oneCriteriaOfFilterChainLink = new CriteriaOfFilterChainLink<PO_TEL_VID_CONNECT>();
+                    oneCriteriaOfFilterChainLink.ItemOfCriteria = pTELVIDCONNECT;
+                    oneCriteriaOfFilterChainLink.OperatorComparision = operatorSignComparision;
+                    oneCriteriaOfFilterChainLink.OperatorLogic = operatorSignLogic;
+                    inputCriteriaOfFilter.Add(oneCriteriaOfFilterChainLink, MainWindow.MapComparisioOperatorToComparisionPredicate[operatorSignComparision]);
+                }
+                catch (FormatException fex)
+                {
+                    Console.WriteLine($" {fex.Message} ");
+                    Console.WriteLine($" {fex.StackTrace} ");
+                    Console.WriteLine($" {fex.Source} ");
+                }
+                catch (NullReferenceException nre)
+                {
+                    Console.WriteLine($" {nre.HResult} ");
+                    Console.WriteLine($" {nre.Message} ");
+                    Console.WriteLine($" {nre.StackTrace} ");
+                    Console.WriteLine($" {nre.Source} ");
+                }
+
+            }
+
+
+            return inputCriteriaOfFilter;
+        }
+
+
+        /**
+         * <summary>
+         * 
+         * 
+         * </summary>
+         */
+        static private OperatorSignComparision MakeOperatorSignComparisionEnumFromCombobox(ComboBox inputCmBoxOfComparisionOperationInCriteria, IDictionary<string, OperatorSignComparision> operatorSignComparisionStringsDictionary)
+        {
+            if (operatorSignComparisionStringsDictionary.ContainsKey(inputCmBoxOfComparisionOperationInCriteria.Text))
+            {
+                return operatorSignComparisionStringsDictionary[inputCmBoxOfComparisionOperationInCriteria.Text];
+            }
+            return OperatorSignComparision._REGEX_;
+        }
+
+
+        /**
+         * <summary>
+         * 
+         * 
+         * </summary>
+         */
+        static private OperatorSignLogic MakeOperatorSignLogicComparisionEnumFromCombobox(ComboBox inputCmBoxOfComparisionOperationInCriteria, IDictionary<string, OperatorSignLogic> operatorSignLogicComparisionStringsDictionary)
+        {
+            if (operatorSignLogicComparisionStringsDictionary.ContainsKey(inputCmBoxOfComparisionOperationInCriteria.Text))
+            {
+                return operatorSignLogicComparisionStringsDictionary[inputCmBoxOfComparisionOperationInCriteria.Text];
+            }
+            return OperatorSignLogic._NIL_;
+        }
+
+
+        static CriteriaOfFilter<PO_TEL_VID_CONNECT> PrepareCollectionOfComparisionCriteria(IEnumerable<CriteriaOfFilterChainLink<PO_TEL_VID_CONNECT>> criteriaOfFilterCollection)
+        {
+            CriteriaOfFilter<PO_TEL_VID_CONNECT> collectionOfCriteria = new CriteriaOfFilter<PO_TEL_VID_CONNECT>();
+
+
+            if (criteriaOfFilterCollection != null)
+            {
+                foreach (var oneCriteriaOfFilter in criteriaOfFilterCollection)
+                {
+                    collectionOfCriteria.Add(oneCriteriaOfFilter, MapComparisioOperatorToComparisionPredicate[oneCriteriaOfFilter.OperatorComparision]);
+                }
+            }
+
+            return collectionOfCriteria;
+        }
+
+        private void cmb_ID_from_filter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ; ; ; ; ; ; ; ; ;
+        }
+
+        private void cmb_KOD_from_filter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ; ; ; ; ; ; ; ; ;
+        }
+
+        private void cmb_Name_from_filter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ; ; ; ; ; ; ; ; ;
         }
     }
 }

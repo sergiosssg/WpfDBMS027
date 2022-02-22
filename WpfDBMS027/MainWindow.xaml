@@ -84,7 +84,7 @@
                     <Separator Width="6"/>
                     <Label Content="ID :"/>
                     <Separator Width="4" />
-                    <ComboBox x:Name="cmb_ID_from_filter">
+                    <ComboBox x:Name="cmb_ID_from_filter" SelectionChanged="cmb_ID_from_filter_SelectionChanged">
                     </ComboBox>
                     <Separator Width="4" />
                     <TextBox x:Name="txtfld_ID_from_filter_left" Width="84"/>
@@ -101,7 +101,7 @@
                     <Separator Width="6"/>
                     <Label Content="Код :" />
                     <Separator Width="4"/>
-                    <ComboBox  x:Name="cmb_KOD_from_filter"/>
+                    <ComboBox  x:Name="cmb_KOD_from_filter" SelectionChanged="cmb_KOD_from_filter_SelectionChanged"/>
                     <Separator Width="4"/>
                     <TextBox x:Name="txtfld_KOD_from_filter_left" Width="84"/>
                     <Separator Width="12" />
@@ -118,7 +118,7 @@
                     <Separator Width="6"/>
                     <Label Content="Name :" />
                     <Separator Width="4"/>
-                    <ComboBox x:Name="cmb_Name_from_filter"/>
+                    <ComboBox x:Name="cmb_Name_from_filter" SelectionChanged="cmb_Name_from_filter_SelectionChanged"/>
                     <Separator Width="4"/>
                     <TextBox x:Name="txtfld_Name_from_filter_left" Width="204"/>
                     <Separator Width="12" />
