@@ -84,8 +84,7 @@
                     <Separator Width="6"/>
                     <Label Content="ID :"/>
                     <Separator Width="4" />
-                    <ComboBox x:Name="cmb_ID_from_filter" SelectionChanged="cmb_ID_from_filter_SelectionChanged">
-                    </ComboBox>
+                    <ComboBox x:Name="cmb_ID_from_filter"/>
                     <Separator Width="4" />
                     <TextBox x:Name="txtfld_ID_from_filter_left" Width="84"/>
                     <Separator Width="12" Visibility="Hidden"/>
