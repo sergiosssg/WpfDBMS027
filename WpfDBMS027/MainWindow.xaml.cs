@@ -128,6 +128,53 @@ namespace WpfDBMS027
 
 
 
+        static public readonly IDictionary<OperatorSignComparision, DelegateOperatorForComparisionWithTuples<PO_TEL_VID_CONNECT>> MapComparisioOperatorToComparisionPredicateWithTuples = new Dictionary<OperatorSignComparision, DelegateOperatorForComparisionWithTuples<PO_TEL_VID_CONNECT>>()
+        {
+            { OperatorSignComparision._EQ_, ( arg4compating, argSample, operatorComparision)=> ( operatorComparision == OperatorSignComparision._EQ_) &&
+                                                                                (( arg4compating.Item1.Id == argSample.Item1.Id ) ||
+                                                                                ( arg4compating.Item1.KodOfConnect != string.Empty  && argSample.Item1.KodOfConnect != string.Empty  && arg4compating.Item1.KodOfConnect.Equals( argSample.Item1.KodOfConnect) ) ||
+                                                                                ( arg4compating.Item1.Name != string.Empty && argSample.Item1.Name != string.Empty && arg4compating.Item1.Name.Equals( argSample.Item1.Name))) },
+            { OperatorSignComparision._NE_, ( arg4compating, argSample, operatorComparision)=> ( operatorComparision == OperatorSignComparision._NE_) &&
+                                                                                (( arg4compating.Item1.Id != argSample.Item1.Id ) &&
+                                                                                ( arg4compating.Item1.KodOfConnect != string.Empty && argSample.Item1.KodOfConnect != string.Empty && !arg4compating.Item1.KodOfConnect.Equals( argSample.Item1.KodOfConnect) ) &&
+                                                                                ( arg4compating.Item1.Name != string.Empty && argSample.Item1.Name != string.Empty && !arg4compating.Item1.Name.Equals( argSample.Item1.Name))) },
+            { OperatorSignComparision._GT_, ( arg4compating, argSample, operatorComparision)=> {
+                                                                 return ( operatorComparision == OperatorSignComparision._GT_) &&
+                                                                              (( arg4compating.Item1.Id > argSample.Item1.Id ) ||
+                                                                              ( arg4compating.Item1.KodOfConnect != string.Empty && argSample.Item1.KodOfConnect != string.Empty &&
+                                                                              string.Compare( arg4compating.Item1.KodOfConnect, argSample.Item1.KodOfConnect, StringComparison.OrdinalIgnoreCase) > 0) ||
+                                                                              ( arg4compating.Item1.Name != string.Empty && argSample.Item1.Name != string.Empty &&
+                                                                              string.Compare( arg4compating.Item1.Name, argSample.Item1.Name, StringComparison.OrdinalIgnoreCase) > 0)); } },
+            { OperatorSignComparision._LT_, ( arg4compating, argSample, operatorComparision)=> {
+                                                                 return ( operatorComparision == OperatorSignComparision._LT_) &&
+                                                                              ( (  arg4compating.Item1.Id < argSample.Item1.Id ) ||
+                                                                              ( arg4compating.Item1.KodOfConnect != string.Empty && argSample.Item1.KodOfConnect != string.Empty &&
+                                                                              string.Compare( arg4compating.Item1.KodOfConnect, argSample.Item1.KodOfConnect, StringComparison.OrdinalIgnoreCase) < 0) ||
+                                                                              ( arg4compating.Item1.Name != string.Empty && argSample.Item1.Name != string.Empty  &&
+                                                                              string.Compare( arg4compating.Item1.Name, argSample.Item1.Name, StringComparison.OrdinalIgnoreCase) < 0)); } },
+            { OperatorSignComparision._GE_, ( arg4compating, argSample, operatorComparision)=> {
+                                                                 return ( operatorComparision == OperatorSignComparision._GE_) &&
+                                                                              ((  arg4compating.Item1.Id >= argSample.Item1.Id ) ||
+                                                                              (  arg4compating.Item1.KodOfConnect != string.Empty && argSample.Item1.KodOfConnect != string.Empty &&
+                                                                              string.Compare( arg4compating.Item1.KodOfConnect, argSample.Item1.KodOfConnect, StringComparison.OrdinalIgnoreCase) >= 0) ||
+                                                                              ( arg4compating.Item1.Name != string.Empty && argSample.Item1.Name != string.Empty &&
+                                                                              string.Compare( arg4compating.Item1.Name, argSample.Item1.Name, StringComparison.OrdinalIgnoreCase) >= 0)); } },
+            { OperatorSignComparision._LE_, ( arg4compating, argSample, operatorComparision)=> {
+                                                                 return ( operatorComparision == OperatorSignComparision._LE_) &&
+                                                                              (( arg4compating.Item1.Id <= argSample.Item1.Id ) ||
+                                                                              (  arg4compating.Item1.KodOfConnect != string.Empty && argSample.Item1.KodOfConnect != string.Empty  &&
+                                                                              string.Compare( arg4compating.Item1.KodOfConnect, argSample.Item1.KodOfConnect, StringComparison.OrdinalIgnoreCase) <= 0) ||
+                                                                              ( arg4compating.Item1.Name != string.Empty && argSample.Item1.Name != string.Empty &&
+                                                                              string.Compare( arg4compating.Item1.Name, argSample.Item1.Name, StringComparison.OrdinalIgnoreCase) <= 0)); } },
+            { OperatorSignComparision._REGEX_, ( arg4compating, argSample, operatorComparision)=> {
+                                                                 var regexTemplate = (argSample.Item1.KodOfConnect != string.Empty)? new Regex(argSample.Item1.KodOfConnect, RegexOptions.IgnoreCase) : (argSample.Item1.Name != string.Empty)? new Regex(argSample.Item1.Name, RegexOptions.IgnoreCase) : new Regex("");
+                                                                 return ( operatorComparision == OperatorSignComparision._REGEX_) &&
+                                                                              ( arg4compating.Item1.KodOfConnect != null  &&   !arg4compating.Item1.KodOfConnect.Equals(string.Empty) && regexTemplate.IsMatch( arg4compating.Item1.KodOfConnect) ||
+                                                                              (  arg4compating.Item1.Name != null  &&   !arg4compating.Item1.Name.Equals(string.Empty) &&  regexTemplate.IsMatch( arg4compating.Item1.Name))); }}
+        };
+
+
+
 
 
         private CollectionViewSource tel_vid_connectionViewSource;
