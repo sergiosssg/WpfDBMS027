@@ -10,6 +10,9 @@ namespace WpfDBMS027
     public delegate bool DelegateOperatorForComparision<T>(T arg1, T arg2, OperatorSignComparision operatorLogic);
 
 
+    public delegate bool DelegateOperatorForComparisionWithTuples<T>((T,T) arg4compating, (T,T) argSample, OperatorSignComparision operatorLogic);
+
+
     public enum OperatorSignComparision
     {
         _EQ_, _NE_, _GT_, _LT_, _GE_, _LE_, _BETWEEN_STRICT_, _BETWEEN_STRICT_LEFT_, _BETWEEN_STRICT_RIGHT_, _BETWEEN_NO_STRICT_, _REGEX_
