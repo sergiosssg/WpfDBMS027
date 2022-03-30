@@ -444,6 +444,7 @@ namespace WpfDBMS027
 
         private void dgrid__VID_CONNECT_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
         {
+/*
             this._po_tel_vid_connect = (PO_TEL_VID_CONNECT)dgrid__VID_CONNECT.CurrentItem;
             if (this._DBGrid_Editing_Mode == DBGrid_editing_mode.PREMODIFY_MODE && !this._po_tel_vid_connect.isEmpty())
             {
@@ -452,7 +453,7 @@ namespace WpfDBMS027
             else if (this._DBGrid_Editing_Mode == DBGrid_editing_mode.PREMODIFY_MODE && this._po_tel_vid_connect.isEmpty())
             {
                 this._DBGrid_Editing_Mode = DBGrid_editing_mode.ADDING_MODE;
-            }
+            }*/
 
             ;
 
@@ -464,7 +465,7 @@ namespace WpfDBMS027
 
         private void dgrid__VID_CONNECT_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
-            PO_TEL_VID_CONNECT currRecord_TEL_VID_CONNECT = (PO_TEL_VID_CONNECT)dgrid__VID_CONNECT.CurrentItem;
+/*            PO_TEL_VID_CONNECT currRecord_TEL_VID_CONNECT = (PO_TEL_VID_CONNECT)dgrid__VID_CONNECT.CurrentItem;
 
 
             bool resultOfComparingOfRecords = is_validRecord(currRecord_TEL_VID_CONNECT);
@@ -474,7 +475,9 @@ namespace WpfDBMS027
             if (resultOfComparingOfRecords)
             {
                 btnSave.IsEnabled = true;
-            }
+            }*/
+
+            ;
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
