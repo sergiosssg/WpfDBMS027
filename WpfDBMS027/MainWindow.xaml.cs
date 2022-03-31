@@ -455,8 +455,14 @@ namespace WpfDBMS027
                 this._DBGrid_Editing_Mode = DBGrid_editing_mode.ADDING_MODE;
             }*/
 
-            ;
-
+            if (sender != null)
+            {
+                DataGrid grid = sender as DataGrid;
+                if(grid != null)
+                {
+                    
+                }
+            }
         }
 
 
@@ -675,18 +681,8 @@ namespace WpfDBMS027
 
                     var itemsOf_TEL_VID_CONNECT = dbAppContext.pO_TEL_VID_CONNECTs.Local.ToBindingList();
 
-                    Type ttt = itemsOf_TEL_VID_CONNECT.GetType();
 
-                    var arrayOfInterfaces = ttt.GetInterfaces();
 
-                    foreach (var oneTypeOfInterface in arrayOfInterfaces)
-                    {
-                        var strOfInterfaceType = oneTypeOfInterface.Name;
-                        if (strOfInterfaceType.EndsWith("INotifyCollectionChanged"))
-                        {
-                            ; ; ;
-                        }
-                    }
 
                     dGrid.ItemsSource = itemsOf_TEL_VID_CONNECT;
 
