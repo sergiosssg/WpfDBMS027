@@ -682,9 +682,30 @@ namespace WpfDBMS027
                     var itemsOf_TEL_VID_CONNECT = dbAppContext.pO_TEL_VID_CONNECTs.Local.ToBindingList();
 
 
+                    CollectionViewSource collectionViewSource = new CollectionViewSource();
+
+                    collectionViewSource.Source = itemsOf_TEL_VID_CONNECT;
 
 
-                    dGrid.ItemsSource = itemsOf_TEL_VID_CONNECT;
+                    Binding binding = new Binding();
+
+                    binding.Source = collectionViewSource;
+
+                    binding.Mode = BindingMode.TwoWay;
+
+                    binding.BindsDirectlyToSource = true;
+
+                    //binding.ElementName = "binding_to_dgrid__VID_CONNECT";
+
+
+                    
+
+
+                    dGrid.DataContext = binding;
+
+                    //dGrid.BindingGroup
+                    //dGrid.ItemsSource = itemsOf_TEL_VID_CONNECT;
+
 
 
 
