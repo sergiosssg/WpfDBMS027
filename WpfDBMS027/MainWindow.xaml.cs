@@ -238,8 +238,8 @@ namespace WpfDBMS027
         {
             DbConnectionStringBuilder builder = new SqlConnectionStringBuilder();
 
-            builder["Data Source"] = "localhost";
-            //builder["Data Source"] = @"localhost\SQLExpress";
+            //builder["Data Source"] = "localhost";
+            builder["Data Source"] = @"localhost\SQLExpress";
 
             builder["Database"] = "sampd_cexs";
 
@@ -698,14 +698,15 @@ namespace WpfDBMS027
                     //binding.ElementName = "binding_to_dgrid__VID_CONNECT";
 
 
-                    
 
 
-                    dGrid.DataContext = binding;
+
+                    //dGrid.DataContext = binding;
 
                     //dGrid.BindingGroup
                     //dGrid.ItemsSource = itemsOf_TEL_VID_CONNECT;
-
+                    
+                    dGrid.ItemsSource = collectionViewSource.View;
 
 
 
