@@ -949,7 +949,23 @@ namespace WpfDBMS027
                  * 
                  */
 
-                
+
+                //this._tel_vid_connection_CollectionViewSource.Filter =  settingPredicateOf_CollViewSourceFilterringFromCriteriasOfFilter<PO_TEL_VID_CONNECT>(DbAppContextProperty, CriteriaOfFilterCollection, this._tel_vid_connection_CollectionViewSource);
+
+
+                /*    this._tel_vid_connection_CollectionViewSource.Filter = new FilterEventHandler(object sender, FilterEventArgs args)
+                    {
+                        return null;
+                    }*/
+
+
+                /*
+                 * 
+                 *   
+                 * 
+                 * 
+                 * 
+                 */
 
 
 
@@ -1113,7 +1129,7 @@ namespace WpfDBMS027
         }
 
 
-        static Predicate<object> settingPredicateOf_CollViewSourceFilterringFromCriteriasOfFilter<T>( DbContext dbContext, CriteriaOfFilter<T> criteriaOfFilter, CollectionViewSource collectionViewSource = null)
+        static Predicate<Object> settingPredicateOf_CollViewSourceFilterringFromCriteriasOfFilter<T>( DbContext dbContext, CriteriaOfFilter<T> criteriaOfFilter, CollectionViewSource collectionViewSource = null)
         {
             if (collectionViewSource == null)
             {
@@ -1134,15 +1150,8 @@ namespace WpfDBMS027
         }
 
 
-        /*        private void cmb_ID_from_filter_Selected(object sender, RoutedEventArgs e)
-                {
+        //private void showOnlyInCollection()
 
-                    if(cmb_ID_from_filter.Text.Equals("< .. >") || cmb_ID_from_filter.Text.Equals("<= .. >=") || cmb_ID_from_filter.Text.Equals("< .. >=") || cmb_ID_from_filter.Text.Equals("<= .. >"))
-                    {
-                        ;
-                    }
-                }
-        */
 
     }
 }
