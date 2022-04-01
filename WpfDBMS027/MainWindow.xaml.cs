@@ -950,6 +950,10 @@ namespace WpfDBMS027
                  */
 
                 
+
+
+
+
                 mainWindowForGrid.IsEnabled = true;
                 PopupSearch.IsOpen = false;
             }
@@ -1109,7 +1113,7 @@ namespace WpfDBMS027
         }
 
 
-        static Predicate<object> settingPredicateOf_CollViewSourceFilterringFromCriteriasOfFilter<T>(T element, DbContext dbContext, CriteriaOfFilter<T> criteriaOfFilter, CollectionViewSource collectionViewSource = null)
+        static Predicate<object> settingPredicateOf_CollViewSourceFilterringFromCriteriasOfFilter<T>( DbContext dbContext, CriteriaOfFilter<T> criteriaOfFilter, CollectionViewSource collectionViewSource = null)
         {
             if (collectionViewSource == null)
             {
