@@ -10,7 +10,7 @@ namespace WpfDBMS027
     public delegate bool DelegateOperatorForComparision<T>(T arg1, T arg2, OperatorSignComparision operatorLogic);
 
 
-    public delegate bool DelegateOperatorForComparisionWithTuples<T>((T,T) arg4compating, (T,T) argSample, OperatorSignComparision operatorLogic);
+    public delegate bool DelegateOperatorForComparisionWithTuples<T>((T, T) arg4compating, (T, T) argSample, OperatorSignComparision operatorLogic);
 
 
     public enum OperatorSignComparision
@@ -26,15 +26,15 @@ namespace WpfDBMS027
 
 
 
-/*
-    public interface IOperatorForComparision<T>
-    {
+    /*
+        public interface IOperatorForComparision<T>
+        {
 
-        public bool ComparisionSimpleOperator(T arg, OperatorSignLogic operatorLogic, IOperatorPredicateForComparision<T> operatorPredicateForComparision);
+            public bool ComparisionSimpleOperator(T arg, OperatorSignLogic operatorLogic, IOperatorPredicateForComparision<T> operatorPredicateForComparision);
 
-    }
+        }
 
-*/
+    */
 
 
 
@@ -231,6 +231,15 @@ namespace WpfDBMS027
             return resultOfEvaluation;
         }
 
+        public bool EvalOnAllCriteriaByObj(Object argObj)
+        {
+            if (argObj.GetType() == typeof(T))
+            {
+                T tArgument = (T)argObj;
+                return this.EvalOnAllCriteria((T)argObj);
+            }
+            return false;
+        }
 
     }
 

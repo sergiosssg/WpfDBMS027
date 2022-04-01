@@ -708,7 +708,7 @@ namespace WpfDBMS027
                 }
                 else
                 {
-                    if (this._tel_vid_connection_CollectionViewSource == null)
+                    if (this._tel_vid_connection_CollectionViewSource != null)
                     {
                         this._tel_vid_connection_CollectionViewSource = new CollectionViewSource();
                     }
@@ -941,6 +941,15 @@ namespace WpfDBMS027
                 {
 
                 }
+                /*
+                 * 
+                 *   
+                 * 
+                 * 
+                 * 
+                 */
+
+                
                 mainWindowForGrid.IsEnabled = true;
                 PopupSearch.IsOpen = false;
             }
@@ -982,7 +991,7 @@ namespace WpfDBMS027
                 inputCriteriaOfFilter = new CriteriaOfFilter<PO_TEL_VID_CONNECT>();
             }
 
-            if (inputTextBoxOfCriteriaItem.Text.Equals(string.Empty))
+            if (!inputTextBoxOfCriteriaItem.Text.Equals(string.Empty))
             {
                 PO_TEL_VID_CONNECT pTELVIDCONNECT = new PO_TEL_VID_CONNECT();
 
@@ -1086,6 +1095,7 @@ namespace WpfDBMS027
 
         private void cmb_ID_from_filter_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            ; ; ; ; ; ; ; ; ;
         }
 
         private void cmb_KOD_from_filter_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -1099,7 +1109,25 @@ namespace WpfDBMS027
         }
 
 
+        static Predicate<object> settingPredicateOf_CollViewSourceFilterringFromCriteriasOfFilter<T>(T element, DbContext dbContext, CriteriaOfFilter<T> criteriaOfFilter, CollectionViewSource collectionViewSource = null)
+        {
+            if (collectionViewSource == null)
+            {
+                collectionViewSource = new CollectionViewSource();
+            }
 
+            DbAppContext dbAppContext = dbContext as DbAppContext;
+            if(dbAppContext != null)
+            {
+                collectionViewSource.Source = dbAppContext.pO_TEL_VID_CONNECTs.Local.ToBindingList();
+            }
+
+            if (criteriaOfFilter != null)
+            {
+                return criteriaOfFilter.EvalOnAllCriteriaByObj;
+            }
+            return (o)=> false;
+        }
 
 
         /*        private void cmb_ID_from_filter_Selected(object sender, RoutedEventArgs e)
