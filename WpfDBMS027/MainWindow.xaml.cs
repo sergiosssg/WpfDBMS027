@@ -177,7 +177,7 @@ namespace WpfDBMS027
 
 
 
-        private CollectionViewSource tel_vid_connectionViewSource;
+        private CollectionViewSource _tel_vid_connection_CollectionViewSource;
 
         private PO_TEL_VID_CONNECT _po_tel_vid_connect;
 
@@ -238,8 +238,8 @@ namespace WpfDBMS027
         {
             DbConnectionStringBuilder builder = new SqlConnectionStringBuilder();
 
-            //builder["Data Source"] = "localhost";
-            builder["Data Source"] = @"localhost\SQLExpress";
+            builder["Data Source"] = "localhost";
+            //builder["Data Source"] = @"localhost\SQLExpress";
 
             builder["Database"] = "sampd_cexs";
 
@@ -390,6 +390,8 @@ namespace WpfDBMS027
             {
                 DbAppContextProperty.pO_TEL_VID_CONNECTs.Add(new_TEL_VID_CONNECT);
 
+
+
                 bool resultOfRefreshing = RefreshDataGridWithCollection(dgrid__VID_CONNECT, DbAppContextProperty);
 
                 if (resultOfRefreshing)
@@ -444,23 +446,23 @@ namespace WpfDBMS027
 
         private void dgrid__VID_CONNECT_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
         {
-/*
-            this._po_tel_vid_connect = (PO_TEL_VID_CONNECT)dgrid__VID_CONNECT.CurrentItem;
-            if (this._DBGrid_Editing_Mode == DBGrid_editing_mode.PREMODIFY_MODE && !this._po_tel_vid_connect.isEmpty())
-            {
-                this._DBGrid_Editing_Mode = DBGrid_editing_mode.EDITING_MODE;
-            }
-            else if (this._DBGrid_Editing_Mode == DBGrid_editing_mode.PREMODIFY_MODE && this._po_tel_vid_connect.isEmpty())
-            {
-                this._DBGrid_Editing_Mode = DBGrid_editing_mode.ADDING_MODE;
-            }*/
+            /*
+                        this._po_tel_vid_connect = (PO_TEL_VID_CONNECT)dgrid__VID_CONNECT.CurrentItem;
+                        if (this._DBGrid_Editing_Mode == DBGrid_editing_mode.PREMODIFY_MODE && !this._po_tel_vid_connect.isEmpty())
+                        {
+                            this._DBGrid_Editing_Mode = DBGrid_editing_mode.EDITING_MODE;
+                        }
+                        else if (this._DBGrid_Editing_Mode == DBGrid_editing_mode.PREMODIFY_MODE && this._po_tel_vid_connect.isEmpty())
+                        {
+                            this._DBGrid_Editing_Mode = DBGrid_editing_mode.ADDING_MODE;
+                        }*/
 
             if (sender != null)
             {
                 DataGrid grid = sender as DataGrid;
-                if(grid != null)
+                if (grid != null)
                 {
-                    
+
                 }
             }
         }
@@ -471,17 +473,17 @@ namespace WpfDBMS027
 
         private void dgrid__VID_CONNECT_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
-/*            PO_TEL_VID_CONNECT currRecord_TEL_VID_CONNECT = (PO_TEL_VID_CONNECT)dgrid__VID_CONNECT.CurrentItem;
+            /*            PO_TEL_VID_CONNECT currRecord_TEL_VID_CONNECT = (PO_TEL_VID_CONNECT)dgrid__VID_CONNECT.CurrentItem;
 
 
-            bool resultOfComparingOfRecords = is_validRecord(currRecord_TEL_VID_CONNECT);
+                        bool resultOfComparingOfRecords = is_validRecord(currRecord_TEL_VID_CONNECT);
 
-            resultOfComparingOfRecords &= is_changedRecordAfterEditingDataGrid(currRecord_TEL_VID_CONNECT);
+                        resultOfComparingOfRecords &= is_changedRecordAfterEditingDataGrid(currRecord_TEL_VID_CONNECT);
 
-            if (resultOfComparingOfRecords)
-            {
-                btnSave.IsEnabled = true;
-            }*/
+                        if (resultOfComparingOfRecords)
+                        {
+                            btnSave.IsEnabled = true;
+                        }*/
 
             ;
         }
@@ -690,20 +692,29 @@ namespace WpfDBMS027
 
                     binding.BindsDirectlyToSource = true;
 
-                    CollectionViewSource collectionViewSource = new CollectionViewSource();
+                    if (this._tel_vid_connection_CollectionViewSource == null)
+                    {
+                        this._tel_vid_connection_CollectionViewSource = new CollectionViewSource();
+                    }
 
-                    collectionViewSource.Source = itemsOf_TEL_VID_CONNECT;
+                    this._tel_vid_connection_CollectionViewSource.Source = itemsOf_TEL_VID_CONNECT;
 
                     //dGrid.BindingGroup
-                    
-                    dGrid.ItemsSource = collectionViewSource.View;
+
+                    dGrid.ItemsSource = this._tel_vid_connection_CollectionViewSource.View;
 
 
                     return true;
                 }
                 else
                 {
-                    dGrid.ItemsSource = collection;
+                    if (this._tel_vid_connection_CollectionViewSource == null)
+                    {
+                        this._tel_vid_connection_CollectionViewSource = new CollectionViewSource();
+                    }
+                    this._tel_vid_connection_CollectionViewSource.Source = collection;
+                    dGrid.ItemsSource = this._tel_vid_connection_CollectionViewSource.View;
+
                     return true;
                 }
             }
