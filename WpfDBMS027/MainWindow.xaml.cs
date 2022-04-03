@@ -238,8 +238,8 @@ namespace WpfDBMS027
         {
             DbConnectionStringBuilder builder = new SqlConnectionStringBuilder();
 
-            builder["Data Source"] = "localhost";
-            //builder["Data Source"] = @"localhost\SQLExpress";
+            //builder["Data Source"] = "localhost";
+            builder["Data Source"] = @"localhost\SQLExpress";
 
             builder["Database"] = "sampd_cexs";
 
@@ -950,13 +950,12 @@ namespace WpfDBMS027
                  */
 
 
-                //this._tel_vid_connection_CollectionViewSource.Filter =  settingPredicateOf_CollViewSourceFilterringFromCriteriasOfFilter<PO_TEL_VID_CONNECT>(DbAppContextProperty, CriteriaOfFilterCollection, this._tel_vid_connection_CollectionViewSource);
+                this._tel_vid_connection_CollectionViewSource.Filter += new FilterEventHandler(  (object sender, FilterEventArgs e) => {
 
-
-                /*    this._tel_vid_connection_CollectionViewSource.Filter = new FilterEventHandler(object sender, FilterEventArgs args)
-                    {
-                        return null;
-                    }*/
+                    var st1 = sender.GetType().Name;
+                    var st2 = e.Item.GetType().Name;
+                    ; ; ;
+                });
 
 
                 /*
@@ -1149,8 +1148,6 @@ namespace WpfDBMS027
             return (o)=> false;
         }
 
-
-        //private void showOnlyInCollection()
 
 
     }
