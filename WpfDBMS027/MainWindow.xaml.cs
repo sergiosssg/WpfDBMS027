@@ -49,7 +49,7 @@ namespace WpfDBMS027
         static CriteriaOfFilter<PO_TEL_VID_CONNECT> CriteriaOfFilterCollection;
 
 
-        static public readonly IEnumerable<PO_TEL_VID_CONNECT> TEL_VID_CONNECTs;
+        public DbSet<PO_TEL_VID_CONNECT> TEL_VID_CONNECTs;
 
 
         //public readonly static IDictionary<OperatorSignComparision, string> OperatorSignComparisionStrings = new Dictionary<OperatorSignComparision, string>
@@ -327,6 +327,9 @@ namespace WpfDBMS027
 
 
             DbAppContextProperty.pO_TEL_VID_CONNECTs.Load();
+
+            this.TEL_VID_CONNECTs = DbAppContextProperty.pO_TEL_VID_CONNECTs;
+
             bool resultOfRefreshing = RefreshDataGridWithCollection(dgrid__VID_CONNECT, DbAppContextProperty);
 
             if (resultOfRefreshing)
@@ -708,7 +711,7 @@ namespace WpfDBMS027
                 }
                 else
                 {
-                    if (this._tel_vid_connection_CollectionViewSource != null)
+                    if (this._tel_vid_connection_CollectionViewSource == null)
                     {
                         this._tel_vid_connection_CollectionViewSource = new CollectionViewSource();
                     }
@@ -941,33 +944,15 @@ namespace WpfDBMS027
                 {
 
                 }
-                /*
-                 * 
-                 *   
-                 * 
-                 * 
-                 * 
-                 */
+                Predicate<object> pFilter = settingPredicateOf_CollViewSourceFilterringFromCriteriasOfFilter<PO_TEL_VID_CONNECT>(
+                    CriteriaOfFilterCollection);
+
+                var filteredCollection = from p in this.TEL_VID_CONNECTs
+                                         where pFilter(p)
+                                         select p;
 
 
-                this._tel_vid_connection_CollectionViewSource.Filter += new FilterEventHandler(  (object sender, FilterEventArgs e) => {
-
-                    var st1 = sender.GetType().Name;
-                    var st2 = e.Item.GetType().Name;
-                    ; ; ;
-                });
-
-
-                /*
-                 * 
-                 *   
-                 * 
-                 * 
-                 * 
-                 */
-
-
-
+                dgrid__VID_CONNECT.ItemsSource = filteredCollection;
 
                 mainWindowForGrid.IsEnabled = true;
                 PopupSearch.IsOpen = false;
@@ -1128,19 +1113,9 @@ namespace WpfDBMS027
         }
 
 
-        static Predicate<Object> settingPredicateOf_CollViewSourceFilterringFromCriteriasOfFilter<T>( DbContext dbContext, CriteriaOfFilter<T> criteriaOfFilter, CollectionViewSource collectionViewSource = null)
+        static Predicate<Object> settingPredicateOf_CollViewSourceFilterringFromCriteriasOfFilter<T>( CriteriaOfFilter<T> criteriaOfFilter)
         {
-            if (collectionViewSource == null)
-            {
-                collectionViewSource = new CollectionViewSource();
-            }
-
-            DbAppContext dbAppContext = dbContext as DbAppContext;
-            if(dbAppContext != null)
-            {
-                collectionViewSource.Source = dbAppContext.pO_TEL_VID_CONNECTs.Local.ToBindingList();
-            }
-
+        
             if (criteriaOfFilter != null)
             {
                 return criteriaOfFilter.EvalOnAllCriteriaByObj;
