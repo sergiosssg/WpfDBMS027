@@ -907,7 +907,8 @@ namespace WpfDBMS027
         private void btn_Ok_from_popupfilter_Click(object sender, RoutedEventArgs e)
         {
 
-
+            CriteriaOfFilterLINQ<PO_TEL_VID_CONNECT, DbAppContext> criteriaOfFilterLINQ = null;
+            IQueryable<PO_TEL_VID_CONNECT> filteredCollection = null;
 
             if (!txtfld_ID_from_filter_left.Text.Equals(string.Empty) ||
                 !txtfld_ID_from_filter_right.Text.Equals(string.Empty) ||
@@ -919,7 +920,14 @@ namespace WpfDBMS027
                 if (!txtfld_ID_from_filter_left.Text.Equals(string.Empty) && txtfld_ID_from_filter_right.Text.Equals(string.Empty))
                 {
 
-                    CriteriaOfFilterCollection = MakeCriteriaOfFilterFromTextField(CriteriaOfFilterCollection, txtfld_ID_from_filter_left, cmb_ID_from_filter, cmb_ID_from_filter, 0);
+                    //CriteriaOfFilterCollection = MakeCriteriaOfFilterFromTextField(CriteriaOfFilterCollection, txtfld_ID_from_filter_left, cmb_ID_from_filter, cmb_ID_from_filter, 0);
+                    criteriaOfFilterLINQ = MakeCriteriaOfFilterFromTextFieldReturningLINQ(txtfld_ID_from_filter_left,
+                                                                                              cmb_ID_from_filter,
+                                                                                              cmb_ID_from_filter,
+                                                                                              0,
+                                                                                              filteredCollection,
+                                                                                              this.DbAppContextProperty);
+
 
                 }
                 if (!txtfld_ID_from_filter_right.Text.Equals(string.Empty))
@@ -929,7 +937,13 @@ namespace WpfDBMS027
                 if (!txtfld_KOD_from_filter_left.Text.Equals(string.Empty) && txtfld_KOD_from_filter_right.Text.Equals(string.Empty))
                 {
 
-                    CriteriaOfFilterCollection = MakeCriteriaOfFilterFromTextField(CriteriaOfFilterCollection, txtfld_KOD_from_filter_left, cmb_KOD_from_filter, cmb_LogicOperator12, 1);
+                    //CriteriaOfFilterCollection = MakeCriteriaOfFilterFromTextField(CriteriaOfFilterCollection, txtfld_KOD_from_filter_left, cmb_KOD_from_filter, cmb_LogicOperator12, 1);
+                    criteriaOfFilterLINQ = MakeCriteriaOfFilterFromTextFieldReturningLINQ(txtfld_KOD_from_filter_left,
+                                                                                              cmb_KOD_from_filter,
+                                                                                              cmb_LogicOperator12,
+                                                                                              1,
+                                                                                              filteredCollection,
+                                                                                              this.DbAppContextProperty);
                 }
                 if (!txtfld_KOD_from_filter_right.Text.Equals(string.Empty))
                 {
@@ -938,60 +952,51 @@ namespace WpfDBMS027
                 if (!txtfld_Name_from_filter_left.Text.Equals(string.Empty) && txtfld_Name_from_filter_right.Text.Equals(string.Empty))
                 {
 
-                    CriteriaOfFilterCollection = MakeCriteriaOfFilterFromTextField(CriteriaOfFilterCollection, txtfld_Name_from_filter_left, cmb_Name_from_filter, cmb_LogicOperator23, 2);
+                    //CriteriaOfFilterCollection = MakeCriteriaOfFilterFromTextField(CriteriaOfFilterCollection, txtfld_Name_from_filter_left, cmb_Name_from_filter, cmb_LogicOperator23, 2);
+                    criteriaOfFilterLINQ = MakeCriteriaOfFilterFromTextFieldReturningLINQ(txtfld_Name_from_filter_left,
+                                                                          cmb_Name_from_filter,
+                                                                          cmb_LogicOperator23,
+                                                                          2,
+                                                                          filteredCollection,
+                                                                          this.DbAppContextProperty);
                 }
                 if (!txtfld_Name_from_filter_right.Text.Equals(string.Empty))
                 {
 
                 }
-                IList<PO_TEL_VID_CONNECT> list_of_TEL_VID_CONNECTs = new List<PO_TEL_VID_CONNECT>();
 
-                Predicate<object> pFilter = settingPredicateOf_CollViewSourceFilterringFromCriteriasOfFilter<PO_TEL_VID_CONNECT>(
-                    CriteriaOfFilterCollection);
 
+                filteredCollection = criteriaOfFilterLINQ.GetLINQQueryBydbContext(this.DbAppContextProperty);
 
 
 
-
-                /*                var filteredCollection = from p in this.TEL_VID_CONNECTs
-                                                         where pFilter(p)
-                                                         select p;*/
-
-
-
-                IQueryable<PO_TEL_VID_CONNECT> filteredCollection = from p in DbAppContextProperty.pO_TEL_VID_CONNECTs
-                                         where p.Id > 3
-                                         select p;
-
-
-                filteredCollection = from p in filteredCollection
-                                     where p.KodOfConnect.Contains("4")
-                                     select p;
-
-
-
-                /*                foreach (var oneTEL_VID_CONNECTs in filteredCollection)
-                                {
-                                    var sTT = oneTEL_VID_CONNECTs.GetType().Name;
-
-                                }*/
 
 
 
                 //dgrid__VID_CONNECT.ItemsSource = this.TEL_VID_CONNECTs.Local.ToBindingList();
 
+
+
                 dgrid__VID_CONNECT.ItemsSource = filteredCollection.ToList<PO_TEL_VID_CONNECT>();
 
                 mainWindowForGrid.IsEnabled = true;
                 PopupSearch.IsOpen = false;
+                this._DBGrid_Editing_Mode = DBGrid_editing_mode.SEARCHING_MODE;
             }
+            else
+            {
+                //CriteriaOfFilterCollection = null;
 
 
-            //this._DBGrid_Editing_Mode;
+                filteredCollection = from p in DbAppContextProperty.pO_TEL_VID_CONNECTs
+                                                                    where true
+                                                                    select p;
+                dgrid__VID_CONNECT.ItemsSource = filteredCollection.ToList<PO_TEL_VID_CONNECT>();
 
-
-            //this._is_found_PO_TEL_VID_CONNECT
-
+                mainWindowForGrid.IsEnabled = true;
+                PopupSearch.IsOpen = false;
+                this._DBGrid_Editing_Mode = DBGrid_editing_mode.PREMODIFY_MODE;
+            }
         }
 
 
@@ -1078,7 +1083,7 @@ namespace WpfDBMS027
 
 
 
-        static private CriteriaOfFilterLINQ<PO_TEL_VID_CONNECT, DbAppContext> MakeCriteriaOfFilterFromTextFieldReturningLINQ(  TextBox inputTextBoxOfCriteriaItem,
+        static private CriteriaOfFilterLINQ<PO_TEL_VID_CONNECT, DbAppContext> MakeCriteriaOfFilterFromTextFieldReturningLINQ(TextBox inputTextBoxOfCriteriaItem,
                                                                                                ComboBox inputCmBoxOfComparisionOperationInCriteria,
                                                                                                ComboBox inputCmBoxOfLogicalOperationInCriteria,
                                                                                                int indxOfFieldIn,
@@ -1088,10 +1093,11 @@ namespace WpfDBMS027
             CriteriaOfFilterLINQ<PO_TEL_VID_CONNECT, DbAppContext> inputCriteriaOfFilter = new CriteriaOfFilterLINQ4POTELVIDCONNECT();
 
 
-            if(queryable != null)
+            if (queryable != null)
             {
 
-            }else if (dbContext != null)
+            }
+            else if (dbContext != null)
             {
 
             }
@@ -1172,14 +1178,14 @@ namespace WpfDBMS027
         }
 
 
-        static Predicate<Object> settingPredicateOf_CollViewSourceFilterringFromCriteriasOfFilter<T>( CriteriaOfFilter<T> criteriaOfFilter)
+        static Predicate<Object> settingPredicateOf_CollViewSourceFilterringFromCriteriasOfFilter<T>(CriteriaOfFilter<T> criteriaOfFilter)
         {
-        
+
             if (criteriaOfFilter != null)
             {
                 return criteriaOfFilter.EvalOnAllCriteriaByObj;
             }
-            return (o)=> false;
+            return (o) => false;
         }
 
 
