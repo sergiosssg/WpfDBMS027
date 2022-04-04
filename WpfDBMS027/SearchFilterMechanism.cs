@@ -256,16 +256,23 @@ namespace WpfDBMS027
 
         private IQueryable<T> _queryableOfT;
 
+
+        public CriteriaOfFilterLINQ()
+        {
+            this._filterCriterias = new List<CriteriaOfFilterChainLink<T>>();
+        }
+
+
         public CriteriaOfFilterLINQ(D dbContext)
         {
-            _filterCriterias = new List<CriteriaOfFilterChainLink<T>>();
+            this._filterCriterias = new List<CriteriaOfFilterChainLink<T>>();
             this._dbContext = dbContext;
         }
 
 
         public CriteriaOfFilterLINQ(D dbContext, IQueryable<T> queryableOfT)
         {
-            _filterCriterias = new List<CriteriaOfFilterChainLink<T>>();
+            this._filterCriterias = new List<CriteriaOfFilterChainLink<T>>();
             this._dbContext = dbContext;
             this._queryableOfT = queryableOfT;
         }
