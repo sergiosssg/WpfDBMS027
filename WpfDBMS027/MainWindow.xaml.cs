@@ -969,8 +969,6 @@ namespace WpfDBMS027
                                      select p;
 
 
-                var sTt01 = filteredCollection.GetType().Name;
-
 
                 /*                foreach (var oneTEL_VID_CONNECTs in filteredCollection)
                                 {
@@ -1077,6 +1075,37 @@ namespace WpfDBMS027
 
             return inputCriteriaOfFilter;
         }
+
+
+
+        static private CriteriaOfFilterLINQ<PO_TEL_VID_CONNECT, DbAppContext> MakeCriteriaOfFilterFromTextFieldReturningLINQ(  TextBox inputTextBoxOfCriteriaItem,
+                                                                                               ComboBox inputCmBoxOfComparisionOperationInCriteria,
+                                                                                               ComboBox inputCmBoxOfLogicalOperationInCriteria,
+                                                                                               int indxOfFieldIn,
+                                                                                               IQueryable<PO_TEL_VID_CONNECT> queryable,
+                                                                                               DbAppContext dbContext)
+        {
+            CriteriaOfFilterLINQ<PO_TEL_VID_CONNECT, DbAppContext> inputCriteriaOfFilter = new CriteriaOfFilterLINQ4POTELVIDCONNECT();
+
+
+            if(queryable != null)
+            {
+
+            }else if (dbContext != null)
+            {
+
+            }
+            else
+            {
+
+            }
+
+
+
+            return inputCriteriaOfFilter;
+        }
+
+
 
 
         /**
