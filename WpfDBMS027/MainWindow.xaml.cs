@@ -944,15 +944,45 @@ namespace WpfDBMS027
                 {
 
                 }
+                IList<PO_TEL_VID_CONNECT> list_of_TEL_VID_CONNECTs = new List<PO_TEL_VID_CONNECT>();
+
                 Predicate<object> pFilter = settingPredicateOf_CollViewSourceFilterringFromCriteriasOfFilter<PO_TEL_VID_CONNECT>(
                     CriteriaOfFilterCollection);
 
-                var filteredCollection = from p in this.TEL_VID_CONNECTs
-                                         where pFilter(p)
+
+
+
+
+                /*                var filteredCollection = from p in this.TEL_VID_CONNECTs
+                                                         where pFilter(p)
+                                                         select p;*/
+
+
+
+                IQueryable<PO_TEL_VID_CONNECT> filteredCollection = from p in DbAppContextProperty.pO_TEL_VID_CONNECTs
+                                         where p.Id > 3
                                          select p;
 
 
-                dgrid__VID_CONNECT.ItemsSource = filteredCollection;
+                filteredCollection = from p in filteredCollection
+                                     where p.KodOfConnect.Contains("4")
+                                     select p;
+
+
+                var sTt01 = filteredCollection.GetType().Name;
+
+
+                /*                foreach (var oneTEL_VID_CONNECTs in filteredCollection)
+                                {
+                                    var sTT = oneTEL_VID_CONNECTs.GetType().Name;
+
+                                }*/
+
+
+
+                //dgrid__VID_CONNECT.ItemsSource = this.TEL_VID_CONNECTs.Local.ToBindingList();
+
+                dgrid__VID_CONNECT.ItemsSource = filteredCollection.ToList<PO_TEL_VID_CONNECT>();
 
                 mainWindowForGrid.IsEnabled = true;
                 PopupSearch.IsOpen = false;

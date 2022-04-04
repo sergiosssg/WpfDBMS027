@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,7 +44,10 @@ namespace WpfDBMS027
 
     }
 
-
+    public interface IDBAppContext<T, TDbContext>
+    {
+        IQueryable<T> GetLINQQuery(TDbContext dbContext);
+    }
 
 
     public class CriteriaOfFilterChainLink<T> : ICriteriaOfFilterChainLink<T>
@@ -120,7 +124,7 @@ namespace WpfDBMS027
 
 
 
-    class CriteriaOfFilter<T> : IOperatorPredicateForComparision<T>
+    public class CriteriaOfFilter<T> : IOperatorPredicateForComparision<T>
     {
         private IDictionary<CriteriaOfFilterChainLink<T>, DelegateOperatorForComparision<T>> _operatorComparisionDelegate;
 
@@ -244,7 +248,45 @@ namespace WpfDBMS027
     }
 
 
+    public abstract class CriteriaOfFilterLINQ<T, D> : IOperatorPredicateForComparision<T>, IDBAppContext<T, D>
+    {
+        private ICollection<CriteriaOfFilterChainLink<T>> _filterCriterias;
 
+        private D _dbContext;
+
+        private IQueryable<T> _queryableOfT;
+
+        public CriteriaOfFilterLINQ(D dbContext)
+        {
+            _filterCriterias = new List<CriteriaOfFilterChainLink<T>>();
+            this._dbContext = dbContext;
+        }
+
+
+        public CriteriaOfFilterLINQ(D dbContext, IQueryable<T> queryableOfT)
+        {
+            _filterCriterias = new List<CriteriaOfFilterChainLink<T>>();
+            this._dbContext = dbContext;
+            this._queryableOfT = queryableOfT;
+        }
+
+
+        public void Add(CriteriaOfFilterChainLink<T> oneCriteriaChain)
+        {
+            this._filterCriterias.Add(oneCriteriaChain);
+        }
+
+        public int Amount
+        {
+            get
+            {
+                return _filterCriterias.Count;
+            }
+        }
+
+        abstract public IQueryable<T> GetLINQQuery(D dbContext);
+
+    }
 }
 
 
