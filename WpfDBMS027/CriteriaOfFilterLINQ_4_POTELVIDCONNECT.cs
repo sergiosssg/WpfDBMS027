@@ -12,10 +12,48 @@ namespace WpfDBMS027
 
         /*
         protected ICollection<CriteriaOfFilterChainLink<T>> _filterCriterias;
-        protected D _dbContext;
-        protected IQueryable<T> _queryableOfT;
 
         */
+
+        private DbAppContext _dbContext;
+        private IQueryable<PO_TEL_VID_CONNECT> _queryableOfT;
+
+
+        public CriteriaOfFilterLINQ4POTELVIDCONNECT() : base()
+        {
+
+        }
+
+
+        public CriteriaOfFilterLINQ4POTELVIDCONNECT(IQueryable<PO_TEL_VID_CONNECT> queryable) : base()
+        {
+            this._queryableOfT = queryable;
+            this._queryableOfT = null;
+        }
+
+
+        public CriteriaOfFilterLINQ4POTELVIDCONNECT(DbAppContext dbContext) : base()
+        {
+            this._queryableOfT = null;
+            this._dbContext = dbContext;
+        }
+
+
+        public IQueryable<PO_TEL_VID_CONNECT> Queryable
+        {
+            set => this._queryableOfT = value;
+
+            get => this._queryableOfT;
+        }
+
+
+        public DbAppContext DBContextProperty
+        {
+            set => this._dbContext = value;
+
+            get => this._dbContext;
+        }
+
 
         public override IQueryable<PO_TEL_VID_CONNECT> GetLINQQueryBydbContext(DbAppContext dbContext)
         {

@@ -254,29 +254,13 @@ namespace WpfDBMS027
     {
         protected ICollection<CriteriaOfFilterChainLink<T>> _filterCriterias;
 
-        protected D _dbContext;
-
-        protected IQueryable<T> _queryableOfT;
-
-
         public CriteriaOfFilterLINQ()
         {
             this._filterCriterias = new List<CriteriaOfFilterChainLink<T>>();
         }
 
 
-        public CriteriaOfFilterLINQ(D dbContext)
-        {
-            this._filterCriterias = new List<CriteriaOfFilterChainLink<T>>();
-            this._dbContext = dbContext;
-        }
 
-
-        public CriteriaOfFilterLINQ( IQueryable<T> queryableOfT)
-        {
-            this._filterCriterias = new List<CriteriaOfFilterChainLink<T>>();
-            this._queryableOfT = queryableOfT;
-        }
 
 
         public void Add(CriteriaOfFilterChainLink<T> oneCriteriaChain)
