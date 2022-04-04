@@ -22,5 +22,12 @@ namespace WpfDBMS027
             throw new NotImplementedException();
         }
 
+
+
+        public override IQueryable<PO_TEL_VID_CONNECT> GetLINQQueryByQueryable(IQueryable<PO_TEL_VID_CONNECT> queryable)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

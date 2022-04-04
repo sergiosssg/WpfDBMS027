@@ -47,6 +47,8 @@ namespace WpfDBMS027
     public interface IDBAppContext<T, TDbContext>
     {
         IQueryable<T> GetLINQQueryBydbContext(TDbContext dbContext);
+
+        IQueryable<T> GetLINQQueryByQueryable(IQueryable<T> queryable);
     }
 
 
@@ -291,6 +293,9 @@ namespace WpfDBMS027
         }
 
         abstract public IQueryable<T> GetLINQQueryBydbContext(D dbContext);
+
+
+        abstract public IQueryable<T> GetLINQQueryByQueryable(IQueryable<T> queryable);
 
     }
 }
