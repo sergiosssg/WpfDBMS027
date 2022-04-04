@@ -46,7 +46,7 @@ namespace WpfDBMS027
 
     public interface IDBAppContext<T, TDbContext>
     {
-        IQueryable<T> GetLINQQuery(TDbContext dbContext);
+        IQueryable<T> GetLINQQueryBydbContext(TDbContext dbContext);
     }
 
 
@@ -250,11 +250,11 @@ namespace WpfDBMS027
 
     public abstract class CriteriaOfFilterLINQ<T, D> : IOperatorPredicateForComparision<T>, IDBAppContext<T, D>
     {
-        private ICollection<CriteriaOfFilterChainLink<T>> _filterCriterias;
+        protected ICollection<CriteriaOfFilterChainLink<T>> _filterCriterias;
 
-        private D _dbContext;
+        protected D _dbContext;
 
-        private IQueryable<T> _queryableOfT;
+        protected IQueryable<T> _queryableOfT;
 
 
         public CriteriaOfFilterLINQ()
@@ -270,10 +270,9 @@ namespace WpfDBMS027
         }
 
 
-        public CriteriaOfFilterLINQ(D dbContext, IQueryable<T> queryableOfT)
+        public CriteriaOfFilterLINQ( IQueryable<T> queryableOfT)
         {
             this._filterCriterias = new List<CriteriaOfFilterChainLink<T>>();
-            this._dbContext = dbContext;
             this._queryableOfT = queryableOfT;
         }
 
@@ -291,7 +290,7 @@ namespace WpfDBMS027
             }
         }
 
-        abstract public IQueryable<T> GetLINQQuery(D dbContext);
+        abstract public IQueryable<T> GetLINQQueryBydbContext(D dbContext);
 
     }
 }

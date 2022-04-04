@@ -10,7 +10,14 @@ namespace WpfDBMS027
     public class CriteriaOfFilterLINQ4POTELVIDCONNECT : CriteriaOfFilterLINQ<PO_TEL_VID_CONNECT, DbAppContext>
     {
 
-        public override IQueryable<PO_TEL_VID_CONNECT> GetLINQQuery(DbAppContext dbContext)
+        /*
+        protected ICollection<CriteriaOfFilterChainLink<T>> _filterCriterias;
+        protected D _dbContext;
+        protected IQueryable<T> _queryableOfT;
+
+        */
+
+        public override IQueryable<PO_TEL_VID_CONNECT> GetLINQQueryBydbContext(DbAppContext dbContext)
         {
             throw new NotImplementedException();
         }
