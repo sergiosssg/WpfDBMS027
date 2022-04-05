@@ -533,8 +533,9 @@ namespace WpfDBMS027
                 }
 
             }
+            return returnedQueryable;
 
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
 
