@@ -924,9 +924,7 @@ namespace WpfDBMS027
                     criteriaOfFilterLINQ = MakeCriteriaOfFilterFromTextFieldReturningLINQ(txtfld_ID_from_filter_left,
                                                                                               cmb_ID_from_filter,
                                                                                               cmb_ID_from_filter,
-                                                                                              0,
-                                                                                              filteredCollection,
-                                                                                              this.DbAppContextProperty);
+                                                                                              0);
 
 
                 }
@@ -941,9 +939,7 @@ namespace WpfDBMS027
                     criteriaOfFilterLINQ = MakeCriteriaOfFilterFromTextFieldReturningLINQ(txtfld_KOD_from_filter_left,
                                                                                               cmb_KOD_from_filter,
                                                                                               cmb_LogicOperator12,
-                                                                                              1,
-                                                                                              filteredCollection,
-                                                                                              this.DbAppContextProperty);
+                                                                                              1);
                 }
                 if (!txtfld_KOD_from_filter_right.Text.Equals(string.Empty))
                 {
@@ -956,9 +952,7 @@ namespace WpfDBMS027
                     criteriaOfFilterLINQ = MakeCriteriaOfFilterFromTextFieldReturningLINQ(txtfld_Name_from_filter_left,
                                                                           cmb_Name_from_filter,
                                                                           cmb_LogicOperator23,
-                                                                          2,
-                                                                          filteredCollection,
-                                                                          this.DbAppContextProperty);
+                                                                          2);
                 }
                 if (!txtfld_Name_from_filter_right.Text.Equals(string.Empty))
                 {
@@ -1086,9 +1080,7 @@ namespace WpfDBMS027
         static private CriteriaOfFilterLINQ<PO_TEL_VID_CONNECT, DbAppContext> MakeCriteriaOfFilterFromTextFieldReturningLINQ(TextBox inputTextBoxOfCriteriaItem,
                                                                                                ComboBox inputCmBoxOfComparisionOperationInCriteria,
                                                                                                ComboBox inputCmBoxOfLogicalOperationInCriteria,
-                                                                                               int indxOfFieldIn,
-                                                                                               IQueryable<PO_TEL_VID_CONNECT> queryable,
-                                                                                               DbAppContext dbContext)
+                                                                                               int indxOfFieldIn)
         {
             CriteriaOfFilterLINQ<PO_TEL_VID_CONNECT, DbAppContext> inputCriteriaOfFilter = new CriteriaOfFilterLINQ4POTELVIDCONNECT();
 
@@ -1117,7 +1109,6 @@ namespace WpfDBMS027
                     {
                         pTELVIDCONNECT.Name = inputTextBoxOfCriteriaItem.Text;
                     }
-
                     var operatorSignComparision = MakeOperatorSignComparisionEnumFromCombobox(inputCmBoxOfComparisionOperationInCriteria, MainWindow.OperatorSignComparisionStrings);
                     var operatorSignLogic = MakeOperatorSignLogicComparisionEnumFromCombobox(inputCmBoxOfLogicalOperationInCriteria, MainWindow.OperatorSignLogicStrings);
                     var oneCriteriaOfFilterChainLink = new CriteriaOfFilterChainLink<PO_TEL_VID_CONNECT>();
@@ -1139,28 +1130,7 @@ namespace WpfDBMS027
                     Console.WriteLine($" {nre.StackTrace} ");
                     Console.WriteLine($" {nre.Source} ");
                 }
-
-
             }
-
-
-
-
-                if (queryable != null)
-            {
-
-            }
-            else if (dbContext != null)
-            {
-
-            }
-            else
-            {
-
-            }
-
-
-
             return inputCriteriaOfFilter;
         }
 
