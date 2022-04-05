@@ -205,16 +205,28 @@ namespace WpfDBMS027
                             {
                                 string sPattern = oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect;
 
-                                returnedQueryable = from p in dbContext.pO_TEL_VID_CONNECTs
-                                                    where Regex.IsMatch( p.KodOfConnect, sPattern)
-                                                    select p;
+                                var returnedQueryableBugFixed = dbContext.pO_TEL_VID_CONNECTs.Local.Where<PO_TEL_VID_CONNECT>( (p)=> Regex.IsMatch(p.KodOfConnect, sPattern)).ToList<PO_TEL_VID_CONNECT>();
+
                             }
                             else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.Name))
                             {
                                 string sPattern = oneCriteriaFilterChain.ItemOfCriteria.Name;
+
+                                /*
                                 returnedQueryable = from p in dbContext.pO_TEL_VID_CONNECTs
                                                     where  Regex.IsMatch( p.Name, sPattern)
                                                     select p;
+
+                                */
+                                var returnedQueryableBugFixed = dbContext.pO_TEL_VID_CONNECTs.Local.Where<PO_TEL_VID_CONNECT>((p) => Regex.IsMatch(p.Name, sPattern)).ToList<PO_TEL_VID_CONNECT>();
+                                foreach (var oneEl in returnedQueryableBugFixed)
+                                {
+                                    if (oneEl.Id > 0)
+                                    {
+                                        ; ; ;
+                                    }
+                                }
+
                             }
                         }
                     }
