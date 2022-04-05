@@ -1093,7 +1093,60 @@ namespace WpfDBMS027
             CriteriaOfFilterLINQ<PO_TEL_VID_CONNECT, DbAppContext> inputCriteriaOfFilter = new CriteriaOfFilterLINQ4POTELVIDCONNECT();
 
 
-            if (queryable != null)
+            if (!inputTextBoxOfCriteriaItem.Text.Equals(string.Empty))
+            {
+                PO_TEL_VID_CONNECT pTELVIDCONNECT = new PO_TEL_VID_CONNECT();
+
+                try
+                {
+                    if (indxOfFieldIn == 0)   // this  block  of  if  operators is relevant  to underlined PO (plain object)
+                    {
+                        int Id_dirty = -1;
+                        bool isParsable = Int32.TryParse(inputTextBoxOfCriteriaItem.Text, out Id_dirty);
+                        if (isParsable)
+                        {
+                            pTELVIDCONNECT.Id = Id_dirty;
+                        }
+                    }
+                    else if (indxOfFieldIn == 1)
+                    {
+                        pTELVIDCONNECT.KodOfConnect = inputTextBoxOfCriteriaItem.Text;
+
+                    }
+                    else if (indxOfFieldIn == 2)
+                    {
+                        pTELVIDCONNECT.Name = inputTextBoxOfCriteriaItem.Text;
+                    }
+
+                    var operatorSignComparision = MakeOperatorSignComparisionEnumFromCombobox(inputCmBoxOfComparisionOperationInCriteria, MainWindow.OperatorSignComparisionStrings);
+                    var operatorSignLogic = MakeOperatorSignLogicComparisionEnumFromCombobox(inputCmBoxOfLogicalOperationInCriteria, MainWindow.OperatorSignLogicStrings);
+                    var oneCriteriaOfFilterChainLink = new CriteriaOfFilterChainLink<PO_TEL_VID_CONNECT>();
+                    oneCriteriaOfFilterChainLink.ItemOfCriteria = pTELVIDCONNECT;
+                    oneCriteriaOfFilterChainLink.OperatorComparision = operatorSignComparision;
+                    oneCriteriaOfFilterChainLink.OperatorLogic = operatorSignLogic;
+                    inputCriteriaOfFilter.Add(oneCriteriaOfFilterChainLink);
+                }
+                catch (FormatException fex)
+                {
+                    Console.WriteLine($" {fex.Message} ");
+                    Console.WriteLine($" {fex.StackTrace} ");
+                    Console.WriteLine($" {fex.Source} ");
+                }
+                catch (NullReferenceException nre)
+                {
+                    Console.WriteLine($" {nre.HResult} ");
+                    Console.WriteLine($" {nre.Message} ");
+                    Console.WriteLine($" {nre.StackTrace} ");
+                    Console.WriteLine($" {nre.Source} ");
+                }
+
+
+            }
+
+
+
+
+                if (queryable != null)
             {
 
             }
