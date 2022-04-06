@@ -908,7 +908,7 @@ namespace WpfDBMS027
         {
 
             CriteriaOfFilterLINQ<PO_TEL_VID_CONNECT, DbAppContext> criteriaOfFilterLINQ = null;
-            IQueryable<PO_TEL_VID_CONNECT> filteredCollection = null;
+            ICollection<PO_TEL_VID_CONNECT> filteredCollection = null;
 
             if (!txtfld_ID_from_filter_left.Text.Equals(string.Empty) ||
                 !txtfld_ID_from_filter_right.Text.Equals(string.Empty) ||
@@ -981,10 +981,11 @@ namespace WpfDBMS027
             {
                 //CriteriaOfFilterCollection = null;
 
+                var result = from p in DbAppContextProperty.pO_TEL_VID_CONNECTs
+                             where true
+                             select p;
 
-                filteredCollection = from p in DbAppContextProperty.pO_TEL_VID_CONNECTs
-                                                                    where true
-                                                                    select p;
+                filteredCollection = result.ToList<PO_TEL_VID_CONNECT>();
                 dgrid__VID_CONNECT.ItemsSource = filteredCollection.ToList<PO_TEL_VID_CONNECT>();
 
                 mainWindowForGrid.IsEnabled = true;
