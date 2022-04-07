@@ -55,71 +55,53 @@ namespace WpfDBMS027
     public class CriteriaOfFilterChainLink<T> : ICriteriaOfFilterChainLink<T>
     {
         protected T _oneItemOfCriteriaLeft;
-        protected OperatorSignComparision _operatorSignComparisioLeftn;
+        protected OperatorSignComparision _operatorSignComparisionLeft;
         protected OperatorSignLogic _operatorSignLogic;
 
         public CriteriaOfFilterChainLink()
         {
             this._oneItemOfCriteriaLeft = default(T);
-            this._operatorSignComparisioLeftn = OperatorSignComparision._REGEX_;
+            this._operatorSignComparisionLeft = OperatorSignComparision._REGEX_;
             this._operatorSignLogic = OperatorSignLogic._NIL_;
         }
 
         public CriteriaOfFilterChainLink(T el)
         {
             this._oneItemOfCriteriaLeft = el;
-            this._operatorSignComparisioLeftn = OperatorSignComparision._REGEX_;
+            this._operatorSignComparisionLeft = OperatorSignComparision._REGEX_;
             this._operatorSignLogic = OperatorSignLogic._NIL_;
         }
 
         public CriteriaOfFilterChainLink(T el, OperatorSignComparision operatorSignComparision)
         {
             this._oneItemOfCriteriaLeft = el;
-            this._operatorSignComparisioLeftn = operatorSignComparision;
+            this._operatorSignComparisionLeft = operatorSignComparision;
             this._operatorSignLogic = OperatorSignLogic._NIL_;
         }
 
         public CriteriaOfFilterChainLink(T el, OperatorSignComparision operatorSignComparision, OperatorSignLogic operatorSignLogic)
         {
             this._oneItemOfCriteriaLeft = el;
-            this._operatorSignComparisioLeftn = operatorSignComparision;
+            this._operatorSignComparisionLeft = operatorSignComparision;
             this._operatorSignLogic = operatorSignLogic;
         }
 
         public T ItemOfCriteriaLeftOnly
         {
-            get
-            {
-                return this._oneItemOfCriteriaLeft;
-            }
-            set
-            {
-                this._oneItemOfCriteriaLeft = value;
-            }
+            get => this._oneItemOfCriteriaLeft;
+            set => this._oneItemOfCriteriaLeft = value;
         }
 
         public OperatorSignComparision OperatorComparisionLeftOnly
         {
-            get
-            {
-                return this._operatorSignComparisioLeftn;
-            }
-            set
-            {
-                this._operatorSignComparisioLeftn = value;
-            }
+            get => this._operatorSignComparisionLeft;
+            set => this._operatorSignComparisionLeft = value;
         }
 
         public OperatorSignLogic OperatorLogic
         {
-            get
-            {
-                return this._operatorSignLogic;
-            }
-            set
-            {
-                this._operatorSignLogic = value;
-            }
+            get => this._operatorSignLogic;
+            set => this._operatorSignLogic = value;
         }
     }
 
@@ -128,7 +110,40 @@ namespace WpfDBMS027
 
     public class PaarCriteriaOfFilterChainLink<T> : CriteriaOfFilterChainLink<T>
     {
+        private T _oneItemOfCriteriaRight;
+        private OperatorSignComparision _operatorSignComparisionRight;
 
+
+        public PaarCriteriaOfFilterChainLink() : base()
+        {
+            this._oneItemOfCriteriaRight = default(T);
+            base._operatorSignComparisionLeft = OperatorSignComparision._LE_;
+            this._operatorSignComparisionRight = OperatorSignComparision._GE_;
+        }
+
+        public PaarCriteriaOfFilterChainLink(T el_left, OperatorSignComparision operatorSignComparision_left, T el_right, OperatorSignComparision operatorSignComparision_right) : base(el_left, operatorSignComparision_left)
+        {
+            this._oneItemOfCriteriaRight = el_right;
+            this._operatorSignComparisionRight = operatorSignComparision_right;
+        }
+
+        public PaarCriteriaOfFilterChainLink(T el_left, OperatorSignComparision operatorSignComparision_left, T el_right, OperatorSignComparision operatorSignComparision_right, OperatorSignLogic operatorSignLogic) : base(el_left, operatorSignComparision_left, operatorSignLogic)
+        {
+            this._oneItemOfCriteriaRight = el_right;
+            this._operatorSignComparisionRight = operatorSignComparision_right;
+        }
+
+        public T ItemOfCriteriaRight
+        {
+            get => this._oneItemOfCriteriaRight;
+            set => this._oneItemOfCriteriaRight = value;
+        }
+
+        public OperatorSignComparision OperatorComparisionRight
+        {
+            get => this._operatorSignComparisionRight;
+            set => this._operatorSignComparisionRight = value;
+        }
     }
 
 
