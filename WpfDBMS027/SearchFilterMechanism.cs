@@ -107,6 +107,33 @@ namespace WpfDBMS027
 
 
 
+    public interface MatrixOf_OperatorSignComparision_Predicates<T>
+    {
+
+        public DbContext DBContextProperty
+        {
+            get;
+            set;
+        }
+
+        public IQueryable<T> QueryableProperty
+        {
+            get;
+            set;
+        }
+
+        public ICollection<T> CollectionProperty
+        {
+            get;
+            set;
+        }
+
+
+        public Tuple<int, IQueryable<T>, ICollection<T>> Get_POs_Filtered(Predicate<T> predicateWhichFieldOf_PO_NotEmpty, OperatorSignComparision operatorSignComparision, Tuple<int, IQueryable<T>, ICollection<T>> baseTuple, DbContext dbcontext);
+
+    }
+
+
 
     public class PaarOfCriteriaOfFilterChainLink<T> : CriteriaOfFilterChainLink<T>
     {
