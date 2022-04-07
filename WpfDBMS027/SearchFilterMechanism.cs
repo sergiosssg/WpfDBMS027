@@ -108,26 +108,26 @@ namespace WpfDBMS027
 
 
 
-    public class PaarCriteriaOfFilterChainLink<T> : CriteriaOfFilterChainLink<T>
+    public class PaarOfCriteriaOfFilterChainLink<T> : CriteriaOfFilterChainLink<T>
     {
         private T _oneItemOfCriteriaRight;
         private OperatorSignComparision _operatorSignComparisionRight;
 
 
-        public PaarCriteriaOfFilterChainLink() : base()
+        public PaarOfCriteriaOfFilterChainLink() : base()
         {
             this._oneItemOfCriteriaRight = default(T);
             base._operatorSignComparisionLeft = OperatorSignComparision._LE_;
             this._operatorSignComparisionRight = OperatorSignComparision._GE_;
         }
 
-        public PaarCriteriaOfFilterChainLink(T el_left, OperatorSignComparision operatorSignComparision_left, T el_right, OperatorSignComparision operatorSignComparision_right) : base(el_left, operatorSignComparision_left)
+        public PaarOfCriteriaOfFilterChainLink(T el_left, OperatorSignComparision operatorSignComparision_left, T el_right, OperatorSignComparision operatorSignComparision_right) : base(el_left, operatorSignComparision_left)
         {
             this._oneItemOfCriteriaRight = el_right;
             this._operatorSignComparisionRight = operatorSignComparision_right;
         }
 
-        public PaarCriteriaOfFilterChainLink(T el_left, OperatorSignComparision operatorSignComparision_left, T el_right, OperatorSignComparision operatorSignComparision_right, OperatorSignLogic operatorSignLogic) : base(el_left, operatorSignComparision_left, operatorSignLogic)
+        public PaarOfCriteriaOfFilterChainLink(T el_left, OperatorSignComparision operatorSignComparision_left, T el_right, OperatorSignComparision operatorSignComparision_right, OperatorSignLogic operatorSignLogic) : base(el_left, operatorSignComparision_left, operatorSignLogic)
         {
             this._oneItemOfCriteriaRight = el_right;
             this._operatorSignComparisionRight = operatorSignComparision_right;
