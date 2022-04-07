@@ -1051,8 +1051,8 @@ namespace WpfDBMS027
                     var operatorSignComparision = MakeOperatorSignComparisionEnumFromCombobox(inputCmBoxOfComparisionOperationInCriteria, MainWindow.OperatorSignComparisionStrings);
                     var operatorSignLogic = MakeOperatorSignLogicComparisionEnumFromCombobox(inputCmBoxOfLogicalOperationInCriteria, MainWindow.OperatorSignLogicStrings);
                     var oneCriteriaOfFilterChainLink = new CriteriaOfFilterChainLink<PO_TEL_VID_CONNECT>();
-                    oneCriteriaOfFilterChainLink.ItemOfCriteria = pTELVIDCONNECT;
-                    oneCriteriaOfFilterChainLink.OperatorComparision = operatorSignComparision;
+                    oneCriteriaOfFilterChainLink.ItemOfCriteriaLeftOnly = pTELVIDCONNECT;
+                    oneCriteriaOfFilterChainLink.OperatorComparisionLeftOnly = operatorSignComparision;
                     oneCriteriaOfFilterChainLink.OperatorLogic = operatorSignLogic;
                     inputCriteriaOfFilter.Add(oneCriteriaOfFilterChainLink, MainWindow.MapComparisioOperatorToComparisionPredicate[operatorSignComparision]);
                 }
@@ -1113,8 +1113,8 @@ namespace WpfDBMS027
                     var operatorSignComparision = MakeOperatorSignComparisionEnumFromCombobox(inputCmBoxOfComparisionOperationInCriteria, MainWindow.OperatorSignComparisionStrings);
                     var operatorSignLogic = MakeOperatorSignLogicComparisionEnumFromCombobox(inputCmBoxOfLogicalOperationInCriteria, MainWindow.OperatorSignLogicStrings);
                     var oneCriteriaOfFilterChainLink = new CriteriaOfFilterChainLink<PO_TEL_VID_CONNECT>();
-                    oneCriteriaOfFilterChainLink.ItemOfCriteria = pTELVIDCONNECT;
-                    oneCriteriaOfFilterChainLink.OperatorComparision = operatorSignComparision;
+                    oneCriteriaOfFilterChainLink.ItemOfCriteriaLeftOnly = pTELVIDCONNECT;
+                    oneCriteriaOfFilterChainLink.OperatorComparisionLeftOnly = operatorSignComparision;
                     oneCriteriaOfFilterChainLink.OperatorLogic = operatorSignLogic;
                     inputCriteriaOfFilter.Add(oneCriteriaOfFilterChainLink);
                 }
@@ -1179,7 +1179,7 @@ namespace WpfDBMS027
             {
                 foreach (var oneCriteriaOfFilter in criteriaOfFilterCollection)
                 {
-                    collectionOfCriteria.Add(oneCriteriaOfFilter, MapComparisioOperatorToComparisionPredicate[oneCriteriaOfFilter.OperatorComparision]);
+                    collectionOfCriteria.Add(oneCriteriaOfFilter, MapComparisioOperatorToComparisionPredicate[oneCriteriaOfFilter.OperatorComparisionLeftOnly]);
                 }
             }
 

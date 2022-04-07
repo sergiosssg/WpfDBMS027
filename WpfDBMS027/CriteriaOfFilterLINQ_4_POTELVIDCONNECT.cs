@@ -67,162 +67,162 @@ namespace WpfDBMS027
                 {
                     if (i++ == 0)  // first step in loop
                     {
-                        if (oneCriteriaFilterChain.OperatorComparision == OperatorSignComparision._EQ_)  // "=="
+                        if (oneCriteriaFilterChain.OperatorComparisionLeftOnly == OperatorSignComparision._EQ_)  // "=="
                         {
-                            if (oneCriteriaFilterChain.ItemOfCriteria.Id > 0)
+                            if (oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id > 0)
                             {
                                 var result = from p in dbContext.pO_TEL_VID_CONNECTs
-                                                    where p.Id == oneCriteriaFilterChain.ItemOfCriteria.Id
+                                                    where p.Id == oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id
                                                     select p;
                                 returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                             }
-                            else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect))
+                            else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect))
                             {
                                 var result = from p in dbContext.pO_TEL_VID_CONNECTs
-                                             where p.KodOfConnect.Equals(oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect)
+                                             where p.KodOfConnect.Equals(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect)
                                              select p;
                                 returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                             }
-                            else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.Name))
+                            else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name))
                             {
                                 var result = from p in dbContext.pO_TEL_VID_CONNECTs
-                                             where p.Name.Equals(oneCriteriaFilterChain.ItemOfCriteria.Name)
-                                             select p;
-                                returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
-                            }
-                        }
-                        else if (oneCriteriaFilterChain.OperatorComparision == OperatorSignComparision._NE_)  // "!="
-                        {
-                            if (oneCriteriaFilterChain.ItemOfCriteria.Id > 0)
-                            {
-                                var result = from p in dbContext.pO_TEL_VID_CONNECTs
-                                             where p.Id != oneCriteriaFilterChain.ItemOfCriteria.Id
-                                             select p;
-                                returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
-                            }
-                            else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect))
-                            {
-                                var result = from p in dbContext.pO_TEL_VID_CONNECTs
-                                             where !p.KodOfConnect.Equals(oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect)
-                                             select p;
-                                returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
-                            }
-                            else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.Name))
-                            {
-                                var result = from p in dbContext.pO_TEL_VID_CONNECTs
-                                             where !p.Name.Equals(oneCriteriaFilterChain.ItemOfCriteria.Name)
+                                             where p.Name.Equals(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name)
                                              select p;
                                 returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                             }
                         }
-                        else if (oneCriteriaFilterChain.OperatorComparision == OperatorSignComparision._GT_)  // ">"
+                        else if (oneCriteriaFilterChain.OperatorComparisionLeftOnly == OperatorSignComparision._NE_)  // "!="
                         {
-                            if (oneCriteriaFilterChain.ItemOfCriteria.Id > 0)
+                            if (oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id > 0)
                             {
                                 var result = from p in dbContext.pO_TEL_VID_CONNECTs
-                                             where p.Id > oneCriteriaFilterChain.ItemOfCriteria.Id
+                                             where p.Id != oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id
                                              select p;
                                 returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                             }
-                            else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect))
+                            else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect))
                             {
                                 var result = from p in dbContext.pO_TEL_VID_CONNECTs
-                                             where string.Compare(p.KodOfConnect, oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect) > 0
+                                             where !p.KodOfConnect.Equals(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect)
                                              select p;
                                 returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                             }
-                            else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.Name))
+                            else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name))
                             {
                                 var result = from p in dbContext.pO_TEL_VID_CONNECTs
-                                             where string.Compare(p.Name, oneCriteriaFilterChain.ItemOfCriteria.Name) > 0
+                                             where !p.Name.Equals(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name)
                                              select p;
                                 returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                             }
                         }
-                        else if (oneCriteriaFilterChain.OperatorComparision == OperatorSignComparision._LT_)  // "<"
+                        else if (oneCriteriaFilterChain.OperatorComparisionLeftOnly == OperatorSignComparision._GT_)  // ">"
                         {
-                            if (oneCriteriaFilterChain.ItemOfCriteria.Id > 0)
+                            if (oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id > 0)
                             {
                                 var result = from p in dbContext.pO_TEL_VID_CONNECTs
-                                             where p.Id < oneCriteriaFilterChain.ItemOfCriteria.Id
+                                             where p.Id > oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id
                                              select p;
                                 returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                             }
-                            else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect))
+                            else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect))
                             {
                                 var result = from p in dbContext.pO_TEL_VID_CONNECTs
-                                             where string.Compare(p.KodOfConnect, oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect) < 0
+                                             where string.Compare(p.KodOfConnect, oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect) > 0
                                              select p;
                                 returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                             }
-                            else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.Name))
+                            else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name))
                             {
                                 var result = from p in dbContext.pO_TEL_VID_CONNECTs
-                                             where string.Compare(p.Name, oneCriteriaFilterChain.ItemOfCriteria.Name) < 0
+                                             where string.Compare(p.Name, oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name) > 0
                                              select p;
                                 returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                             }
                         }
-                        else if (oneCriteriaFilterChain.OperatorComparision == OperatorSignComparision._GE_)   // ">="
+                        else if (oneCriteriaFilterChain.OperatorComparisionLeftOnly == OperatorSignComparision._LT_)  // "<"
                         {
-                            if (oneCriteriaFilterChain.ItemOfCriteria.Id > 0)
+                            if (oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id > 0)
                             {
                                 var result = from p in dbContext.pO_TEL_VID_CONNECTs
-                                             where p.Id >= oneCriteriaFilterChain.ItemOfCriteria.Id
+                                             where p.Id < oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id
                                              select p;
                                 returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                             }
-                            else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect))
+                            else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect))
                             {
                                 var result = from p in dbContext.pO_TEL_VID_CONNECTs
-                                             where string.Compare(p.KodOfConnect, oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect) >= 0
+                                             where string.Compare(p.KodOfConnect, oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect) < 0
                                              select p;
                                 returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                             }
-                            else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.Name))
+                            else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name))
                             {
                                 var result = from p in dbContext.pO_TEL_VID_CONNECTs
-                                             where string.Compare(p.Name, oneCriteriaFilterChain.ItemOfCriteria.Name) >= 0
+                                             where string.Compare(p.Name, oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name) < 0
                                              select p;
                                 returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                             }
                         }
-                        else if (oneCriteriaFilterChain.OperatorComparision == OperatorSignComparision._LE_)   // "<="
+                        else if (oneCriteriaFilterChain.OperatorComparisionLeftOnly == OperatorSignComparision._GE_)   // ">="
                         {
-                            if (oneCriteriaFilterChain.ItemOfCriteria.Id > 0)
+                            if (oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id > 0)
                             {
                                 var result = from p in dbContext.pO_TEL_VID_CONNECTs
-                                             where p.Id <= oneCriteriaFilterChain.ItemOfCriteria.Id
+                                             where p.Id >= oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id
                                              select p;
                                 returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                             }
-                            else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect))
+                            else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect))
                             {
                                 var result = from p in dbContext.pO_TEL_VID_CONNECTs
-                                             where string.Compare(p.KodOfConnect, oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect) <= 0
+                                             where string.Compare(p.KodOfConnect, oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect) >= 0
                                              select p;
                                 returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                             }
-                            else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.Name))
+                            else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name))
                             {
                                 var result = from p in dbContext.pO_TEL_VID_CONNECTs
-                                             where string.Compare(p.Name, oneCriteriaFilterChain.ItemOfCriteria.Name) <= 0
+                                             where string.Compare(p.Name, oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name) >= 0
                                              select p;
                                 returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                             }
                         }
-                        else if (oneCriteriaFilterChain.OperatorComparision == OperatorSignComparision._REGEX_)  //  Grep
+                        else if (oneCriteriaFilterChain.OperatorComparisionLeftOnly == OperatorSignComparision._LE_)   // "<="
                         {
-                            if (oneCriteriaFilterChain.ItemOfCriteria.Id > 0)
+                            if (oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id > 0)
                             {
                                 var result = from p in dbContext.pO_TEL_VID_CONNECTs
-                                                    where p.Id == oneCriteriaFilterChain.ItemOfCriteria.Id
+                                             where p.Id <= oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id
+                                             select p;
+                                returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
+                            }
+                            else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect))
+                            {
+                                var result = from p in dbContext.pO_TEL_VID_CONNECTs
+                                             where string.Compare(p.KodOfConnect, oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect) <= 0
+                                             select p;
+                                returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
+                            }
+                            else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name))
+                            {
+                                var result = from p in dbContext.pO_TEL_VID_CONNECTs
+                                             where string.Compare(p.Name, oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name) <= 0
+                                             select p;
+                                returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
+                            }
+                        }
+                        else if (oneCriteriaFilterChain.OperatorComparisionLeftOnly == OperatorSignComparision._REGEX_)  //  Grep
+                        {
+                            if (oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id > 0)
+                            {
+                                var result = from p in dbContext.pO_TEL_VID_CONNECTs
+                                                    where p.Id == oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id
                                                     select p;
                                 returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                             }
-                            else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect))
+                            else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect))
                             {
-                                string sPattern = @"" + oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect;
+                                string sPattern = @"" + oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect;
 
                                 var result = dbContext.pO_TEL_VID_CONNECTs.Local.Where<PO_TEL_VID_CONNECT>((p) => Regex.IsMatch(p.KodOfConnect, sPattern)).ToList<PO_TEL_VID_CONNECT>();
 
@@ -236,7 +236,7 @@ namespace WpfDBMS027
                                     }
                                     else
                                     {
-                                        myRegexValidator = new RegexStringValidator(@"" + oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect);
+                                        myRegexValidator = new RegexStringValidator(@"" + oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect);
 
                                         returnedQueryable = dbContext.pO_TEL_VID_CONNECTs.Local.Where<PO_TEL_VID_CONNECT>((p) => Regex.IsMatch(p.KodOfConnect, sPattern)).ToList<PO_TEL_VID_CONNECT>();
                                     }
@@ -251,12 +251,12 @@ namespace WpfDBMS027
                                 }
 
                             }
-                            else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.Name))
+                            else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name))
                             {
 
                                 ICollection<PO_TEL_VID_CONNECT> returnedQueryableBugFixed = null;
 
-                                string sPattern = @"" + oneCriteriaFilterChain.ItemOfCriteria.Name;
+                                string sPattern = @"" + oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name;
 
 
                                 RegexStringValidator myRegexValidator = null;
@@ -271,7 +271,7 @@ namespace WpfDBMS027
                                     else
                                     {
 
-                                        myRegexValidator = new RegexStringValidator(@"" + oneCriteriaFilterChain.ItemOfCriteria.Name);
+                                        myRegexValidator = new RegexStringValidator(@"" + oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name);
 
                                         returnedQueryable = dbContext.pO_TEL_VID_CONNECTs.Local.Where<PO_TEL_VID_CONNECT>((p) => Regex.IsMatch(p.Name, sPattern)).ToList<PO_TEL_VID_CONNECT>();
                                     }
@@ -309,162 +309,162 @@ namespace WpfDBMS027
                     {
                         if (oneCriteriaFilterChain.OperatorLogic == OperatorSignLogic._AND_ && returnedQueryable != null)
                         {
-                            if (oneCriteriaFilterChain.OperatorComparision == OperatorSignComparision._EQ_)  // "=="
+                            if (oneCriteriaFilterChain.OperatorComparisionLeftOnly == OperatorSignComparision._EQ_)  // "=="
                             {
-                                if (oneCriteriaFilterChain.ItemOfCriteria.Id > 0)
+                                if (oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id > 0)
                                 {
                                     var result = from p in returnedQueryable
-                                                 where p.Id == oneCriteriaFilterChain.ItemOfCriteria.Id
+                                                 where p.Id == oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id
                                                  select p;
                                     returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                                 }
-                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect))
+                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect))
                                 {
                                     var result = from p in returnedQueryable
-                                                 where p.KodOfConnect.Equals(oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect)
+                                                 where p.KodOfConnect.Equals(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect)
                                                  select p;
                                     returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                                 }
-                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.Name))
+                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name))
                                 {
                                     var result = from p in returnedQueryable
-                                                 where p.Name.Equals(oneCriteriaFilterChain.ItemOfCriteria.Name)
+                                                 where p.Name.Equals(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name)
                                                  select p;
                                     returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                                 }
                             }
-                            else if (oneCriteriaFilterChain.OperatorComparision == OperatorSignComparision._NE_)  // "!="
+                            else if (oneCriteriaFilterChain.OperatorComparisionLeftOnly == OperatorSignComparision._NE_)  // "!="
                             {
-                                if (oneCriteriaFilterChain.ItemOfCriteria.Id > 0)
+                                if (oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id > 0)
                                 {
                                     var result = from p in returnedQueryable
-                                                 where p.Id != oneCriteriaFilterChain.ItemOfCriteria.Id
+                                                 where p.Id != oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id
                                                  select p;
                                     returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                                 }
-                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect))
+                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect))
                                 {
                                     var result = from p in returnedQueryable
-                                                 where !p.KodOfConnect.Equals(oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect)
+                                                 where !p.KodOfConnect.Equals(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect)
                                                  select p;
                                     returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                                 }
-                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.Name))
+                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name))
                                 {
                                     var result = from p in returnedQueryable
-                                                 where !p.Name.Equals(oneCriteriaFilterChain.ItemOfCriteria.Name)
+                                                 where !p.Name.Equals(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name)
                                                  select p;
                                     returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                                 }
                             }
-                            else if (oneCriteriaFilterChain.OperatorComparision == OperatorSignComparision._GT_)  // ">"
+                            else if (oneCriteriaFilterChain.OperatorComparisionLeftOnly == OperatorSignComparision._GT_)  // ">"
                             {
-                                if (oneCriteriaFilterChain.ItemOfCriteria.Id > 0)
+                                if (oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id > 0)
                                 {
                                     var result = from p in returnedQueryable
-                                                 where p.Id > oneCriteriaFilterChain.ItemOfCriteria.Id
+                                                 where p.Id > oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id
                                                  select p;
                                     returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                                 }
-                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect))
+                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect))
                                 {
                                     var result = from p in returnedQueryable
-                                                 where string.Compare(p.KodOfConnect, oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect) > 0
+                                                 where string.Compare(p.KodOfConnect, oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect) > 0
                                                  select p;
                                     returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                                 }
-                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.Name))
+                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name))
                                 {
                                     var result = from p in returnedQueryable
-                                                 where string.Compare(p.Name, oneCriteriaFilterChain.ItemOfCriteria.Name) > 0
+                                                 where string.Compare(p.Name, oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name) > 0
                                                  select p;
                                     returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                                 }
                             }
-                            else if (oneCriteriaFilterChain.OperatorComparision == OperatorSignComparision._LT_)  // "<"
+                            else if (oneCriteriaFilterChain.OperatorComparisionLeftOnly == OperatorSignComparision._LT_)  // "<"
                             {
-                                if (oneCriteriaFilterChain.ItemOfCriteria.Id > 0)
+                                if (oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id > 0)
                                 {
                                     var result = from p in returnedQueryable
-                                                 where p.Id < oneCriteriaFilterChain.ItemOfCriteria.Id
+                                                 where p.Id < oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id
                                                  select p;
                                     returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                                 }
-                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect))
+                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect))
                                 {
                                     var result = from p in returnedQueryable
-                                                 where string.Compare(p.KodOfConnect, oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect) < 0
+                                                 where string.Compare(p.KodOfConnect, oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect) < 0
                                                  select p;
                                     returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                                 }
-                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.Name))
+                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name))
                                 {
                                     var result = from p in returnedQueryable
-                                                 where string.Compare(p.Name, oneCriteriaFilterChain.ItemOfCriteria.Name) < 0
+                                                 where string.Compare(p.Name, oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name) < 0
                                                  select p;
                                     returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                                 }
                             }
-                            else if (oneCriteriaFilterChain.OperatorComparision == OperatorSignComparision._GE_)   // ">="
+                            else if (oneCriteriaFilterChain.OperatorComparisionLeftOnly == OperatorSignComparision._GE_)   // ">="
                             {
-                                if (oneCriteriaFilterChain.ItemOfCriteria.Id > 0)
+                                if (oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id > 0)
                                 {
                                     var result = from p in returnedQueryable
-                                                 where p.Id >= oneCriteriaFilterChain.ItemOfCriteria.Id
+                                                 where p.Id >= oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id
                                                  select p;
                                     returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                                 }
-                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect))
+                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect))
                                 {
                                     var result = from p in returnedQueryable
-                                                 where string.Compare(p.KodOfConnect, oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect) >= 0
+                                                 where string.Compare(p.KodOfConnect, oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect) >= 0
                                                  select p;
                                     returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                                 }
-                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.Name))
+                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name))
                                 {
                                     var result = from p in returnedQueryable
-                                                 where string.Compare(p.Name, oneCriteriaFilterChain.ItemOfCriteria.Name) >= 0
+                                                 where string.Compare(p.Name, oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name) >= 0
                                                  select p;
                                     returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                                 }
                             }
-                            else if (oneCriteriaFilterChain.OperatorComparision == OperatorSignComparision._LE_)   // "<="
+                            else if (oneCriteriaFilterChain.OperatorComparisionLeftOnly == OperatorSignComparision._LE_)   // "<="
                             {
-                                if (oneCriteriaFilterChain.ItemOfCriteria.Id > 0)
+                                if (oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id > 0)
                                 {
                                     var result = from p in returnedQueryable
-                                                 where p.Id <= oneCriteriaFilterChain.ItemOfCriteria.Id
+                                                 where p.Id <= oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id
                                                  select p;
                                     returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                                 }
-                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect))
+                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect))
                                 {
                                     var result = from p in returnedQueryable
-                                                 where string.Compare(p.KodOfConnect, oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect) <= 0
+                                                 where string.Compare(p.KodOfConnect, oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect) <= 0
                                                  select p;
                                     returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                                 }
-                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.Name))
+                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name))
                                 {
                                     var result = from p in returnedQueryable
-                                                 where string.Compare(p.Name, oneCriteriaFilterChain.ItemOfCriteria.Name) <= 0
+                                                 where string.Compare(p.Name, oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name) <= 0
                                                  select p;
                                     returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                                 }
                             }
-                            else if (oneCriteriaFilterChain.OperatorComparision == OperatorSignComparision._REGEX_)  //  Grep
+                            else if (oneCriteriaFilterChain.OperatorComparisionLeftOnly == OperatorSignComparision._REGEX_)  //  Grep
                             {
-                                if (oneCriteriaFilterChain.ItemOfCriteria.Id > 0)
+                                if (oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id > 0)
                                 {
                                     var result = from p in returnedQueryable
-                                                 where p.Id == oneCriteriaFilterChain.ItemOfCriteria.Id
+                                                 where p.Id == oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id
                                                  select p;
                                     returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                                 }
-                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect))
+                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect))
                                 {
-                                    string sPattern = oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect;
+                                    string sPattern = oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect;
 
                                     var result = from p in returnedQueryable
                                                  where Regex.IsMatch(p.KodOfConnect, sPattern)
@@ -472,9 +472,9 @@ namespace WpfDBMS027
 
                                     returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                                 }
-                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.Name))
+                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name))
                                 {
-                                    string sPattern = oneCriteriaFilterChain.ItemOfCriteria.Name;
+                                    string sPattern = oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name;
 
                                     var result = from p in returnedQueryable
                                                  where Regex.IsMatch(p.Name, sPattern)
@@ -486,164 +486,164 @@ namespace WpfDBMS027
                         }
                         else if (oneCriteriaFilterChain.OperatorLogic == OperatorSignLogic._AND_NOT_ && returnedQueryable != null)
                         {
-                            if (oneCriteriaFilterChain.OperatorComparision == OperatorSignComparision._EQ_)  // "=="
+                            if (oneCriteriaFilterChain.OperatorComparisionLeftOnly == OperatorSignComparision._EQ_)  // "=="
                             {
-                                if (oneCriteriaFilterChain.ItemOfCriteria.Id > 0)
+                                if (oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id > 0)
                                 {
                                     var result = from p in returnedQueryable
-                                                 where p.Id != oneCriteriaFilterChain.ItemOfCriteria.Id
+                                                 where p.Id != oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id
                                                  select p;
                                     returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                                 }
-                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect))
+                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect))
                                 {
                                     var result = from p in returnedQueryable
                                                         !
-                                                 where p.KodOfConnect.Equals(oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect)
+                                                 where p.KodOfConnect.Equals(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect)
                                                  select p;
                                     returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                                 }
-                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.Name))
+                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name))
                                 {
                                     var result = from p in returnedQueryable
                                                         !
-                                                 where p.Name.Equals(oneCriteriaFilterChain.ItemOfCriteria.Name)
+                                                 where p.Name.Equals(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name)
                                                  select p;
                                     returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                                 }
                             }
-                            else if (oneCriteriaFilterChain.OperatorComparision == OperatorSignComparision._NE_)  // "!="
+                            else if (oneCriteriaFilterChain.OperatorComparisionLeftOnly == OperatorSignComparision._NE_)  // "!="
                             {
-                                if (oneCriteriaFilterChain.ItemOfCriteria.Id > 0)
+                                if (oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id > 0)
                                 {
                                     var result = from p in returnedQueryable
-                                                 where p.Id == oneCriteriaFilterChain.ItemOfCriteria.Id
+                                                 where p.Id == oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id
                                                  select p;
                                     returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                                 }
-                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect))
+                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect))
                                 {
                                     var result = from p in returnedQueryable
-                                                 where p.KodOfConnect.Equals(oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect)
+                                                 where p.KodOfConnect.Equals(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect)
                                                  select p;
                                     returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                                 }
-                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.Name))
+                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name))
                                 {
                                     var result = from p in returnedQueryable
-                                                 where p.Name.Equals(oneCriteriaFilterChain.ItemOfCriteria.Name)
+                                                 where p.Name.Equals(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name)
                                                  select p;
                                     returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                                 }
                             }
-                            else if (oneCriteriaFilterChain.OperatorComparision == OperatorSignComparision._GT_)  // ">"
+                            else if (oneCriteriaFilterChain.OperatorComparisionLeftOnly == OperatorSignComparision._GT_)  // ">"
                             {
-                                if (oneCriteriaFilterChain.ItemOfCriteria.Id > 0)
+                                if (oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id > 0)
                                 {
                                     var result = from p in returnedQueryable
-                                                 where p.Id <= oneCriteriaFilterChain.ItemOfCriteria.Id
+                                                 where p.Id <= oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id
                                                  select p;
                                     returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                                 }
-                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect))
+                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect))
                                 {
                                     var result = from p in returnedQueryable
-                                                 where string.Compare(p.KodOfConnect, oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect) <= 0
+                                                 where string.Compare(p.KodOfConnect, oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect) <= 0
                                                  select p;
                                     returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                                 }
-                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.Name))
+                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name))
                                 {
                                     var result = from p in returnedQueryable
-                                                 where string.Compare(p.Name, oneCriteriaFilterChain.ItemOfCriteria.Name) <= 0
+                                                 where string.Compare(p.Name, oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name) <= 0
                                                  select p;
                                     returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                                 }
                             }
-                            else if (oneCriteriaFilterChain.OperatorComparision == OperatorSignComparision._LT_)  // "<"
+                            else if (oneCriteriaFilterChain.OperatorComparisionLeftOnly == OperatorSignComparision._LT_)  // "<"
                             {
-                                if (oneCriteriaFilterChain.ItemOfCriteria.Id > 0)
+                                if (oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id > 0)
                                 {
                                     var result = from p in returnedQueryable
-                                                 where p.Id >= oneCriteriaFilterChain.ItemOfCriteria.Id
+                                                 where p.Id >= oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id
                                                  select p;
                                     returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                                 }
-                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect))
+                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect))
                                 {
                                     var result = from p in returnedQueryable
-                                                 where string.Compare(p.KodOfConnect, oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect) >= 0
+                                                 where string.Compare(p.KodOfConnect, oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect) >= 0
                                                  select p;
                                     returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                                 }
-                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.Name))
+                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name))
                                 {
                                     var result = from p in returnedQueryable
-                                                 where string.Compare(p.Name, oneCriteriaFilterChain.ItemOfCriteria.Name) >= 0
+                                                 where string.Compare(p.Name, oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name) >= 0
                                                  select p;
                                     returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                                 }
                             }
-                            else if (oneCriteriaFilterChain.OperatorComparision == OperatorSignComparision._GE_)   // ">="
+                            else if (oneCriteriaFilterChain.OperatorComparisionLeftOnly == OperatorSignComparision._GE_)   // ">="
                             {
-                                if (oneCriteriaFilterChain.ItemOfCriteria.Id > 0)
+                                if (oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id > 0)
                                 {
                                     var result = from p in returnedQueryable
-                                                 where p.Id < oneCriteriaFilterChain.ItemOfCriteria.Id
+                                                 where p.Id < oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id
                                                  select p;
                                     returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                                 }
-                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect))
+                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect))
                                 {
                                     var result = from p in returnedQueryable
-                                                 where string.Compare(p.KodOfConnect, oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect) < 0
+                                                 where string.Compare(p.KodOfConnect, oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect) < 0
                                                  select p;
                                     returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                                 }
-                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.Name))
+                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name))
                                 {
                                     var result = from p in returnedQueryable
-                                                 where string.Compare(p.Name, oneCriteriaFilterChain.ItemOfCriteria.Name) < 0
+                                                 where string.Compare(p.Name, oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name) < 0
                                                  select p;
                                     returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                                 }
                             }
-                            else if (oneCriteriaFilterChain.OperatorComparision == OperatorSignComparision._LE_)   // "<="
+                            else if (oneCriteriaFilterChain.OperatorComparisionLeftOnly == OperatorSignComparision._LE_)   // "<="
                             {
-                                if (oneCriteriaFilterChain.ItemOfCriteria.Id > 0)
+                                if (oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id > 0)
                                 {
                                     var result = from p in returnedQueryable
-                                                 where p.Id > oneCriteriaFilterChain.ItemOfCriteria.Id
+                                                 where p.Id > oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id
                                                  select p;
                                     returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                                 }
-                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect))
+                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect))
                                 {
                                     var result = from p in returnedQueryable
-                                                 where string.Compare(p.KodOfConnect, oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect) > 0
+                                                 where string.Compare(p.KodOfConnect, oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect) > 0
                                                  select p;
                                     returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                                 }
-                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.Name))
+                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name))
                                 {
                                     var result = from p in returnedQueryable
-                                                 where string.Compare(p.Name, oneCriteriaFilterChain.ItemOfCriteria.Name) > 0
+                                                 where string.Compare(p.Name, oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name) > 0
                                                  select p;
                                     returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                                 }
                             }
-                            else if (oneCriteriaFilterChain.OperatorComparision == OperatorSignComparision._REGEX_)  //  Grep
+                            else if (oneCriteriaFilterChain.OperatorComparisionLeftOnly == OperatorSignComparision._REGEX_)  //  Grep
                             {
-                                if (oneCriteriaFilterChain.ItemOfCriteria.Id > 0)
+                                if (oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id > 0)
                                 {
                                     var result = from p in returnedQueryable
-                                                 where p.Id != oneCriteriaFilterChain.ItemOfCriteria.Id
+                                                 where p.Id != oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id
                                                  select p;
                                     returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                                 }
-                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect))
+                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect))
                                 {
-                                    string sPattern = oneCriteriaFilterChain.ItemOfCriteria.KodOfConnect;
+                                    string sPattern = oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.KodOfConnect;
 
                                     var result = from p in returnedQueryable
                                                  where !Regex.IsMatch(p.KodOfConnect, sPattern)
@@ -651,9 +651,9 @@ namespace WpfDBMS027
 
                                     returnedQueryable = result.ToList<PO_TEL_VID_CONNECT>();
                                 }
-                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteria.Name))
+                                else if (!string.IsNullOrEmpty(oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name))
                                 {
-                                    string sPattern = oneCriteriaFilterChain.ItemOfCriteria.Name;
+                                    string sPattern = oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Name;
 
                                     var result = from p in returnedQueryable
                                                  where !Regex.IsMatch(p.Name, sPattern)

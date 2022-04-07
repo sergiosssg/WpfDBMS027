@@ -54,59 +54,59 @@ namespace WpfDBMS027
 
     public class CriteriaOfFilterChainLink<T> : ICriteriaOfFilterChainLink<T>
     {
-        private T _oneItemOfCriteria;
-        private OperatorSignComparision _operatorSignComparision;
-        private OperatorSignLogic _operatorSignLogic;
+        protected T _oneItemOfCriteriaLeft;
+        protected OperatorSignComparision _operatorSignComparisioLeftn;
+        protected OperatorSignLogic _operatorSignLogic;
 
         public CriteriaOfFilterChainLink()
         {
-            this._oneItemOfCriteria = default(T);
-            this._operatorSignComparision = OperatorSignComparision._REGEX_;
+            this._oneItemOfCriteriaLeft = default(T);
+            this._operatorSignComparisioLeftn = OperatorSignComparision._REGEX_;
             this._operatorSignLogic = OperatorSignLogic._NIL_;
         }
 
         public CriteriaOfFilterChainLink(T el)
         {
-            this._oneItemOfCriteria = el;
-            this._operatorSignComparision = OperatorSignComparision._REGEX_;
+            this._oneItemOfCriteriaLeft = el;
+            this._operatorSignComparisioLeftn = OperatorSignComparision._REGEX_;
             this._operatorSignLogic = OperatorSignLogic._NIL_;
         }
 
         public CriteriaOfFilterChainLink(T el, OperatorSignComparision operatorSignComparision)
         {
-            this._oneItemOfCriteria = el;
-            this._operatorSignComparision = operatorSignComparision;
+            this._oneItemOfCriteriaLeft = el;
+            this._operatorSignComparisioLeftn = operatorSignComparision;
             this._operatorSignLogic = OperatorSignLogic._NIL_;
         }
 
         public CriteriaOfFilterChainLink(T el, OperatorSignComparision operatorSignComparision, OperatorSignLogic operatorSignLogic)
         {
-            this._oneItemOfCriteria = el;
-            this._operatorSignComparision = operatorSignComparision;
+            this._oneItemOfCriteriaLeft = el;
+            this._operatorSignComparisioLeftn = operatorSignComparision;
             this._operatorSignLogic = operatorSignLogic;
         }
 
-        public T ItemOfCriteria
+        public T ItemOfCriteriaLeftOnly
         {
             get
             {
-                return this._oneItemOfCriteria;
+                return this._oneItemOfCriteriaLeft;
             }
             set
             {
-                this._oneItemOfCriteria = value;
+                this._oneItemOfCriteriaLeft = value;
             }
         }
 
-        public OperatorSignComparision OperatorComparision
+        public OperatorSignComparision OperatorComparisionLeftOnly
         {
             get
             {
-                return this._operatorSignComparision;
+                return this._operatorSignComparisioLeftn;
             }
             set
             {
-                this._operatorSignComparision = value;
+                this._operatorSignComparisioLeftn = value;
             }
         }
 
@@ -121,6 +121,14 @@ namespace WpfDBMS027
                 this._operatorSignLogic = value;
             }
         }
+    }
+
+
+
+
+    public class PaarCriteriaOfFilterChainLink<T> : CriteriaOfFilterChainLink<T>
+    {
+
     }
 
 
@@ -150,8 +158,8 @@ namespace WpfDBMS027
 
             foreach (var criteriaChain in criteriaOfFilterArray)
             {
-                var argument2 = criteriaChain.ItemOfCriteria;
-                var operatorComparision = criteriaChain.OperatorComparision;
+                var argument2 = criteriaChain.ItemOfCriteriaLeftOnly;
+                var operatorComparision = criteriaChain.OperatorComparisionLeftOnly;
                 var operatorLogic = criteriaChain.OperatorLogic;
 
                 var operatorOfComparision = this._operatorComparisionDelegate[criteriaChain];
@@ -200,8 +208,8 @@ namespace WpfDBMS027
 
             foreach (var criteriaChain in criteriasOfFilter)
             {
-                var argument2 = criteriaChain.ItemOfCriteria;
-                var operatorComparision = criteriaChain.OperatorComparision;
+                var argument2 = criteriaChain.ItemOfCriteriaLeftOnly;
+                var operatorComparision = criteriaChain.OperatorComparisionLeftOnly;
                 var operatorLogic = criteriaChain.OperatorLogic;
 
                 var operatorOfComparision = this._operatorComparisionDelegate[criteriaChain];
