@@ -17,8 +17,8 @@ namespace WpfDBMS027
 
         */
 
-        private DbAppContext _dbContext;
-        private IQueryable<PO_TEL_VID_CONNECT> _queryableOfT;
+        protected DbAppContext _dbContext;
+        protected IQueryable<PO_TEL_VID_CONNECT> _queryableOfT;
 
 
         public CriteriaOfFilterLINQ4POTELVIDCONNECT() : base()
@@ -44,7 +44,6 @@ namespace WpfDBMS027
         public IQueryable<PO_TEL_VID_CONNECT> Queryable
         {
             set => this._queryableOfT = value;
-
             get => this._queryableOfT;
         }
 
@@ -52,7 +51,6 @@ namespace WpfDBMS027
         public DbAppContext DBContextProperty
         {
             set => this._dbContext = value;
-
             get => this._dbContext;
         }
 
@@ -681,4 +679,20 @@ namespace WpfDBMS027
         }
 
     }
+
+
+
+    public class AdvancedCriteriaOfFilterLINQ4POTELVIDCONNECT<PO_TEL_VID_CONNECT, DbAppContext> : CriteriaOfFilterLINQ<PO_TEL_VID_CONNECT, DbAppContext>
+    {
+        public override ICollection<PO_TEL_VID_CONNECT> GetLINQQueryBydbContext(DbAppContext dbContext)
+        {
+            throw new NotImplementedException(); ;
+        }
+
+        public override ICollection<PO_TEL_VID_CONNECT> GetLINQQueryByQueryable(IQueryable<PO_TEL_VID_CONNECT> queryable)
+        {
+            throw new NotImplementedException(); ;
+        }
+    }
+
 }
