@@ -151,7 +151,7 @@ namespace WpfDBMS027
 
     public class CriteriaOfFilter<T> : IOperatorPredicateForComparision<T>
     {
-        private IDictionary<CriteriaOfFilterChainLink<T>, DelegateOperatorForComparision<T>> _operatorComparisionDelegate;
+        protected IDictionary<CriteriaOfFilterChainLink<T>, DelegateOperatorForComparision<T>> _operatorComparisionDelegate;
 
         public CriteriaOfFilter()
         {
@@ -271,6 +271,7 @@ namespace WpfDBMS027
         }
 
     }
+
 
 
     public abstract class CriteriaOfFilterLINQ<T, D> : IOperatorPredicateForComparision<T>, IDBAppContext<T, D>
