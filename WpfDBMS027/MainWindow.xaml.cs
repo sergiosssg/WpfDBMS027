@@ -1138,6 +1138,19 @@ namespace WpfDBMS027
 
 
 
+        static private CriteriaOfFilterLINQ<PO_TEL_VID_CONNECT, DbAppContext> MakeCriteriaOfFilterFromBothTextFieldsReturningLINQ(TextBox inputTextBoxOfCriteriaItemFromLeft,
+                                                                                               ComboBox inputCmBoxOfComparisionOperationInCriteriaFromLeft,
+                                                                                               ComboBox inputCmBoxOfLogicalOperationInCriteria,
+                                                                                               int indxOfFieldIn,
+                                                                                               TextBox inputTextBoxOfCriteriaItemFromRight,
+                                                                                               ComboBox inputCmBoxOfComparisionOperationInCriteriaFromRight)
+        {
+
+            throw new NotImplementedException();
+        }
+
+
+
         /**
          * <summary>
          * 
