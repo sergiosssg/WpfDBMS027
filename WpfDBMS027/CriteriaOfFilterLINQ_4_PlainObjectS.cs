@@ -714,107 +714,91 @@ namespace WpfDBMS027
             this._matrixOfPredicates = new Dictionary<OperatorSignComparision, IDictionary< int, Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>>>();
 
 
-
-
-            /*
-                        = (po) => { 
-                                                                                             if (po.GetType() == typeof(PO_TEL_VID_CONNECT))  { 
-                                                                                                  if (((PO_TEL_VID_CONNECT)po).Id > 0) return true; } return false; };*/
-
-
-
             IDictionary< int, Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>> predicate_tuple4_EQ = new Dictionary< int, Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>>();
-            Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_EQ_for_PO__ID__;
-            //predicate_tuple4_EQ.Add();
-            Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_EQ_for_PO__Kod__;
-            //predicate_tuple4_EQ.Add();
-            Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_EQ_for_PO__Name__;
-            //predicate_tuple4_EQ.Add();
+            
+
+            Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_EQ_for_PO__ID__ = null;
+            predicate_tuple4_EQ.Add(0, streamOf_EQ_for_PO__ID__);
+            Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_EQ_for_PO__Kod__ = null;
+            predicate_tuple4_EQ.Add(1, streamOf_EQ_for_PO__Kod__);
+            Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_EQ_for_PO__Name__ = null;
+            predicate_tuple4_EQ.Add(2, streamOf_EQ_for_PO__Name__);
             //predicate_tuple4_EQ.Add();
             //predicate_tuple4_EQ.Add();
             //predicate_tuple4_EQ.Add();
             this._matrixOfPredicates.Add(OperatorSignComparision._EQ_, predicate_tuple4_EQ);
 
-
             IDictionary< int, Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>> predicate_tuple4_NE = new Dictionary< int, Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>>();
-            Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_NE_for_PO__ID__;
-            //predicate_tuple4_NE.Add();
-            Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_NE_for_PO__Kod__;
-            //predicate_tuple4_NE.Add();
-            Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_NE_for_PO__Name__;
-            //predicate_tuple4_NE.Add();
+            Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_NE_for_PO__ID__ = null;
+            predicate_tuple4_NE.Add(0, streamOf_NE_for_PO__ID__);
+            Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_NE_for_PO__Kod__ = null;
+            predicate_tuple4_NE.Add(1, streamOf_NE_for_PO__Kod__);
+            Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_NE_for_PO__Name__ = null;
+            predicate_tuple4_NE.Add(2, streamOf_NE_for_PO__Name__);
             //predicate_tuple4_NE.Add();
             //predicate_tuple4_NE.Add();
             //predicate_tuple4_NE.Add();
             this._matrixOfPredicates.Add(OperatorSignComparision._NE_, predicate_tuple4_NE);
 
-
             IDictionary< int, Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>> predicate_tuple4_GT = new Dictionary< int, Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>>();
-            Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_GT_for_PO__ID__;
-            //predicate_tuple4_GT.Add();
-            Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_GT_for_PO__Kod__;
-            //predicate_tuple4_GT.Add();
-            Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_GT_for_PO__Name__;
-            //predicate_tuple4_GT.Add();
+            Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_GT_for_PO__ID__ = null;
+            predicate_tuple4_GT.Add(0, streamOf_GT_for_PO__ID__);
+            Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_GT_for_PO__Kod__ = null;
+            predicate_tuple4_GT.Add(1, streamOf_GT_for_PO__Kod__);
+            Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_GT_for_PO__Name__ = null;
+            predicate_tuple4_GT.Add(2, streamOf_GT_for_PO__Name__);
             //predicate_tuple4_GT.Add();
             //predicate_tuple4_GT.Add();
             //predicate_tuple4_GT.Add();
             this._matrixOfPredicates.Add(OperatorSignComparision._GT_, predicate_tuple4_GT);
 
-
             IDictionary< int, Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>> predicate_tuple4_LT = new Dictionary< int, Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>>();
-            Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_LT_for_PO__ID__;
-            //predicate_tuple4_LT.Add();
-            Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_LT_for_PO__Kod__;
-            //predicate_tuple4_LT.Add();
-            Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_LT_for_PO__Name__;
-            //predicate_tuple4_LT.Add();
+            Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_LT_for_PO__ID__ = null;
+            predicate_tuple4_LT.Add(0, streamOf_LT_for_PO__ID__);
+            Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_LT_for_PO__Kod__ = null;
+            predicate_tuple4_LT.Add(1, streamOf_LT_for_PO__Kod__);
+            Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_LT_for_PO__Name__ = null;
+            predicate_tuple4_LT.Add(2, streamOf_LT_for_PO__Name__);
             //predicate_tuple4_LT.Add();
             //predicate_tuple4_LT.Add();
             //predicate_tuple4_LT.Add();
             this._matrixOfPredicates.Add(OperatorSignComparision._LT_, predicate_tuple4_LT);
 
-
             IDictionary< int, Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>> predicate_tuple4_GE = new Dictionary<int, Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>>();
-            Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_GE_for_PO__ID__;
-            //predicate_tuple4_GE.Add();
-            Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_GE_for_PO__Kod__;
-            //predicate_tuple4_GE.Add();
-            Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_GE_for_PO__Name__;
-            //predicate_tuple4_GE.Add();
+            Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_GE_for_PO__ID__ = null;
+            predicate_tuple4_GE.Add(0, streamOf_GE_for_PO__ID__);
+            Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_GE_for_PO__Kod__ = null;
+            predicate_tuple4_GE.Add(1, streamOf_GE_for_PO__Kod__);
+            Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_GE_for_PO__Name__ = null;
+            predicate_tuple4_GE.Add(2, streamOf_GE_for_PO__Name__);
             //predicate_tuple4_GE.Add();
             //predicate_tuple4_GE.Add();
             //predicate_tuple4_GE.Add();
             this._matrixOfPredicates.Add(OperatorSignComparision._GE_, predicate_tuple4_GE);
 
-
             IDictionary< int, Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>> predicate_tuple4_LE = new Dictionary< int, Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>>();
-            Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_LE_for_PO__ID__;
-            //predicate_tuple4_LE.Add();
-            Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_LE_for_PO__Kod__;
-            //predicate_tuple4_LE.Add();
-            Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_LE_for_PO__Name__;
-            //predicate_tuple4_LE.Add();
+            Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_LE_for_PO__ID__= null;
+            predicate_tuple4_LE.Add(0, streamOf_LE_for_PO__ID__);
+            Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_LE_for_PO__Kod__ = null;
+            predicate_tuple4_LE.Add(1, streamOf_LE_for_PO__Kod__);
+            Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_LE_for_PO__Name__ = null;
+            predicate_tuple4_LE.Add(2, streamOf_LE_for_PO__Name__);
             //predicate_tuple4_LE.Add();
             //predicate_tuple4_LE.Add();
             //predicate_tuple4_LE.Add();
             this._matrixOfPredicates.Add(OperatorSignComparision._LE_, predicate_tuple4_LE);
 
-
             IDictionary< int, Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>> predicate_tuple4_REGEX = new Dictionary< int, Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>>();
-            Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_EQ_for_REGEX__ID__;
-            //predicate_tuple4_REGEX.Add();
-            Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_EQ_for_REGEX__Kod__;
-            //predicate_tuple4_REGEX.Add();
-            Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_EQ_for_REGEX__Name__;
-            //predicate_tuple4_REGEX.Add();
+            Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_EQ_for_REGEX__ID__ = null;
+            predicate_tuple4_REGEX.Add(0, streamOf_EQ_for_REGEX__ID__);
+            Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_EQ_for_REGEX__Kod__ = null;
+            predicate_tuple4_REGEX.Add(1, streamOf_EQ_for_REGEX__Kod__);
+            Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_EQ_for_REGEX__Name__ = null;
+            predicate_tuple4_REGEX.Add(2, streamOf_EQ_for_REGEX__Name__);
             //predicate_tuple4_REGEX.Add();
             //predicate_tuple4_REGEX.Add();
             //predicate_tuple4_REGEX.Add();
             this._matrixOfPredicates.Add(OperatorSignComparision._REGEX_, predicate_tuple4_REGEX);
-
-
-
         }
 
         public DbContext DBContextProperty { get => this._dbContext1; set => this._dbContext1=value; }
