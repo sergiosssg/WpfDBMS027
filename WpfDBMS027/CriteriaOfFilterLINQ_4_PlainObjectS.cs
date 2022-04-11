@@ -697,7 +697,7 @@ namespace WpfDBMS027
     }
 
 
-    public class MatrixOfOperatorsFor_POTELVIDCONNECT<PO_TEL_VID_CONNECT> : MatrixOf_OperatorSignComparision_Predicates<PO_TEL_VID_CONNECT>
+    public class MatrixOfOperatorsFor_POTELVIDCONNECT<PO_TEL_VID_CONNECT> : IMatrixOf_OperatorSignComparision_Predicates<PO_TEL_VID_CONNECT>
     {
         private Tuple<int, int, string, string> _oneElementOfCriteria;
 
@@ -844,7 +844,7 @@ namespace WpfDBMS027
 
         public ICollection<PO_TEL_VID_CONNECT> CollectionProperty { get => this._collection_PO; set => this._collection_PO = value; }
 
-        DbContext MatrixOf_OperatorSignComparision_Predicates<PO_TEL_VID_CONNECT>.DBContextProperty { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        DbContext IMatrixOf_OperatorSignComparision_Predicates<PO_TEL_VID_CONNECT>.DBContextProperty { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> Get_POs_Filtered(Predicate<PO_TEL_VID_CONNECT> predicateWhichFieldOf_PO_NotEmpty, OperatorSignComparision operatorSignComparision, Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> baseTuple, DbContext dbcontext)
         {

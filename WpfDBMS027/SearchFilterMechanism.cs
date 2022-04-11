@@ -107,7 +107,7 @@ namespace WpfDBMS027
 
 
 
-    public interface MatrixOf_OperatorSignComparision_Predicates<T>
+    public interface IMatrixOf_OperatorSignComparision_Predicates<T>
     {
 
         public DbContext DBContextProperty
