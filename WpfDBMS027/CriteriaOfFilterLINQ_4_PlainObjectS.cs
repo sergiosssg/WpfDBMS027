@@ -699,9 +699,11 @@ namespace WpfDBMS027
 
     public class MatrixOfOperatorsFor_POTELVIDCONNECT<PO_TEL_VID_CONNECT> : MatrixOf_OperatorSignComparision_Predicates<PO_TEL_VID_CONNECT>
     {
-        private IDictionary<OperatorSignComparision, IDictionary<int, Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>>> _matrixOfPredicates;
+        private Tuple<int, int, string, string> _oneElementOfCriteria;
 
-        private DbContext _dbContext1;
+        private IDictionary<OperatorSignComparision, IDictionary<int, Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>>> _matrixOfPredicates;
+        
+        private  DbAppContext  _dbContext1;
 
         private ICollection<PO_TEL_VID_CONNECT> _collection_PO;
 
@@ -709,8 +711,16 @@ namespace WpfDBMS027
 
         
 
-        public MatrixOfOperatorsFor_POTELVIDCONNECT()
+        public MatrixOfOperatorsFor_POTELVIDCONNECT(
+                                                     DbAppContext dbappcontext, 
+                                                     Tuple<int, int, string, string> oneElementOfCriteria)
         {
+
+            this._dbContext1 = dbappcontext;
+
+            this._oneElementOfCriteria = oneElementOfCriteria;
+
+
             this._matrixOfPredicates = new Dictionary<OperatorSignComparision, IDictionary< int, Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>>>();
 
 
@@ -718,6 +728,22 @@ namespace WpfDBMS027
             
 
             Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_EQ_for_PO__ID__ = null;
+
+
+            
+
+
+            /*var result = from p in this._dbContext1.pO_TEL_VID_CONNECTs
+                         where p.Id == oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id
+                         select p; */
+
+
+            var result = from p in this._dbContext1.pO_TEL_VID_CONNECTs
+                         where p.Id == this._oneElementOfCriteria.Item2    /*.Id */
+                         select p;
+
+            //streamOf_EQ_for_PO__ID__ = 
+
             predicate_tuple4_EQ.Add(0, streamOf_EQ_for_PO__ID__);
             Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_EQ_for_PO__Kod__ = null;
             predicate_tuple4_EQ.Add(1, streamOf_EQ_for_PO__Kod__);
@@ -801,11 +827,17 @@ namespace WpfDBMS027
             this._matrixOfPredicates.Add(OperatorSignComparision._REGEX_, predicate_tuple4_REGEX);
         }
 
-        public DbContext DBContextProperty { get => this._dbContext1; set => this._dbContext1=value; }
+        public DbAppContext DBContextProperty 
+        {
+            get => this._dbContext1;
+            set => this._dbContext1= value; 
+        }
 
         public IQueryable<PO_TEL_VID_CONNECT> QueryableProperty { get => this._queryable_PO; set => this._queryable_PO=value; }
 
         public ICollection<PO_TEL_VID_CONNECT> CollectionProperty { get => this._collection_PO; set => this._collection_PO=value; }
+
+        DbContext MatrixOf_OperatorSignComparision_Predicates<PO_TEL_VID_CONNECT>.DBContextProperty { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> Get_POs_Filtered(Predicate<PO_TEL_VID_CONNECT> predicateWhichFieldOf_PO_NotEmpty, OperatorSignComparision operatorSignComparision, Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> baseTuple, DbContext dbcontext)
         {
