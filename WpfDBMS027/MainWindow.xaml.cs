@@ -1180,6 +1180,9 @@ namespace WpfDBMS027
                     }
                     var operatorSignComparisionLeft = MakeOperatorSignComparisionEnumFromCombobox( inputCmBoxOfComparisionOperationInCriteriaFromLeft, MainWindow.OperatorSignComparisionStrings);
                     var operatorSignComparisionRight = MakeOperatorSignComparisionEnumFromCombobox( inputCmBoxOfComparisionOperationInCriteriaFromRight, MainWindow.OperatorSignComparisionStrings);
+                    var operatorSignLogic = MakeOperatorSignLogicComparisionEnumFromCombobox(inputCmBoxOfLogicalOperationInCriteria, MainWindow.OperatorSignLogicStrings);
+                    var oneCriteriaOfFilterChainLink = new PaarOfCriteriaOfFilterChainLink<PO_TEL_VID_CONNECT>(pTELVIDCONNECT_left, operatorSignComparisionLeft, pTELVIDCONNECT_right, operatorSignComparisionRight, operatorSignLogic);
+                    inputCriteriaOfFilter.Add(oneCriteriaOfFilterChainLink);
                 }
                 catch (FormatException fex)
                 {
