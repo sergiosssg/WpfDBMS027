@@ -1145,8 +1145,60 @@ namespace WpfDBMS027
                                                                                                TextBox inputTextBoxOfCriteriaItemFromRight,
                                                                                                ComboBox inputCmBoxOfComparisionOperationInCriteriaFromRight)
         {
+            AdvancedCriteriaOfFilterLINQ4POTELVIDCONNECT<PO_TEL_VID_CONNECT, DbAppContext> inputCriteriaOfFilter = new AdvancedCriteriaOfFilterLINQ4POTELVIDCONNECT<PO_TEL_VID_CONNECT, DbAppContext>();
 
-            throw new NotImplementedException();
+            if (!string.IsNullOrWhiteSpace( inputTextBoxOfCriteriaItemFromLeft.Text)  && !string.IsNullOrWhiteSpace(inputTextBoxOfCriteriaItemFromRight.Text))
+            {
+                PO_TEL_VID_CONNECT pTELVIDCONNECT_left = new PO_TEL_VID_CONNECT();
+                PO_TEL_VID_CONNECT pTELVIDCONNECT_right = new PO_TEL_VID_CONNECT();
+
+                try
+                {
+                    if (indxOfFieldIn == 0) // this  block  of  if  operators is relevant  to underlined PO (plain object)
+                    {
+                        int Id_left_dirty = -1, Id_rght_dirty = -1;
+                        bool isParsable = Int32.TryParse( inputTextBoxOfCriteriaItemFromLeft.Text, out Id_left_dirty);
+                        if (isParsable)
+                        {
+                            pTELVIDCONNECT_left.Id = Id_left_dirty;
+                        }
+                        isParsable = Int32.TryParse(inputTextBoxOfCriteriaItemFromRight.Text, out Id_rght_dirty);
+                        if (isParsable)
+                        {
+                            pTELVIDCONNECT_right.Id = Id_rght_dirty;
+                        }
+                    }
+                    else if (indxOfFieldIn == 1)
+                    {
+                        pTELVIDCONNECT_left.KodOfConnect = inputTextBoxOfCriteriaItemFromLeft.Text;
+                        pTELVIDCONNECT_right.KodOfConnect = inputTextBoxOfCriteriaItemFromRight.Text;
+                    }
+                    else if (indxOfFieldIn == 2)
+                    {
+                        pTELVIDCONNECT_left.Name = inputTextBoxOfCriteriaItemFromRight.Text;
+                        pTELVIDCONNECT_right.Name = inputTextBoxOfCriteriaItemFromRight.Text;
+                    }
+                    var operatorSignComparisionLeft = MakeOperatorSignComparisionEnumFromCombobox( inputCmBoxOfComparisionOperationInCriteriaFromLeft, MainWindow.OperatorSignComparisionStrings);
+                    var operatorSignComparisionRight = MakeOperatorSignComparisionEnumFromCombobox( inputCmBoxOfComparisionOperationInCriteriaFromRight, MainWindow.OperatorSignComparisionStrings);
+                }
+                catch (FormatException fex)
+                {
+                    Console.WriteLine($" {fex.Message} ");
+                    Console.WriteLine($" {fex.StackTrace} ");
+                    Console.WriteLine($" {fex.Source} ");
+                }
+                catch (NullReferenceException nre)
+                {
+                    Console.WriteLine($" {nre.HResult} ");
+                    Console.WriteLine($" {nre.Message} ");
+                    Console.WriteLine($" {nre.StackTrace} ");
+                    Console.WriteLine($" {nre.Source} ");
+                }
+            }
+
+
+            return inputCriteriaOfFilter;
+            //throw new NotImplementedException();
         }
 
 

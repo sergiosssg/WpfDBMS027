@@ -685,6 +685,11 @@ namespace WpfDBMS027
 
     public class AdvancedCriteriaOfFilterLINQ4POTELVIDCONNECT<PO_TEL_VID_CONNECT, DbAppContext> : CriteriaOfFilterLINQ<PO_TEL_VID_CONNECT, DbAppContext>
     {
+        public AdvancedCriteriaOfFilterLINQ4POTELVIDCONNECT()
+        {
+
+        }
+
         public override ICollection<PO_TEL_VID_CONNECT> GetLINQQueryBydbContext(DbAppContext dbContext)
         {
             throw new NotImplementedException(); ;
