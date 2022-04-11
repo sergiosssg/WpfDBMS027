@@ -706,9 +706,9 @@ namespace WpfDBMS027
     {
         private Tuple<int, int, string, string> _oneElementOfCriteria;
 
-        private IDictionary<OperatorSignComparision, IDictionary<int, Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>>> _matrixOfPredicates;
+        private IDictionary<OperatorSignComparision, IDictionary<int, Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>>> _matrixOfPredicates;
 
-        private DbAppContext _dbContext1;
+        private DbAppContext _dbContext;
 
         private ICollection<PO_TEL_VID_CONNECT> _collection_PO;
 
@@ -719,117 +719,113 @@ namespace WpfDBMS027
         public MatrixOfOperatorsFor_POTELVIDCONNECT(
                                                      DbAppContext dbappcontext,
                                                      Tuple<int, int, string, string> oneElementOfCriteria,
-                                                     IQueryable<PO_TEL_VID_CONNECT> inQueryable = null,
+                                                     IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT> inQueryable = null,
                                                      ICollection<PO_TEL_VID_CONNECT> inCollection = null)
         {
 
+            IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT> emptyQueriable;
+
             if (dbappcontext != null && oneElementOfCriteria != null)
             {
-
-
-
-
-                this._dbContext1 = dbappcontext;
-
+                this._dbContext = dbappcontext;
                 this._oneElementOfCriteria = oneElementOfCriteria;
 
+                IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT> workingQueryable = (inQueryable != null) ? inQueryable : this._dbContext.pO_TEL_VID_CONNECTs;
 
-                this._matrixOfPredicates = new Dictionary<OperatorSignComparision, IDictionary<int, Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>>>();
+
+                var streamOf_EQ_for_PO__ID = (1, from p in this._dbContext.pO_TEL_VID_CONNECTs where p.Id == this._oneElementOfCriteria.Item2   /*.Id */  select p, new List<PO_TEL_VID_CONNECT>());
 
 
-                IDictionary<int, Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>> predicate_tuple4_EQ = new Dictionary<int, Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>>();
-
-                Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_EQ_for_PO__ID__ = null;
-                //Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_EQ_for_PO__ID__ =( 1, from p in this._dbContext1.pO_TEL_VID_CONNECTs where p.Id == this._oneElementOfCriteria.Item2   /*.Id */  select p, new List<PO_TEL_VID_CONNECT>());
-
-                var streamOf_EQ_for_PO__ID = (1, from p in this._dbContext1.pO_TEL_VID_CONNECTs where p.Id == this._oneElementOfCriteria.Item2   /*.Id */  select p, new List<PO_TEL_VID_CONNECT>());
+                ICollection < PO_TEL_VID_CONNECT > emptyCollection = new List<PO_TEL_VID_CONNECT>();
+                
 
 
 
 
-                /*var result = from p in this._dbContext1.pO_TEL_VID_CONNECTs
-                             where p.Id == oneCriteriaFilterChain.ItemOfCriteriaLeftOnly.Id
-                             select p; */
+
+                this._matrixOfPredicates = new Dictionary<OperatorSignComparision, IDictionary<int, Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>>>();
 
 
 
 
+                IDictionary<int, Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>> predicate_tuple4_EQ = new Dictionary<int, Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>>();
+                Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_EQ_for_PO__ID__ = Tuple.Create(1, from p in workingQueryable where p.Id == this._oneElementOfCriteria.Item2   /*.Id */  select p, emptyCollection);
                 predicate_tuple4_EQ.Add(0, streamOf_EQ_for_PO__ID__);
-                Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_EQ_for_PO__Kod__ = null;
+                Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_EQ_for_PO__Kod__ = Tuple.Create(1, from p in workingQueryable where p.KodOfConnect.ToLower().Equals(this._oneElementOfCriteria.Item3.ToLower())   /*.Kod */  select p, emptyCollection);
                 predicate_tuple4_EQ.Add(1, streamOf_EQ_for_PO__Kod__);
-                Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_EQ_for_PO__Name__ = null;
+                Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_EQ_for_PO__Name__ = Tuple.Create(1, from p in workingQueryable where p.Name.ToLower().Equals(this._oneElementOfCriteria.Item4.ToLower())   /*.Name */  select p, emptyCollection);
                 predicate_tuple4_EQ.Add(2, streamOf_EQ_for_PO__Name__);
                 //predicate_tuple4_EQ.Add();
                 //predicate_tuple4_EQ.Add();
                 //predicate_tuple4_EQ.Add();
                 this._matrixOfPredicates.Add(OperatorSignComparision._EQ_, predicate_tuple4_EQ);
 
-                IDictionary<int, Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>> predicate_tuple4_NE = new Dictionary<int, Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>>();
-                Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_NE_for_PO__ID__ = null;
+                IDictionary<int, Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>> predicate_tuple4_NE = new Dictionary<int, Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>>();
+                Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_NE_for_PO__ID__ = Tuple.Create(1, from p in workingQueryable where p.Id != this._oneElementOfCriteria.Item2   /*.Id */  select p, emptyCollection);
                 predicate_tuple4_NE.Add(0, streamOf_NE_for_PO__ID__);
-                Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_NE_for_PO__Kod__ = null;
+                Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_NE_for_PO__Kod__ = Tuple.Create(1, from p in workingQueryable where !p.KodOfConnect.ToLower().Equals(this._oneElementOfCriteria.Item3.ToLower())   /*.Kod */  select p, emptyCollection);
                 predicate_tuple4_NE.Add(1, streamOf_NE_for_PO__Kod__);
-                Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_NE_for_PO__Name__ = null;
+                Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_NE_for_PO__Name__ = Tuple.Create(1, from p in workingQueryable where !p.Name.ToLower().Equals(this._oneElementOfCriteria.Item4.ToLower())   /*.Name */  select p, emptyCollection);
                 predicate_tuple4_NE.Add(2, streamOf_NE_for_PO__Name__);
                 //predicate_tuple4_NE.Add();
                 //predicate_tuple4_NE.Add();
                 //predicate_tuple4_NE.Add();
                 this._matrixOfPredicates.Add(OperatorSignComparision._NE_, predicate_tuple4_NE);
 
-                IDictionary<int, Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>> predicate_tuple4_GT = new Dictionary<int, Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>>();
-                Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_GT_for_PO__ID__ = null;
+                IDictionary<int, Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>> predicate_tuple4_GT = new Dictionary<int, Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>>();
+                Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_GT_for_PO__ID__ = Tuple.Create(1, from p in workingQueryable where p.Id > this._oneElementOfCriteria.Item2   /*.Id */  select p, emptyCollection);
                 predicate_tuple4_GT.Add(0, streamOf_GT_for_PO__ID__);
-                Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_GT_for_PO__Kod__ = null;
+                Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_GT_for_PO__Kod__ = Tuple.Create(1, from p in workingQueryable where string.Compare(p.KodOfConnect, this._oneElementOfCriteria.Item3, true) > 0    /*.Kod */  select p, emptyCollection);
                 predicate_tuple4_GT.Add(1, streamOf_GT_for_PO__Kod__);
-                Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_GT_for_PO__Name__ = null;
+                Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_GT_for_PO__Name__ = Tuple.Create(1, from p in workingQueryable where string.Compare(p.Name, this._oneElementOfCriteria.Item4, true) > 0    /*.Name */  select p, emptyCollection);
                 predicate_tuple4_GT.Add(2, streamOf_GT_for_PO__Name__);
                 //predicate_tuple4_GT.Add();
                 //predicate_tuple4_GT.Add();
                 //predicate_tuple4_GT.Add();
                 this._matrixOfPredicates.Add(OperatorSignComparision._GT_, predicate_tuple4_GT);
 
-                IDictionary<int, Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>> predicate_tuple4_LT = new Dictionary<int, Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>>();
-                Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_LT_for_PO__ID__ = null;
+                IDictionary<int, Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>> predicate_tuple4_LT = new Dictionary<int, Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>>();
+                Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_LT_for_PO__ID__ = Tuple.Create(1, from p in workingQueryable where p.Id < this._oneElementOfCriteria.Item2   /*.Id */  select p, emptyCollection);
                 predicate_tuple4_LT.Add(0, streamOf_LT_for_PO__ID__);
-                Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_LT_for_PO__Kod__ = null;
+                Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_LT_for_PO__Kod__ = Tuple.Create(1, from p in workingQueryable where string.Compare(p.KodOfConnect, this._oneElementOfCriteria.Item3, true) < 0    /*.Kod */  select p, emptyCollection);
                 predicate_tuple4_LT.Add(1, streamOf_LT_for_PO__Kod__);
-                Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_LT_for_PO__Name__ = null;
+                Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_LT_for_PO__Name__ = Tuple.Create(1, from p in workingQueryable where string.Compare(p.Name, this._oneElementOfCriteria.Item4, true) < 0    /*.Name */  select p, emptyCollection);
                 predicate_tuple4_LT.Add(2, streamOf_LT_for_PO__Name__);
                 //predicate_tuple4_LT.Add();
                 //predicate_tuple4_LT.Add();
                 //predicate_tuple4_LT.Add();
                 this._matrixOfPredicates.Add(OperatorSignComparision._LT_, predicate_tuple4_LT);
 
-                IDictionary<int, Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>> predicate_tuple4_GE = new Dictionary<int, Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>>();
-                Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_GE_for_PO__ID__ = null;
+                IDictionary<int, Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>> predicate_tuple4_GE = new Dictionary<int, Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>>();
+                Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_GE_for_PO__ID__ = Tuple.Create(1, from p in workingQueryable where p.Id >= this._oneElementOfCriteria.Item2   /*.Id */  select p, emptyCollection);
                 predicate_tuple4_GE.Add(0, streamOf_GE_for_PO__ID__);
-                Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_GE_for_PO__Kod__ = null;
+                Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_GE_for_PO__Kod__ = Tuple.Create(1, from p in workingQueryable where string.Compare(p.KodOfConnect, this._oneElementOfCriteria.Item3, true) >= 0    /*.Kod */  select p, emptyCollection);
                 predicate_tuple4_GE.Add(1, streamOf_GE_for_PO__Kod__);
-                Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_GE_for_PO__Name__ = null;
+                Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_GE_for_PO__Name__ = Tuple.Create(1, from p in workingQueryable where string.Compare(p.Name, this._oneElementOfCriteria.Item4, true) >= 0    /*.Name */  select p, emptyCollection);
                 predicate_tuple4_GE.Add(2, streamOf_GE_for_PO__Name__);
                 //predicate_tuple4_GE.Add();
                 //predicate_tuple4_GE.Add();
                 //predicate_tuple4_GE.Add();
                 this._matrixOfPredicates.Add(OperatorSignComparision._GE_, predicate_tuple4_GE);
 
-                IDictionary<int, Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>> predicate_tuple4_LE = new Dictionary<int, Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>>();
-                Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_LE_for_PO__ID__ = null;
+                IDictionary<int, Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>> predicate_tuple4_LE = new Dictionary<int, Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>>();
+                Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_LE_for_PO__ID__ = Tuple.Create(1, from p in workingQueryable where p.Id <= this._oneElementOfCriteria.Item2   /*.Id */  select p, emptyCollection);
                 predicate_tuple4_LE.Add(0, streamOf_LE_for_PO__ID__);
-                Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_LE_for_PO__Kod__ = null;
+                Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_LE_for_PO__Kod__ = Tuple.Create(1, from p in workingQueryable where string.Compare(p.KodOfConnect, this._oneElementOfCriteria.Item3, true) <= 0    /*.Kod */  select p, emptyCollection);
                 predicate_tuple4_LE.Add(1, streamOf_LE_for_PO__Kod__);
-                Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_LE_for_PO__Name__ = null;
+                Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_LE_for_PO__Name__ = Tuple.Create(1, from p in workingQueryable where string.Compare(p.Name, this._oneElementOfCriteria.Item4, true) <= 0    /*.Name */  select p, emptyCollection);
                 predicate_tuple4_LE.Add(2, streamOf_LE_for_PO__Name__);
                 //predicate_tuple4_LE.Add();
                 //predicate_tuple4_LE.Add();
                 //predicate_tuple4_LE.Add();
                 this._matrixOfPredicates.Add(OperatorSignComparision._LE_, predicate_tuple4_LE);
 
-                IDictionary<int, Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>> predicate_tuple4_REGEX = new Dictionary<int, Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>>();
-                Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_EQ_for_REGEX__ID__ = null;
+                IDictionary<int, Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>> predicate_tuple4_REGEX = new Dictionary<int, Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>>();
+                Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_EQ_for_REGEX__ID__ = null;
                 predicate_tuple4_REGEX.Add(0, streamOf_EQ_for_REGEX__ID__);
-                Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_EQ_for_REGEX__Kod__ = null;
+                Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_EQ_for_REGEX__Kod__ = null;
                 predicate_tuple4_REGEX.Add(1, streamOf_EQ_for_REGEX__Kod__);
-                Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_EQ_for_REGEX__Name__ = null;
+                Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_EQ_for_REGEX__Name__ = null;
                 predicate_tuple4_REGEX.Add(2, streamOf_EQ_for_REGEX__Name__);
                 //predicate_tuple4_REGEX.Add();
                 //predicate_tuple4_REGEX.Add();
@@ -841,8 +837,8 @@ namespace WpfDBMS027
 
         public DbAppContext DBContextProperty
         {
-            get => this._dbContext1;
-            set => this._dbContext1 = value;
+            get => this._dbContext;
+            set => this._dbContext = value;
         }
 
         public IQueryable<PO_TEL_VID_CONNECT> QueryableProperty { get => this._queryable_PO; set => this._queryable_PO = value; }

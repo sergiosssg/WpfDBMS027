@@ -964,9 +964,6 @@ namespace WpfDBMS027
 
 
 
-
-
-
                 //dgrid__VID_CONNECT.ItemsSource = this.TEL_VID_CONNECTs.Local.ToBindingList();
 
 
