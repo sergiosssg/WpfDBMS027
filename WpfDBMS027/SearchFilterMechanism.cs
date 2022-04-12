@@ -333,6 +333,27 @@ namespace WpfDBMS027
         abstract public ICollection<T> GetLINQQueryByQueryable(IQueryable<T> queryable);
 
     }
+
+    public enum CaseOfComparingMethodType
+    {
+        BY_REGEX_ONLY,
+        BY_STARTING_STRING,
+        BY_ENDING_STRING,
+        BY_CONTAINING_STRING
+    }
+
+
+    public class ComparingFunctions
+    {
+        
+
+        public static bool CompareTwoStringsAsRegex(string sSource, string sPattern, CaseOfComparingMethodType caseOfComparingMethodType = CaseOfComparingMethodType.BY_STARTING_STRING, bool ignorigCase = false)
+        {
+
+            throw new NotImplementedException();
+        }
+    }
+
 }
 
 

@@ -821,6 +821,13 @@ namespace WpfDBMS027
                 this._matrixOfPredicates.Add(OperatorSignComparision._LE_, predicate_tuple4_LE);
 
                 IDictionary<int, Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>> predicate_tuple4_REGEX = new Dictionary<int, Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>>>();
+
+
+                string sPattern_ID = @"" + this._oneElementOfCriteria.Item2;
+                string sPattern_Kod = @"" + this._oneElementOfCriteria.Item3;
+                string sPattern_Name = @"" + this._oneElementOfCriteria.Item4;
+
+
                 Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_EQ_for_REGEX__ID__ = null;
                 predicate_tuple4_REGEX.Add(0, streamOf_EQ_for_REGEX__ID__);
                 Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_EQ_for_REGEX__Kod__ = null;
