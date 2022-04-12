@@ -737,8 +737,8 @@ namespace WpfDBMS027
 
 
                 ICollection < PO_TEL_VID_CONNECT > emptyCollection = new List<PO_TEL_VID_CONNECT>();
-                
 
+                IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT> emptyQueryable = from p in workingQueryable  where false  select p;
 
 
 
@@ -828,11 +828,30 @@ namespace WpfDBMS027
                 string sPattern_Name = @"" + this._oneElementOfCriteria.Item4;
 
 
-                Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_EQ_for_REGEX__ID__ = null;
+                //emptyQueryable
+
+
+                //IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT> queryableByComparingREGEX__with__ID = from p in workingQueryable where p.Id <= this._oneElementOfCriteria.Item2   /*.Id */  select p;
+                var queryableByComparingREGEX__with__ID = from p in workingQueryable where ComparingFunctions.CompareTwoStringsAsRegex(p.Id.ToString(), sPattern_ID, CaseOfComparingMethodType.BY_CONTAINING_STRING, true)   /*.Id */  select p;
+
+                //ICollection<PO_TEL_VID_CONNECT> collectionByComparingREGEX__with__ID = queryableByComparingREGEX__with__ID.ToList<PO_TEL_VID_CONNECT>();
+                var collectionByComparingREGEX__with__ID = (ICollection<PO_TEL_VID_CONNECT>) queryableByComparingREGEX__with__ID.ToList();
+
+                //Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_EQ_for_REGEX__ID__ = Tuple.Create(1, emptyQueryable, (from p in workingQueryable where p.Id <= this._oneElementOfCriteria.Item2   /*.Id */  select p).ToList<PO_TEL_VID_CONNECT>());
+                Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_EQ_for_REGEX__ID__ = Tuple.Create(2, emptyQueryable, collectionByComparingREGEX__with__ID);
                 predicate_tuple4_REGEX.Add(0, streamOf_EQ_for_REGEX__ID__);
-                Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_EQ_for_REGEX__Kod__ = null;
+
+                var queryableByComparingREGEX__with__Kod = from p in workingQueryable where ComparingFunctions.CompareTwoStringsAsRegex(p.KodOfConnect, sPattern_Kod, CaseOfComparingMethodType.BY_CONTAINING_STRING, true)   /*.Kod */  select p;
+                var collectionByComparingREGEX__with__Kod = (ICollection<PO_TEL_VID_CONNECT>)queryableByComparingREGEX__with__Kod.ToList();
+
+                Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_EQ_for_REGEX__Kod__ = Tuple.Create(2, emptyQueryable, collectionByComparingREGEX__with__Kod);
                 predicate_tuple4_REGEX.Add(1, streamOf_EQ_for_REGEX__Kod__);
-                Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_EQ_for_REGEX__Name__ = null;
+
+                var queryableByComparingREGEX__with__Name = from p in workingQueryable where  ComparingFunctions.CompareTwoStringsAsRegex(p.Name, sPattern_Name, CaseOfComparingMethodType.BY_CONTAINING_STRING, true)  select p;
+                var collectionByComparingREGEX__with__Name = (ICollection<PO_TEL_VID_CONNECT>)queryableByComparingREGEX__with__Name.ToList();
+
+
+                Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> streamOf_EQ_for_REGEX__Name__ = Tuple.Create(2, emptyQueryable, collectionByComparingREGEX__with__Name);
                 predicate_tuple4_REGEX.Add(2, streamOf_EQ_for_REGEX__Name__);
                 //predicate_tuple4_REGEX.Add();
                 //predicate_tuple4_REGEX.Add();
@@ -847,6 +866,8 @@ namespace WpfDBMS027
             get => this._dbContext;
             set => this._dbContext = value;
         }
+
+
 
         public IQueryable<PO_TEL_VID_CONNECT> QueryableProperty { get => this._queryable_PO; set => this._queryable_PO = value; }
 
