@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace WpfDBMS027
@@ -345,11 +347,57 @@ namespace WpfDBMS027
 
     public class ComparingFunctions
     {
-        
 
         public static bool CompareTwoStringsAsRegex(string sSource, string sPattern, CaseOfComparingMethodType caseOfComparingMethodType = CaseOfComparingMethodType.BY_STARTING_STRING, bool ignorigCase = false)
         {
 
+            if (string.IsNullOrWhiteSpace(sSource) || string.IsNullOrWhiteSpace(sPattern))
+            {
+                return false;
+            }
+            string sPatternR = (ignorigCase) ? sPattern.ToLower() : sPattern;
+            string sSourceR = (ignorigCase) ? sSource.ToLower() : sSource;
+
+
+            bool regexTrySearching = false;
+
+            try
+            {
+                if (caseOfComparingMethodType == CaseOfComparingMethodType.BY_REGEX_ONLY)
+                {
+                    regexTrySearching = true;
+                    string sPatternRalfa = @"" + sPatternR;
+
+                    return Regex.IsMatch(sSourceR, sPatternRalfa);
+                }
+                else if (caseOfComparingMethodType == CaseOfComparingMethodType.BY_STARTING_STRING)
+                {
+                    return sSourceR.StartsWith( sPatternR);
+                }
+                else if (caseOfComparingMethodType == CaseOfComparingMethodType.BY_ENDING_STRING)
+                {
+                    return sSourceR.EndsWith( sPatternR);
+                }
+                else if (caseOfComparingMethodType == CaseOfComparingMethodType.BY_CONTAINING_STRING)
+                {
+                    return sSourceR.Contains( sPatternR);
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (RegexParseException rpe)
+            {
+                if (regexTrySearching)
+                {
+                    return CompareTwoStringsAsRegex(sSource, sPattern, CaseOfComparingMethodType.BY_STARTING_STRING, ignorigCase);
+                }
+            }
+            catch (ArgumentException e)
+            {
+                return false;
+            }
             throw new NotImplementedException();
         }
     }
