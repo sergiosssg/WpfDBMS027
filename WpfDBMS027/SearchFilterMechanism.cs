@@ -131,7 +131,7 @@ namespace WpfDBMS027
         }
 
 
-        public Tuple<int, IQueryable<T>, ICollection<T>> Get_POs_Filtered(Predicate<T> predicateWhichFieldOf_PO_NotEmpty, OperatorSignComparision operatorSignComparision, Tuple<int, IQueryable<T>, ICollection<T>> baseTuple, DbContext dbcontext);
+        public Tuple<int, IQueryable<T>, ICollection<T>> Get_POs_Filtered( OperatorSignComparision operatorSignComparision, int indexOfField, IQueryable<PO_TEL_VID_CONNECT> queryable, ICollection<PO_TEL_VID_CONNECT> collection, DbContext dbcontext);
 
     }
 

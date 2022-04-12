@@ -875,7 +875,12 @@ namespace WpfDBMS027
 
         DbContext IMatrixOf_OperatorSignComparision_Predicates<PO_TEL_VID_CONNECT>.DBContextProperty { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-        public Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> Get_POs_Filtered(Predicate<PO_TEL_VID_CONNECT> predicateWhichFieldOf_PO_NotEmpty, OperatorSignComparision operatorSignComparision, Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> baseTuple, DbContext dbcontext)
+        public Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> Get_POs_Filtered( OperatorSignComparision operatorSignComparision, int indexOfField, IQueryable<PO_TEL_VID_CONNECT> queryable, ICollection<PO_TEL_VID_CONNECT> collection, DbContext dbcontext)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> Get_POs_Filtered(OperatorSignComparision operatorSignComparision, int indexOfField, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT> queryable, ICollection<WpfDBMS027.PO_TEL_VID_CONNECT> collection, DbContext dbcontext)
         {
             throw new NotImplementedException();
         }
