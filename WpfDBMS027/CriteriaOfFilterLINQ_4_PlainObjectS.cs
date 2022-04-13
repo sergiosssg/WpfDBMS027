@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using WpfDBMS027;
 using System.Threading.Tasks;
 
 namespace WpfDBMS027
@@ -702,7 +703,7 @@ namespace WpfDBMS027
     }
 
 
-    public class MatrixOfOperatorsFor_POTELVIDCONNECT<PO_TEL_VID_CONNECT> : IMatrixOf_OperatorSignComparision_Predicates<PO_TEL_VID_CONNECT>
+    public class MatrixOfOperatorsFor_POTELVIDCONNECT<PO_TEL_VID_CONNECT>
     {
         private Tuple<int, int, string, string> _oneElementOfCriteria;
 
@@ -873,17 +874,21 @@ namespace WpfDBMS027
 
         public ICollection<PO_TEL_VID_CONNECT> CollectionProperty { get => this._collection_PO; set => this._collection_PO = value; }
 
-        DbContext IMatrixOf_OperatorSignComparision_Predicates<PO_TEL_VID_CONNECT>.DBContextProperty { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> Get_POs_Filtered( OperatorSignComparision operatorSignComparision, int indexOfField, IQueryable<PO_TEL_VID_CONNECT> queryable, ICollection<PO_TEL_VID_CONNECT> collection, DbContext dbcontext)
         {
             throw new NotImplementedException();
         }
 
-        public Tuple<int, IQueryable<PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> Get_POs_Filtered(OperatorSignComparision operatorSignComparision, int indexOfField, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT> queryable, ICollection<WpfDBMS027.PO_TEL_VID_CONNECT> collection, DbContext dbcontext)
+        public Tuple<int, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT>, ICollection<PO_TEL_VID_CONNECT>> Get_POs_Filtered(OperatorSignComparision operatorSignComparision, int indexOfField, IQueryable<WpfDBMS027.PO_TEL_VID_CONNECT> queryable, ICollection<WpfDBMS027.PO_TEL_VID_CONNECT> collection, DbContext dbcontext)
         {
-            throw new NotImplementedException();
+
+            var returnedValue = _matrixOfPredicates[operatorSignComparision][indexOfField];
+
+            return returnedValue;
         }
+
+
     }
 
 }

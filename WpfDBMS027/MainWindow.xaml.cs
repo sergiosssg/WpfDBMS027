@@ -968,6 +968,8 @@ namespace WpfDBMS027
 
 
 
+
+
                 dgrid__VID_CONNECT.ItemsSource = filteredCollection.ToList<PO_TEL_VID_CONNECT>();
 
                 mainWindowForGrid.IsEnabled = true;

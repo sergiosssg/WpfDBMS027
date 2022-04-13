@@ -131,7 +131,7 @@ namespace WpfDBMS027
         }
 
 
-        public Tuple<int, IQueryable<T>, ICollection<T>> Get_POs_Filtered( OperatorSignComparision operatorSignComparision, int indexOfField, IQueryable<PO_TEL_VID_CONNECT> queryable, ICollection<PO_TEL_VID_CONNECT> collection, DbContext dbcontext);
+        public Tuple<int, IQueryable<T>, ICollection<T>> Get_POs_Filtered(OperatorSignComparision operatorSignComparision, int indexOfField, IQueryable<PO_TEL_VID_CONNECT> queryable, ICollection<PO_TEL_VID_CONNECT> collection, DbContext dbcontext);
 
     }
 
@@ -348,7 +348,7 @@ namespace WpfDBMS027
     public class ComparingFunctions
     {
 
-        public static bool CompareTwoStringsAsRegex(string sSource, string sPattern, CaseOfComparingMethodType caseOfComparingMethodType = CaseOfComparingMethodType.BY_STARTING_STRING, bool ignorigCase = false)
+        public static bool CompareTwoStringsAsRegex(string sSource, string sPattern, CaseOfComparingMethodType caseOfComparingMethodType = CaseOfComparingMethodType.BY_STARTING_STRING, bool ignorigCase = true)
         {
 
             if (string.IsNullOrWhiteSpace(sSource) || string.IsNullOrWhiteSpace(sPattern))
@@ -372,15 +372,15 @@ namespace WpfDBMS027
                 }
                 else if (caseOfComparingMethodType == CaseOfComparingMethodType.BY_STARTING_STRING)
                 {
-                    return sSourceR.StartsWith( sPatternR);
+                    return sSourceR.StartsWith(sPatternR);
                 }
                 else if (caseOfComparingMethodType == CaseOfComparingMethodType.BY_ENDING_STRING)
                 {
-                    return sSourceR.EndsWith( sPatternR);
+                    return sSourceR.EndsWith(sPatternR);
                 }
                 else if (caseOfComparingMethodType == CaseOfComparingMethodType.BY_CONTAINING_STRING)
                 {
-                    return sSourceR.Contains( sPatternR);
+                    return sSourceR.Contains(sPatternR);
                 }
                 else
                 {
