@@ -862,13 +862,9 @@ namespace WpfDBMS027
 
         }
 
-        public DbAppContext DBContextProperty
-        {
-            get => this._dbContext;
-            set => this._dbContext = value;
-        }
 
 
+        public DbAppContext DBContextProperty { get => this._dbContext; set => this._dbContext = value; }
 
         public IQueryable<PO_TEL_VID_CONNECT> QueryableProperty { get => this._queryable_PO; set => this._queryable_PO = value; }
 
