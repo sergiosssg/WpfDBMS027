@@ -21,7 +21,9 @@
         </Grid.ColumnDefinitions>
         <TabControl Grid.Column="1" Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <TabItem Header="TabItem">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <ContentControl x:Name="contentControl001"  HorizontalAlignment="Stretch" Margin="2,2,2,2" VerticalAlignment="Stretch"/>
+                </Grid>
             </TabItem>
             <TabItem Header="TabItem">
                 <Grid Background="#FFE5E5E5"/>
