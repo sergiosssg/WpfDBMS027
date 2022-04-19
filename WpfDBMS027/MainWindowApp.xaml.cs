@@ -19,9 +19,15 @@ namespace WpfDBMS027
     /// </summary>
     public partial class MainWindow1 : Window
     {
+
+        private Window wndSample;
+
         public MainWindow1()
         {
             InitializeComponent();
+
+            wndSample = new MainWindow();
+
         }
     }
 }
