@@ -29,5 +29,10 @@ namespace WpfDBMS027
             wndSample = new MainWindow();
 
         }
+
+        private void btn0303_Click(object sender, RoutedEventArgs e)
+        {
+            this.wndSample.Show();
+        }
     }
 }

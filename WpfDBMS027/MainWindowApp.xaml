@@ -22,7 +22,8 @@
         <TabControl x:Name="mainTabControl" Grid.Column="1" Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <TabItem x:Name="tabItem35" Header="Виды Связи">
                 <Grid Background="#FFE5E5E5">
-                    
+                    <Button  x:Name="btn0303"  Content="Button" HorizontalAlignment="Stretch" Margin="3,3,3,3" VerticalAlignment="Stretch" Click="btn0303_Click"/>
+
 
                 </Grid>
             </TabItem>
