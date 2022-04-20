@@ -16,10 +16,20 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
+            <RowDefinition Height="22*"/>
             <RowDefinition Height="280*" MinHeight="220"/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
-
+        <StackPanel Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            
+        </StackPanel>
+        <ListView Grid.Column="1" Grid.Row="2">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
 
     </Grid>
 </Page>
