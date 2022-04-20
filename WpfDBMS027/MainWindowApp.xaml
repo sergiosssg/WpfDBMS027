@@ -30,6 +30,11 @@
             <TabItem Header="Операторы Связи">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
+            <TabItem x:Name="tabItem35_" Header="Пробная форма">
+                <Grid Background="#FFE5E5E5">
+                    <Button  x:Name="btn0303__"  Content="Button" HorizontalAlignment="Stretch" Margin="3,3,3,3" VerticalAlignment="Stretch"/>
+                </Grid>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>

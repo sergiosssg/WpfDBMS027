@@ -32,7 +32,14 @@ namespace WpfDBMS027
 
         private void btn0303_Click(object sender, RoutedEventArgs e)
         {
-            this.wndSample.Show();
+            try
+            {
+                this.wndSample.Show();
+            }
+            catch (InvalidOperationException iopex)
+            {
+
+            }
         }
     }
 }
