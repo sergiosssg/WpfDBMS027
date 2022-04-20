@@ -40,9 +40,9 @@ namespace WpfDBMS027
 
 
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for WndSample.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class WndSample : Window
     {
 
 
@@ -209,7 +209,7 @@ namespace WpfDBMS027
         //public Window 
 
 
-        public MainWindow()
+        public WndSample()
         {
             ReadRecordsFromDBTable();
             ReadRecordsFromDBTableUsing_EF();
@@ -1047,13 +1047,13 @@ namespace WpfDBMS027
                         pTELVIDCONNECT.Name = inputTextBoxOfCriteriaItem.Text;
                     }
 
-                    var operatorSignComparision = MakeOperatorSignComparisionEnumFromCombobox(inputCmBoxOfComparisionOperationInCriteria, MainWindow.OperatorSignComparisionStrings);
-                    var operatorSignLogic = MakeOperatorSignLogicComparisionEnumFromCombobox(inputCmBoxOfLogicalOperationInCriteria, MainWindow.OperatorSignLogicStrings);
+                    var operatorSignComparision = MakeOperatorSignComparisionEnumFromCombobox(inputCmBoxOfComparisionOperationInCriteria, WndSample.OperatorSignComparisionStrings);
+                    var operatorSignLogic = MakeOperatorSignLogicComparisionEnumFromCombobox(inputCmBoxOfLogicalOperationInCriteria, WndSample.OperatorSignLogicStrings);
                     var oneCriteriaOfFilterChainLink = new CriteriaOfFilterChainLink<PO_TEL_VID_CONNECT>();
                     oneCriteriaOfFilterChainLink.ItemOfCriteriaLeftOnly = pTELVIDCONNECT;
                     oneCriteriaOfFilterChainLink.OperatorComparisionLeftOnly = operatorSignComparision;
                     oneCriteriaOfFilterChainLink.OperatorLogic = operatorSignLogic;
-                    inputCriteriaOfFilter.Add(oneCriteriaOfFilterChainLink, MainWindow.MapComparisioOperatorToComparisionPredicate[operatorSignComparision]);
+                    inputCriteriaOfFilter.Add(oneCriteriaOfFilterChainLink, WndSample.MapComparisioOperatorToComparisionPredicate[operatorSignComparision]);
                 }
                 catch (FormatException fex)
                 {
@@ -1109,8 +1109,8 @@ namespace WpfDBMS027
                     {
                         pTELVIDCONNECT.Name = inputTextBoxOfCriteriaItem.Text;
                     }
-                    var operatorSignComparision = MakeOperatorSignComparisionEnumFromCombobox(inputCmBoxOfComparisionOperationInCriteria, MainWindow.OperatorSignComparisionStrings);
-                    var operatorSignLogic = MakeOperatorSignLogicComparisionEnumFromCombobox(inputCmBoxOfLogicalOperationInCriteria, MainWindow.OperatorSignLogicStrings);
+                    var operatorSignComparision = MakeOperatorSignComparisionEnumFromCombobox(inputCmBoxOfComparisionOperationInCriteria, WndSample.OperatorSignComparisionStrings);
+                    var operatorSignLogic = MakeOperatorSignLogicComparisionEnumFromCombobox(inputCmBoxOfLogicalOperationInCriteria, WndSample.OperatorSignLogicStrings);
                     var oneCriteriaOfFilterChainLink = new CriteriaOfFilterChainLink<PO_TEL_VID_CONNECT>();
                     oneCriteriaOfFilterChainLink.ItemOfCriteriaLeftOnly = pTELVIDCONNECT;
                     oneCriteriaOfFilterChainLink.OperatorComparisionLeftOnly = operatorSignComparision;
@@ -1177,9 +1177,9 @@ namespace WpfDBMS027
                         pTELVIDCONNECT_left.Name = inputTextBoxOfCriteriaItemFromRight.Text;
                         pTELVIDCONNECT_right.Name = inputTextBoxOfCriteriaItemFromRight.Text;
                     }
-                    var operatorSignComparisionLeft = MakeOperatorSignComparisionEnumFromCombobox( inputCmBoxOfComparisionOperationInCriteriaFromLeft, MainWindow.OperatorSignComparisionStrings);
-                    var operatorSignComparisionRight = MakeOperatorSignComparisionEnumFromCombobox( inputCmBoxOfComparisionOperationInCriteriaFromRight, MainWindow.OperatorSignComparisionStrings);
-                    var operatorSignLogic = MakeOperatorSignLogicComparisionEnumFromCombobox(inputCmBoxOfLogicalOperationInCriteria, MainWindow.OperatorSignLogicStrings);
+                    var operatorSignComparisionLeft = MakeOperatorSignComparisionEnumFromCombobox( inputCmBoxOfComparisionOperationInCriteriaFromLeft, WndSample.OperatorSignComparisionStrings);
+                    var operatorSignComparisionRight = MakeOperatorSignComparisionEnumFromCombobox( inputCmBoxOfComparisionOperationInCriteriaFromRight, WndSample.OperatorSignComparisionStrings);
+                    var operatorSignLogic = MakeOperatorSignLogicComparisionEnumFromCombobox(inputCmBoxOfLogicalOperationInCriteria, WndSample.OperatorSignLogicStrings);
                     var oneCriteriaOfFilterChainLink = new PaarOfCriteriaOfFilterChainLink<PO_TEL_VID_CONNECT>(pTELVIDCONNECT_left, operatorSignComparisionLeft, pTELVIDCONNECT_right, operatorSignComparisionRight, operatorSignLogic);
                     inputCriteriaOfFilter.Add(oneCriteriaOfFilterChainLink);
                 }

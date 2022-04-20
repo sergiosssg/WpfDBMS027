@@ -26,7 +26,7 @@ namespace WpfDBMS027
         {
             InitializeComponent();
 
-            wndSample = new MainWindow();
+            wndSample = new WndSample();
 
         }
 
