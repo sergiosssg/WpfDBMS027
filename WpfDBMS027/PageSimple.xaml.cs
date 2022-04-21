@@ -56,5 +56,77 @@ namespace WpfDBMS027
             return builder.ConnectionString;
         }
 
+
+
+        /**
+        *  <summary
+        *  
+        *  this function performs all work with displaying data in Control
+        *  
+        */
+        private bool RefreshListviewWithCollection(Control dataViewControl, DbContext dbContext, ICollection<PO_TEL_VID_CONNECT> collection = null)
+        {
+            if (dataViewControl == null) return false;
+            if (dataViewControl.GetType() == typeof(DataGrid))
+            {
+                ListView lstView = (ListView)dataViewControl;
+
+                if (collection == null && dbContext.GetType() == typeof(DbAppContext))
+                {
+                    var dbAppContext = (DbAppContext)dbContext;
+                    var itemsOf_TEL_VID_CONNECT = dbAppContext.pO_TEL_VID_CONNECTs.Local.ToBindingList();
+
+
+                    Binding binding = new Binding();
+
+                    binding.Mode = BindingMode.TwoWay;
+
+                    binding.Source = itemsOf_TEL_VID_CONNECT;
+
+                    binding.BindsDirectlyToSource = true;
+
+
+
+                    /*
+                                        if (this._tel_vid_connection_CollectionViewSource == null)
+                                        {
+                                            this._tel_vid_connection_CollectionViewSource = new CollectionViewSource();
+                                        }
+
+                                        this._tel_vid_connection_CollectionViewSource.Source = itemsOf_TEL_VID_CONNECT;
+                    */
+
+
+
+                    //lstView.BindingGroup
+
+
+
+                    /*                    lstView.ItemsSource = this._tel_vid_connection_CollectionViewSource.View;*/
+
+
+                    return true;
+                }
+                else
+                {
+
+                    /*
+                                        if (this._tel_vid_connection_CollectionViewSource == null)
+                                        {
+                                            this._tel_vid_connection_CollectionViewSource = new CollectionViewSource();
+                                        }
+                                        this._tel_vid_connection_CollectionViewSource.Source = collection;
+                                        lstView.ItemsSource = this._tel_vid_connection_CollectionViewSource.View;
+                    */
+
+
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
+
     }
 }

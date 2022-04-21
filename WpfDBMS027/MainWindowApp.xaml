@@ -23,8 +23,6 @@
             <TabItem x:Name="tabItem35" Header="Виды Связи">
                 <Grid Background="#FFE5E5E5">
                     <Button  x:Name="btn0303"  Content="Button" HorizontalAlignment="Stretch" Margin="3,3,3,3" VerticalAlignment="Stretch" Click="btn0303_Click"/>
-
-
                 </Grid>
             </TabItem>
             <TabItem Header="Операторы Связи">
@@ -32,7 +30,10 @@
             </TabItem>
             <TabItem x:Name="tabItem35_" Header="Пробная форма">
                 <Grid Background="#FFE5E5E5">
-                    <Button  x:Name="btn0303__"  Content="Button" HorizontalAlignment="Stretch" Margin="3,3,3,3" VerticalAlignment="Stretch"/>
+                    <Button  x:Name="btn0303__2"  Content="Button" HorizontalAlignment="Stretch" Margin="3,3,3,3" VerticalAlignment="Stretch" Click="btn0303__2_Click"/>
+                    <Frame >
+                        
+                    </Frame>
                 </Grid>
             </TabItem>
         </TabControl>

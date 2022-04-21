@@ -20,13 +20,15 @@ namespace WpfDBMS027
     public partial class MainWindow1 : Window
     {
 
-        private Window wndSample;
+        private Window _wndSample;
+        private Page _pageSample;
 
         public MainWindow1()
         {
             InitializeComponent();
 
-            wndSample = new WndSample();
+            this._wndSample = new WndSample();
+            this._pageSample = new PageSimple();
 
         }
 
@@ -34,7 +36,19 @@ namespace WpfDBMS027
         {
             try
             {
-                this.wndSample.Show();
+                this._wndSample.Show();
+            }
+            catch (InvalidOperationException iopex)
+            {
+
+            }
+        }
+
+        private void btn0303__2_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
             }
             catch (InvalidOperationException iopex)
             {
