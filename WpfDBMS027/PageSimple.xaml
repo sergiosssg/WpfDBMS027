@@ -23,7 +23,7 @@
         <StackPanel Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             
         </StackPanel>
-        <ListView Grid.Column="1" Grid.Row="2">
+        <ListView  x:Name="lst4POvidtelconnect" Grid.Column="1" Grid.Row="2">
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>
