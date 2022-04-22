@@ -107,6 +107,7 @@ namespace WpfDBMS027
 
                     lstView.ItemsSource = this._tel_vid_connection_CollectionViewSource.View;
 
+                    
 
                     return true;
                 }

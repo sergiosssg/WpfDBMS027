@@ -29,7 +29,6 @@ namespace WpfDBMS027
 
             this._wndSample = new WndSample();
             this._pageSample = new PageSimple();
-
         }
 
         private void btn0303_Click(object sender, RoutedEventArgs e)
@@ -48,7 +47,16 @@ namespace WpfDBMS027
         {
             try
             {
+                btn0303__2.Visibility = Visibility.Hidden;
+                
+                frm4PageSimple.Content = this._pageSample;
 
+                
+
+
+
+                frm4PageSimple.Visibility = Visibility.Visible;
+                //this._pageSample.Visibility = Visibility.Visible;
             }
             catch (InvalidOperationException iopex)
             {
