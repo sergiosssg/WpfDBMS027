@@ -133,6 +133,10 @@ namespace WpfDBMS027
         {
             DbAppContextProperty.pO_TEL_VID_CONNECTs.Load();
 
+            this.TEL_VID_CONNECTs = DbAppContextProperty.pO_TEL_VID_CONNECTs;
+
+            bool resultOfRefreshing = RefreshListviewWithCollection( lst4POvidtelconnect, DbAppContextProperty);
+
         }
     }
 }
