@@ -26,6 +26,7 @@ namespace WpfDBMS027
 
         private CollectionViewSource _tel_vid_connection_CollectionViewSource;
 
+        public DbSet<PO_TEL_VID_CONNECT> TEL_VID_CONNECTs;
 
         public DbAppContext DbAppContextProperty { get; }
 
@@ -48,8 +49,8 @@ namespace WpfDBMS027
         {
             DbConnectionStringBuilder builder = new SqlConnectionStringBuilder();
 
-            //builder["Data Source"] = "localhost";
-            builder["Data Source"] = @"localhost\SQLExpress";
+            builder["Data Source"] = "localhost";
+            //builder["Data Source"] = @"localhost\SQLExpress";
 
             builder["Database"] = "sampd_cexs";
 
@@ -128,7 +129,10 @@ namespace WpfDBMS027
             return false;
         }
 
+        private void PageSimpleInstance1_Loaded(object sender, RoutedEventArgs e)
+        {
+            DbAppContextProperty.pO_TEL_VID_CONNECTs.Load();
 
-
+        }
     }
 }
