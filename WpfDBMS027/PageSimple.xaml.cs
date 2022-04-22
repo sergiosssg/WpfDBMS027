@@ -24,6 +24,8 @@ namespace WpfDBMS027
     public partial class PageSimple : Page
     {
 
+        private CollectionViewSource _tel_vid_connection_CollectionViewSource;
+
 
         public DbAppContext DbAppContextProperty { get; }
 
@@ -67,7 +69,7 @@ namespace WpfDBMS027
         private bool RefreshListviewWithCollection(Control dataViewControl, DbContext dbContext, ICollection<PO_TEL_VID_CONNECT> collection = null)
         {
             if (dataViewControl == null) return false;
-            if (dataViewControl.GetType() == typeof(DataGrid))
+            if (dataViewControl.GetType() == typeof(ListView))
             {
                 ListView lstView = (ListView)dataViewControl;
 
@@ -87,14 +89,14 @@ namespace WpfDBMS027
 
 
 
-                    /*
-                                        if (this._tel_vid_connection_CollectionViewSource == null)
-                                        {
-                                            this._tel_vid_connection_CollectionViewSource = new CollectionViewSource();
-                                        }
 
-                                        this._tel_vid_connection_CollectionViewSource.Source = itemsOf_TEL_VID_CONNECT;
-                    */
+                    if (this._tel_vid_connection_CollectionViewSource == null)
+                    {
+                        this._tel_vid_connection_CollectionViewSource = new CollectionViewSource();
+                    }
+
+                    this._tel_vid_connection_CollectionViewSource.Source = itemsOf_TEL_VID_CONNECT;
+
 
 
 
@@ -102,7 +104,7 @@ namespace WpfDBMS027
 
 
 
-                    /*                    lstView.ItemsSource = this._tel_vid_connection_CollectionViewSource.View;*/
+                    lstView.ItemsSource = this._tel_vid_connection_CollectionViewSource.View;
 
 
                     return true;
