@@ -40,6 +40,10 @@ namespace WpfDBMS027
 
             DbAppContextProperty = new DbAppContext(OptionsOfDbContext);
 
+            DbAppContextProperty.pO_TEL_VID_CONNECTs.Load();
+
+            this.TEL_VID_CONNECTs = DbAppContextProperty.pO_TEL_VID_CONNECTs;
+
             InitializeComponent();
         }
 
@@ -84,7 +88,7 @@ namespace WpfDBMS027
 
                     binding.Mode = BindingMode.TwoWay;
 
-                    binding.Source = itemsOf_TEL_VID_CONNECT;
+                    binding.Source = itemsOf_TEL_VID_CONNECT.ToList<PO_TEL_VID_CONNECT>();
 
                     binding.BindsDirectlyToSource = true;
 
@@ -96,13 +100,17 @@ namespace WpfDBMS027
                         this._tel_vid_connection_CollectionViewSource = new CollectionViewSource();
                     }
 
-                    this._tel_vid_connection_CollectionViewSource.Source = itemsOf_TEL_VID_CONNECT;
+                    this._tel_vid_connection_CollectionViewSource.Source = itemsOf_TEL_VID_CONNECT.ToList<PO_TEL_VID_CONNECT>();
 
 
 
 
                     //lstView.BindingGroup
 
+                    foreach(var oneTO in this._tel_vid_connection_CollectionViewSource.View)
+                    {
+                        var tTT = oneTO.GetType().Name;
+                    }
 
 
                     lstView.ItemsSource = this._tel_vid_connection_CollectionViewSource.View;
