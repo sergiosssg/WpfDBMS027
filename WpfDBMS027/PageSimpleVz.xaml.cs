@@ -88,16 +88,11 @@ namespace WpfDBMS027
                     binding.BindsDirectlyToSource = true;
 
 
-
-
                     if (this._tel_vid_connection_CollectionViewSource == null)
                     {
                         this._tel_vid_connection_CollectionViewSource = new CollectionViewSource();
                     }
-
                     this._tel_vid_connection_CollectionViewSource.Source = itemsOf_TEL_VID_CONNECT.ToList<PO_TEL_VID_CONNECT>();
-
-
 
 
                     //lstView.BindingGroup
@@ -107,34 +102,12 @@ namespace WpfDBMS027
                         var tTT = oneTO.GetType().Name;
                     }
 
-
-                    //lstView.ItemsSource = this._tel_vid_connection_CollectionViewSource.View;
                     datagrid.ItemsSource = this._tel_vid_connection_CollectionViewSource.View;
 
-
-
                     return true;
                 }
-                else
-                {
-
-                    /*
-                                        if (this._tel_vid_connection_CollectionViewSource == null)
-                                        {
-                                            this._tel_vid_connection_CollectionViewSource = new CollectionViewSource();
-                                        }
-                                        this._tel_vid_connection_CollectionViewSource.Source = collection;
-                                        lstView.ItemsSource = this._tel_vid_connection_CollectionViewSource.View;
-                    */
-
-
-                    return true;
-                }
-
-
             }
-
-            throw new NotImplementedException();
+            return false;
         }
 
     }
