@@ -31,7 +31,7 @@
             <TabItem x:Name="tabItem35_" Header="Пробная форма">
                 <Grid Background="#FFE5E5E5">
                     <Button  x:Name="btn0303__2"  Content="Button" HorizontalAlignment="Stretch" Margin="3,3,3,3" VerticalAlignment="Stretch" Click="btn0303__2_Click"/>
-                    <Frame x:Name="frm4PageSimple" Content="{Binding DataContext, ElementName=frm4PageSimple}" Source="/PageSimple.xaml" Visibility="Hidden">
+                    <Frame x:Name="frm4PageSimple" Content="{Binding DataContext, ElementName=frm4PageSimple}" Source="/PageSimpleVz.xaml" Visibility="Hidden">
                         
                     </Frame>
                 </Grid>
