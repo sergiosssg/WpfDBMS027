@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,7 +36,38 @@ namespace WpfDBMS027
 
         public PageSimpleVz()
         {
+            OptionsOfDbContext = new DbContextOptionsBuilder<DbAppContext>().UseSqlServer(GetConnectionString()).Options;
+
+            DbAppContextProperty = new DbAppContext(OptionsOfDbContext);
+
+            DbAppContextProperty.pO_TEL_VID_CONNECTs.Load();
+
+            this.TEL_VID_CONNECTs = DbAppContextProperty.pO_TEL_VID_CONNECTs;
+
             InitializeComponent();
         }
+
+
+        private static string GetConnectionString()
+        {
+            DbConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+
+            builder["Data Source"] = "localhost";
+
+            builder["Database"] = "sampd_cexs";
+
+            builder["integrated Security"] = "true";
+
+            return builder.ConnectionString;
+        }
+
+
+
+
+        private bool RefreshListviewWithCollection(Control dataViewControl, DbContext dbContext, ICollection<PO_TEL_VID_CONNECT> collection = null)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }
