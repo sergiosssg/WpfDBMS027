@@ -28,7 +28,7 @@ namespace WpfDBMS027
             InitializeComponent();
 
             this._wndSample = new WndSample();
-            this._pageSample = new PageSimple();
+            this._pageSample = new PageSimpleVz();
         }
 
         private void btn0303_Click(object sender, RoutedEventArgs e)
