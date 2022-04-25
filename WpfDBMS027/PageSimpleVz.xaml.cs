@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,17 @@ namespace WpfDBMS027
     /// </summary>
     public partial class PageSimpleVz : Page
     {
+
+
+        private CollectionViewSource _tel_vid_connection_CollectionViewSource;
+
+        public DbSet<PO_TEL_VID_CONNECT> TEL_VID_CONNECTs;
+
+        public DbAppContext DbAppContextProperty { get; }
+
+        public DbContextOptions<DbAppContext> OptionsOfDbContext { get; }
+
+
         public PageSimpleVz()
         {
             InitializeComponent();

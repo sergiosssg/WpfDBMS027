@@ -9,6 +9,39 @@
       Title="PageSimpleVz">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="360*" MinWidth="300"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="22*"/>
+            <RowDefinition Height="280*" MinHeight="220"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <DataGrid  x:Name="grid4POvidtelconnect"  Grid.Column="1" Grid.Row="2">
+            
+        </DataGrid>
+
+
+
+
+        <!--
+    
+    
+        <ListView  x:Name="lst4POvidtelconnect" Grid.Column="1" Grid.Row="2">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    
+    
+        -->
+
+
     </Grid>
+
 </Page>
