@@ -110,5 +110,13 @@ namespace WpfDBMS027
             return false;
         }
 
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            DbAppContextProperty.pO_TEL_VID_CONNECTs.Load();
+
+            this.TEL_VID_CONNECTs = DbAppContextProperty.pO_TEL_VID_CONNECTs;
+
+            bool resultOfRefreshing = RefreshListviewWithCollection(grid4POvidtelconnect, DbAppContextProperty);
+        }
     }
 }
