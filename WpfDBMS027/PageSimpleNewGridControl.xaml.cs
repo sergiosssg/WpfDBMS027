@@ -24,7 +24,7 @@ namespace WpfDBMS027
     /// </summary>
     public partial class PageSimpleNewGridControl : Page
     {
-
+        private DataBaseFacilities _dataBaseFacilities;
 
         private CollectionViewSource _tel_vid_connection_CollectionViewSource;
 
@@ -38,30 +38,15 @@ namespace WpfDBMS027
 
         public PageSimpleNewGridControl()
         {
-            OptionsOfDbContext = new DbContextOptionsBuilder<DbAppContext>().UseSqlServer(GetConnectionString()).Options;
+            this._dataBaseFacilities = new DataBaseFacilities();
 
-            DbAppContextProperty = new DbAppContext(OptionsOfDbContext);
+            DbAppContextProperty = this._dataBaseFacilities.DbAppContextProperty;
 
             DbAppContextProperty.pO_TEL_VID_CONNECTs.Load();
 
             this.TEL_VID_CONNECTs = DbAppContextProperty.pO_TEL_VID_CONNECTs;
 
             InitializeComponent();
-        }
-
-
-        private static string GetConnectionString()
-        {
-            DbConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-
-            //builder["Data Source"] = "localhost";
-            builder["Data Source"] = @"localhost\SQLExpress";
-
-            builder["Database"] = "sampd_cexs";
-
-            builder["integrated Security"] = "true";
-
-            return builder.ConnectionString;
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)

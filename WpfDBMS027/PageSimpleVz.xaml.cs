@@ -23,7 +23,7 @@ namespace WpfDBMS027
     /// </summary>
     public partial class PageSimpleVz : Page
     {
-
+        private DataBaseFacilities _dataBaseFacilities;
 
         private CollectionViewSource _tel_vid_connection_CollectionViewSource;
 
@@ -31,14 +31,17 @@ namespace WpfDBMS027
 
         public DbAppContext DbAppContextProperty { get; }
 
-        public DbContextOptions<DbAppContext> OptionsOfDbContext { get; }
+        //public DbContextOptions<DbAppContext> OptionsOfDbContext { get; }
 
 
         public PageSimpleVz()
         {
-            OptionsOfDbContext = new DbContextOptionsBuilder<DbAppContext>().UseSqlServer(GetConnectionString()).Options;
+            this._dataBaseFacilities = new DataBaseFacilities();
 
-            DbAppContextProperty = new DbAppContext(OptionsOfDbContext);
+            //OptionsOfDbContext = new DbContextOptionsBuilder<DbAppContext>().UseSqlServer(GetConnectionString()).Options;
+
+            //DbAppContextProperty = new DbAppContext(OptionsOfDbContext);
+            DbAppContextProperty = this._dataBaseFacilities.DbAppContextProperty;
 
             DbAppContextProperty.pO_TEL_VID_CONNECTs.Load();
 
@@ -47,7 +50,7 @@ namespace WpfDBMS027
             InitializeComponent();
         }
 
-
+/*
         private static string GetConnectionString()
         {
             DbConnectionStringBuilder builder = new SqlConnectionStringBuilder();
@@ -61,7 +64,7 @@ namespace WpfDBMS027
 
             return builder.ConnectionString;
         }
-
+*/
 
 
 

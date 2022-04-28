@@ -44,7 +44,7 @@ namespace WpfDBMS027
     /// </summary>
     public partial class WndSample : Window
     {
-
+        private DataBaseFacilities _dataBaseFacilities;
 
         static CriteriaOfFilter<PO_TEL_VID_CONNECT> CriteriaOfFilterCollection;
 
@@ -214,9 +214,13 @@ namespace WpfDBMS027
             ReadRecordsFromDBTable();
             ReadRecordsFromDBTableUsing_EF();
 
-            OptionsOfDbContext = new DbContextOptionsBuilder<DbAppContext>().UseSqlServer(GetConnectionString()).Options;
+            this._dataBaseFacilities = new DataBaseFacilities();
 
-            DbAppContextProperty = new DbAppContext(OptionsOfDbContext);
+            //OptionsOfDbContext = new DbContextOptionsBuilder<DbAppContext>().UseSqlServer(GetConnectionString()).Options;
+
+
+            DbAppContextProperty = this._dataBaseFacilities.DbAppContextProperty;
+            //DbAppContextProperty = new DbAppContext(OptionsOfDbContext);
 
 
             this._textFields = new List<Control>();
