@@ -64,5 +64,26 @@ namespace WpfDBMS027
 
             }
         }
+
+        private void Window_Unloaded(object sender, RoutedEventArgs e)
+        {
+            ;
+            ;
+            ;
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            ;
+            ;
+            ;
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            ;
+            ;
+            ;
+        }
     }
 }
