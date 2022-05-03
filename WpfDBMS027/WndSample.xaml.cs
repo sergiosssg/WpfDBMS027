@@ -211,8 +211,8 @@ namespace WpfDBMS027
 
         public WndSample()
         {
-            ReadRecordsFromDBTable();
-            ReadRecordsFromDBTableUsing_EF();
+            //ReadRecordsFromDBTable();
+            //ReadRecordsFromDBTableUsing_EF();
 
             this._dataBaseFacilities = new DataBaseFacilities();
 
