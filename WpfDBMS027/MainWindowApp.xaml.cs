@@ -17,13 +17,13 @@ namespace WpfDBMS027
     /// <summary>
     /// Логика взаимодействия для MainWindow1.xaml
     /// </summary>
-    public partial class MainWindow1 : Window
+    public partial class MainWndApp : Window
     {
 
         private Window _wndSample;
         private Page _pageSample;
 
-        public MainWindow1()
+        public MainWndApp()
         {
             InitializeComponent();
 
