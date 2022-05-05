@@ -691,6 +691,7 @@ namespace WpfDBMS027
                     var itemsOf_TEL_VID_CONNECT = dbAppContext.pO_TEL_VID_CONNECTs.Local.ToBindingList();
 
 
+/*
                     Binding binding = new Binding();
 
                     binding.Mode = BindingMode.TwoWay;
@@ -698,6 +699,8 @@ namespace WpfDBMS027
                     binding.Source = itemsOf_TEL_VID_CONNECT;
 
                     binding.BindsDirectlyToSource = true;
+*/
+
 
                     if (this._tel_vid_connection_CollectionViewSource == null)
                     {
