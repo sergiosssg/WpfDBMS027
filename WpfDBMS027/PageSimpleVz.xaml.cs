@@ -41,6 +41,7 @@ namespace WpfDBMS027
             //OptionsOfDbContext = new DbContextOptionsBuilder<DbAppContext>().UseSqlServer(GetConnectionString()).Options;
 
             //DbAppContextProperty = new DbAppContext(OptionsOfDbContext);
+
             DbAppContextProperty = this._dataBaseFacilities.DbAppContextProperty;
 
             DbAppContextProperty.pO_TEL_VID_CONNECTs.Load();
@@ -101,10 +102,10 @@ namespace WpfDBMS027
 
                     //lstView.BindingGroup
 
-                    foreach (var oneTO in this._tel_vid_connection_CollectionViewSource.View)
+/*                    foreach (var oneTO in this._tel_vid_connection_CollectionViewSource.View)
                     {
                         var tTT = oneTO.GetType().Name;
-                    }
+                    }*/
 
                     datagrid.ItemsSource = this._tel_vid_connection_CollectionViewSource.View;
 

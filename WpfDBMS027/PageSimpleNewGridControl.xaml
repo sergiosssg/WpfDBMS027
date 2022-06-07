@@ -22,12 +22,15 @@
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
 
-        <c1:C1ScrollViewer Grid.Column="1"  Grid.Row="2" Margin="3,3,3,3"  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch">
-            <c1:C1DataGrid x:Name="c1datagrid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        
+        <!--
+            <c1:C1ScrollViewer Grid.Column="1"  Grid.Row="2" Margin="3,3,3,3"  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch">
+               <c1:C1DataGrid x:Name="c1datagrid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 
-            </c1:C1DataGrid>
+               </c1:C1DataGrid>
 
-        </c1:C1ScrollViewer>
+            </c1:C1ScrollViewer>
+        -->
 
     </Grid>
 </Page>

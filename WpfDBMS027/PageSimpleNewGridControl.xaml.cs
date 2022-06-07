@@ -1,4 +1,4 @@
-﻿using C1.WPF.DataGrid;
+﻿
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -55,7 +55,7 @@ namespace WpfDBMS027
 
             this.TEL_VID_CONNECTs = DbAppContextProperty.pO_TEL_VID_CONNECTs;
 
-            bool resultOfRefreshing = RefreshListviewWithCollection(c1datagrid, DbAppContextProperty);
+            //bool resultOfRefreshing = RefreshListviewWithCollection(c1datagrid, DbAppContextProperty);
 
         }
 
@@ -63,7 +63,7 @@ namespace WpfDBMS027
         {
             if (dataViewControl == null) return false;
 
-            if (dataViewControl.GetType() == typeof(C1DataGrid))
+/*            if (dataViewControl.GetType() == typeof(C1DataGrid))
             {
                 C1DataGrid datagrid = (C1DataGrid)dataViewControl;
 
@@ -99,7 +99,7 @@ namespace WpfDBMS027
                     return true;
 
                 }
-            }
+            }*/
 
             return false;
         }

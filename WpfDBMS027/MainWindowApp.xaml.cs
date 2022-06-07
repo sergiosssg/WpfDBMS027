@@ -50,13 +50,13 @@ namespace WpfDBMS027
             {
                 btn0303__2.Visibility = Visibility.Hidden;
                 
-                frm4PageSimple.Content = this._pageSample;
+                //frm4PageSimple.Content = this._pageSample;
 
                 
 
 
 
-                frm4PageSimple.Visibility = Visibility.Visible;
+                //frm4PageSimple.Visibility = Visibility.Visible;
                 //this._pageSample.Visibility = Visibility.Visible;
             }
             catch (InvalidOperationException iopex)
